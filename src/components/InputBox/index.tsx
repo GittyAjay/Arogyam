@@ -8,7 +8,7 @@ interface props {
     style: {}
 }
 const index: React.FC<props> = (props) => {
-    return (<TextInput placeholder={props.placeholder} style={[props.style, styles.inputBox]} keyboardType={props.type} onChangeText={value => props.onChangeMethod(value)} />)
+    return (<TextInput multiline={true} placeholder={props.placeholder} style={[props.style, styles.inputBox]} keyboardType={props.type} onChangeText={value => props.onChangeMethod(value)} />)
 }
 
 export default index

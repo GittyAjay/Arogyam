@@ -44,7 +44,7 @@ const index = (props: { navigation: { push: Function } }) => {
 
             <PrimaryButton button_style={styles.btnStyle} text_style={styles.txtStyle} onPress={() => {
                 console.log("sign up form data ===>", formData);
-                props.navigation.push('Login')
+                props.navigation.push('Profile')
             }} title="continue" />
         </View>
     );
