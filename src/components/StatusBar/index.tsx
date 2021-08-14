@@ -2,8 +2,10 @@ import React from 'react'
 import { StatusBar, StatusBarAnimation, StatusBarStyle } from 'react-native';
 const STYLES: StatusBarStyle[] = ['default', 'dark-content', 'light-content'];
 const TRANSITIONS: StatusBarAnimation[] = ['fade', 'slide', 'none'];
-
-export default function statusBar(props: { color: string }) {
+interface props {
+    color: string
+}
+const statusBar: React.FC<props> = (props: { color: string }) => {
     const { color } = props;
     return (
         <StatusBar
@@ -15,4 +17,5 @@ export default function statusBar(props: { color: string }) {
         />
     );
 }
+export default statusBar;
 

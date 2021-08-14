@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
 import StatusBar from '../../components/StatusBar';
 import { PRIMARY, WHITE } from '../../assets/colors';
-import { FONT_MID } from '../../assets/sizes';
+import { DEFAUTL_SPACE, FONT_MID } from '../../assets/sizes';
 const index = (props: { navigation: { push: Function } }) => {
     setTimeout(() => {
         props.navigation.push("Onboard");
@@ -11,7 +11,7 @@ const index = (props: { navigation: { push: Function } }) => {
         <>
             <StatusBar color={PRIMARY} />
             <View style={styles.container}>
-                <Image source={require('../../assets/images/logo.png')} style={{ width: 60, height: 60 }} />
+                <Image source={require('../../assets/images/logo.png')} style={{ width: 60, height: 60, marginBottom: DEFAUTL_SPACE }} />
                 <Text style={styles.font}>AROGYAM</Text>
             </View>
         </>

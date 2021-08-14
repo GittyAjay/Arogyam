@@ -1,42 +1,52 @@
 
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Image, Button, Pressable } from 'react-native'
+import { View, Text, StyleSheet, Image, Button, Pressable, TouchableOpacity } from 'react-native'
 import Carousel from 'react-native-snap-carousel';
 import Ficon from 'react-native-vector-icons/Fontisto';
 import { PRIMARY, SECONDARY } from '../../assets/colors';
 import { Dimension, DEFAUTL_SPACE, INLINE_GAP, BUTTON_HEIGHT, FONT_MID, FONT_LARGE, FONT_GLARGE, ICON_SIZE } from '../../assets/sizes'
 import PrimaryButton from '../../components/PrimaryButton';
 import Eicon from 'react-native-vector-icons/Entypo';
-const Slider = () => {
+const Slider = (props: { navigation: { push: Function } }) => {
     const { WIDTH, HEIGHT } = Dimension();
     const [activeCarosel, setactiveCarosel] = useState(0);
+    type slide = { title: string, descrption: string, url: NodeRequire, index: number };
+    type SlidesArray = Array<slide>;
 
-    useEffect(() => {
-        console.log(activeCarosel);
-    }, [activeCarosel])
-
-    const Slides = [
+    const Slides: SlidesArray = [
         {
-            title: "Online Doctor",
-            descrption: 'Your Health App',
-            url: '',
+            title: "Arogyam",
+            descrption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Risus n.',
+            url: require(`../../assets/images/onboard1.png`),
             index: 1
         },
         {
-            title: "Instant Help",
-            descrption: 'Your Health App',
-            url: '',
+            title: "know your medicines",
+            descrption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Risus n.',
+            url: require(`../../assets/images/onboard2.png`),
             index: 2
         },
         {
-            title: "Easily Accesable",
-            descrption: 'Everthing you get here',
-            url: '',
+            title: "home dilevery",
+            descrption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Risus n.',
+            url: require(`../../assets/images/onboard3.png`),
             index: 3
         },
+        {
+            title: "remind your medicine",
+            descrption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Risus n.',
+            url: require(`../../assets/images/onboard4.png`),
+            index: 3
+        },
+        {
+            title: "consult doctor at home",
+            descrption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Risus n.',
+            url: require(`../../assets/images/onboard5.png`),
+            index: 3
+        }
     ];
 
-    const renderItem = ({ item, index }: { item: any, index: number }) => {
+    const renderItem = ({ item, index }: { item: slide, index: number }) => {
         return (
             <View style={{
                 flexDirection: 'column',
@@ -46,9 +56,9 @@ const Slider = () => {
                 flex: 1,
             }}>
                 <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                    <Ficon name="doctor" size={50} color="black" />
+                    <Image source={item.url} />
                     <Text style={[styles.title, { paddingTop: DEFAUTL_SPACE }]}>{item.title}</Text>
-                    <Text style={{ paddingTop: DEFAUTL_SPACE / 2 }}>{item.descrption}</Text>
+                    <Text style={{ paddingTop: DEFAUTL_SPACE / 2, width: WIDTH - 2 * INLINE_GAP }}>{item.descrption}</Text>
                 </View>
             </View>
         )
@@ -71,19 +81,21 @@ const Slider = () => {
                     onSnapToItem={index => setactiveCarosel(index)}
                     renderItem={renderItem} />
                 <View style={{ flex: 0.1, flexDirection: 'row' }}>
-                    <Eicon name="dot-single" color={activeCarosel === 0 ? PRIMARY : "grey"} size={15} />
-                    <Eicon name="dot-single" color={activeCarosel === 1 ? PRIMARY : "grey"} size={15} />
-                    <Eicon name="dot-single" color={activeCarosel === 2 ? PRIMARY : "grey"} size={15} />
+                    {Slides.map((records, index) => {
+                        return (
+                            <Eicon key={index} name="dot-single" color={activeCarosel === index ? PRIMARY : "grey"} size={15} />
+                        )
+                    })}
                 </View>
                 <View style={{ flex: 0.2, justifyContent: 'center', alignSelf: 'stretch' }}>
                     <PrimaryButton title="Get Started" onPress={() => {
-                        console.log("hello")
+                        props.navigation.push('Signup')
                     }} button_style={[styles.button, { height: BUTTON_HEIGHT }]} text_style={styles.button_text} />
                     <View style={{ flexDirection: 'row', justifyContent: 'center', paddingVertical: 10 }}>
                         <Text>Have an Account?</Text>
-                        <Pressable style={{ paddingLeft: DEFAUTL_SPACE / 2 }}>
+                        <TouchableOpacity style={{ paddingLeft: DEFAUTL_SPACE / 2 }} onPress={() => props.navigation.push('Login')}>
                             <Text style={{ color: SECONDARY }}>Login</Text>
-                        </Pressable>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </View>
