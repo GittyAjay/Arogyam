@@ -24,7 +24,7 @@ const index = (props: { navigation: { push: Function, pop: Function } }) => {
             <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center', alignSelf: 'stretch' }}>
                 <PrimaryButton button_style={styles.btnStyle} text_style={styles.txtStyle} onPress={() => {
                     console.log("sign up form data ===>", formData);
-                    props.navigation.push('Login')
+                    props.navigation.push('Home')
                 }} title="Continue" />
             </View>
         </View>
