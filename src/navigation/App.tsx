@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Home from '../pages/Home';
@@ -11,7 +11,8 @@ import Profile from '../pages/Profile';
 import Otp from '../pages/Otp';
 import FinalAuth from '../pages/FinalAuth';
 import NeedHelp from '../pages/NeedHelp';
-import { StyleSheet, Text, TextInput, View } from 'react-native'
+import SelectLocation from '../pages/SelectLocation';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import Eicon from 'react-native-vector-icons/Entypo';
 import Evicon from 'react-native-vector-icons/EvilIcons';
 import Ficon from 'react-native-vector-icons/Feather';
@@ -23,6 +24,7 @@ import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE, FONT_SMALL, ICON_SIZE, INLI
 function TopNav() {
     const { Navigator, Screen } = createMaterialTopTabNavigator();
     const Header = () => {
+        const navigation = useNavigation();
         return (
             <View style={styles.container}>
                 <View style={{ backgroundColor: PRIMARY }}>
@@ -32,7 +34,11 @@ function TopNav() {
                             <View style={{ flexDirection: 'column', paddingLeft: INLINE_GAP, justifyContent: 'flex-start', alignItems: 'flex-start' }}>
                                 <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                                     <Text style={{ fontWeight: 'bold', color: WHITE }}>Location</Text>
-                                    <Evicon name="chevron-down" size={ICON_SIZE + 10} color={WHITE} />
+                                    <TouchableOpacity>
+                                        <Evicon name="chevron-down" size={ICON_SIZE + 10} color={WHITE} onPress={() => navigation.navigate("SelectLocation")
+
+                                        } />
+                                    </TouchableOpacity>
                                 </View>
                                 <View>
                                     <Text style={{ color: WHITE }}>utter pradesh 2221106</Text>
@@ -40,13 +46,19 @@ function TopNav() {
                             </View>
                         </View>
                         <View style={{ flexDirection: 'row' }}>
-                            <Ficon name="settings" size={ICON_SIZE} color={WHITE} style={{ paddingRight: INLINE_GAP }} />
-                            <Faicon name="shopping-cart" size={ICON_SIZE} color={WHITE} />
+                            <TouchableOpacity>
+                                <Ficon name="settings" size={ICON_SIZE} color={WHITE} style={{ paddingRight: INLINE_GAP }} />
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <Faicon name="shopping-cart" size={ICON_SIZE} color={WHITE} />
+                            </TouchableOpacity>
                         </View>
                     </View>
                     <View style={styles.search__Bar}>
                         <TextInput placeholder="Search medicine and product" style={{ flex: 1 }} />
-                        <Ioicon name="md-search" size={ICON_SIZE} color={GREY} />
+                        <TouchableOpacity>
+                            <Ioicon name="md-search" size={ICON_SIZE} color={GREY} />
+                        </TouchableOpacity>
                     </View>
                 </View>
             </View>
@@ -87,6 +99,7 @@ function App() {
             <Screen name="FinalAuth" component={FinalAuth} />
             <Screen name="NeedHelp" component={NeedHelp} />
             <Screen name="Home" component={TopNav} />
+            <Screen name="SelectLocation" component={SelectLocation} />
         </Navigator>
     );
 }

@@ -5,6 +5,7 @@ import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE, FONT_MID, ICON_SIZE, INLINE
 import Ioicon from 'react-native-vector-icons/Ionicons'
 import CategoriesCard from '../../components/CategoryCard';
 import DocotorCard from '../../components/DoctorCard';
+import SelectLocation from '../SelectLocation';
 type shopByCatagoriesType = Array<{ name: string, url: NodeRequire }>
 const index = () => {
     const shopByCatagories: shopByCatagoriesType = [
@@ -49,7 +50,7 @@ const index = () => {
                         <Text style={{ width: 250 }}>Pariatur in proident aliquip et magna. Elit eu magna magna reprehende </Text>
                         <TouchableOpacity style={{ padding: DEFAUTL_SPACE, backgroundColor: PRIMARY, width: 100, borderRadius: BORDER_RADIUS, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', marginTop: INLINE_GAP }}>
                             <Ioicon name="md-camera" size={ICON_SIZE} color={WHITE} style={{ paddingRight: DEFAUTL_SPACE / 2 }} />
-                            <Text style={{ color: WHITE }}>Icon</Text>
+                            <Text style={{ color: WHITE }}>UPLOAD</Text>
                         </TouchableOpacity>
                     </View>
                     <TouchableOpacity>
