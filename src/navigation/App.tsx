@@ -13,6 +13,7 @@ import FinalAuth from '../pages/FinalAuth';
 import NeedHelp from '../pages/NeedHelp';
 import SelectLocation from '../pages/SelectLocation';
 import Prescription from '../pages/Prescription';
+import Order from '../pages/Order';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import Eicon from 'react-native-vector-icons/Entypo';
 import Evicon from 'react-native-vector-icons/EvilIcons';
@@ -91,7 +92,6 @@ function App() {
         <Navigator screenOptions={{
             headerShown: false
         }}>
-            <Screen name="Prescription" component={Prescription} />
             <Screen name="Splash" component={Splash} />
             <Screen name="Onboard" component={OnboardScreen} />
             <Screen name="Login" component={Login} />
@@ -102,7 +102,8 @@ function App() {
             <Screen name="NeedHelp" component={NeedHelp} />
             <Screen name="Home" component={TopNav} />
             <Screen name="SelectLocation" component={SelectLocation} />
-
+            <Screen name="Prescription" component={Prescription} />
+            <Screen name="Order" component={Order} />
         </Navigator>
     );
 }

@@ -7,7 +7,7 @@ import CategoriesCard from '../../components/CategoryCard';
 import DocotorCard from '../../components/DoctorCard';
 import SelectLocation from '../SelectLocation';
 type shopByCatagoriesType = Array<{ name: string, url: NodeRequire }>
-const index = () => {
+const index = (props: { navigation: { push: Function } }) => {
     const shopByCatagories: shopByCatagoriesType = [
         { name: "Covid product", url: require('../../assets/images/shopbycategory1.png') },
         { name: "Ayurdev", url: require('../../assets/images/shopbycategory2.png') },
@@ -48,7 +48,7 @@ const index = () => {
                     <View style={{ flexDirection: 'column' }}>
                         <Text style={{ paddingBottom: DEFAUTL_SPACE, fontSize: FONT_MID, color: BLACK }}>Quick uplode your priscription</Text>
                         <Text style={{ width: 250 }}>Pariatur in proident aliquip et magna. Elit eu magna magna reprehende </Text>
-                        <TouchableOpacity style={{ padding: DEFAUTL_SPACE, backgroundColor: PRIMARY, width: 100, borderRadius: BORDER_RADIUS, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', marginTop: INLINE_GAP }}>
+                        <TouchableOpacity style={{ padding: DEFAUTL_SPACE, backgroundColor: PRIMARY, width: 100, borderRadius: BORDER_RADIUS, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', marginTop: INLINE_GAP }} onPress={() => props.navigation.push('Prescription')}>
                             <Ioicon name="md-camera" size={ICON_SIZE} color={WHITE} style={{ paddingRight: DEFAUTL_SPACE / 2 }} />
                             <Text style={{ color: WHITE }}>UPLOAD</Text>
                         </TouchableOpacity>

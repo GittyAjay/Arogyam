@@ -8,39 +8,7 @@ import Faicon from 'react-native-vector-icons/FontAwesome';
 import Ioicon from 'react-native-vector-icons/Ionicons';
 import PrimaryButton from '../../components/PrimaryButton';
 import { BLACK, GREY, PRIMARY, WHITE } from '../../assets/colors';
-const index = (props: { navigation: { pop: Function } }) => {
-    type city = Array<{
-        name: String,
-        url: NodeRequire
-    }>
-    const popularCity: city = [
-        { name: "Agra", url: require('../../assets/images/agra.png') },
-        { name: "Agra", url: require('../../assets/images/agra.png') },
-        { name: "Agra", url: require('../../assets/images/agra.png') },
-        { name: "Agra", url: require('../../assets/images/agra.png') },
-        { name: "Agra", url: require('../../assets/images/agra.png') },
-        { name: "Agra", url: require('../../assets/images/agra.png') },
-        { name: "Agra", url: require('../../assets/images/agra.png') },
-        { name: "Agra", url: require('../../assets/images/agra.png') },
-        { name: "Agra", url: require('../../assets/images/agra.png') },
-        { name: "Agra", url: require('../../assets/images/agra.png') },
-    ]
-    type popularCityType = Array<{
-        name: String,
-        url: NodeRequire
-    }>
-    const allCity: city = [
-        { name: "Agra", url: require('../../assets/images/agra.png') },
-        { name: "Agra", url: require('../../assets/images/agra.png') },
-        { name: "Agra", url: require('../../assets/images/agra.png') },
-        { name: "Agra", url: require('../../assets/images/agra.png') },
-        { name: "Agra", url: require('../../assets/images/agra.png') },
-        { name: "Agra", url: require('../../assets/images/agra.png') },
-        { name: "Agra", url: require('../../assets/images/agra.png') },
-        { name: "Agra", url: require('../../assets/images/agra.png') },
-        { name: "Agra", url: require('../../assets/images/agra.png') },
-        { name: "Agra", url: require('../../assets/images/agra.png') },
-    ]
+const index = (props: { navigation: { pop: Function, push: Function } }) => {
     return (
         <View style={styles.container}>
             <View style={{ backgroundColor: PRIMARY }}>
@@ -76,7 +44,7 @@ const index = (props: { navigation: { pop: Function } }) => {
                         <Text>below mention point sould be a part of valid precription</Text>
                     </View>
                 </View>
-                <PrimaryButton button_style={styles.btnStyle} text_style={{}} onPress={() => { }} title="submit" />
+                <PrimaryButton button_style={styles.btnStyle} text_style={{}} onPress={() => { props.navigation.push('Order') }} title="submit" />
             </View>
 
         </View>
