@@ -7,6 +7,7 @@ import Ficon from 'react-native-vector-icons/Feather';
 import Faicon from 'react-native-vector-icons/FontAwesome';
 import Ioicon from 'react-native-vector-icons/Ionicons';
 import { BLACK, GREY, PRIMARY, WHITE } from '../../assets/colors';
+import { styles } from "./style";
 const index = (props: { navigation: { pop: Function } }) => {
     type city = Array<{
         name: String,
@@ -99,27 +100,4 @@ const index = (props: { navigation: { pop: Function } }) => {
 }
 
 export default index
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'stretch',
-        backgroundColor: WHITE
-    },
-    top__header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        backgroundColor: PRIMARY,
-        alignItems: 'center',
-        padding: INLINE_GAP,
-    },
-    search__Bar: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginHorizontal: INLINE_GAP,
-        marginBottom: DEFAUTL_SPACE,
-        backgroundColor: WHITE,
-        borderRadius: BORDER_RADIUS,
-        paddingHorizontal: DEFAUTL_SPACE
-    }
-})
+

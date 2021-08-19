@@ -1,6 +1,7 @@
 import React from 'react'
 import { KeyboardTypeOptions, StyleSheet, Text, TextInput, View } from 'react-native'
 import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE } from '../../assets/sizes'
+import { styles } from './style'
 interface props {
     placeholder: string,
     type: KeyboardTypeOptions,
@@ -13,11 +14,3 @@ const index: React.FC<props> = (props) => {
 
 export default index
 
-const styles = StyleSheet.create({
-    inputBox: {
-        borderRadius: BORDER_RADIUS,
-        borderWidth: BORDER_WIDTH,
-        paddingLeft: DEFAUTL_SPACE
-    }
-
-})

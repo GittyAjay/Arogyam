@@ -22,6 +22,10 @@ import Faicon from 'react-native-vector-icons/FontAwesome';
 import Ioicon from 'react-native-vector-icons/Ionicons';
 import { BLACK, GREY, PRIMARY, WHITE } from '../assets/colors';
 import LabTest from '../pages/LabTest'
+import Medicine from '../pages/Medicine'
+import OtherTab from '../pages/OtherTab';
+import ProductPage from '../pages/Product';
+import Filter from '../pages/Filter';
 import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE, FONT_SMALL, ICON_SIZE, INLINE_GAP } from '../assets/sizes';
 function TopNav() {
     const { Navigator, Screen } = createMaterialTopTabNavigator();
@@ -79,7 +83,7 @@ function TopNav() {
                 tabBarIndicatorStyle: { backgroundColor: WHITE, marginVertical: DEFAUTL_SPACE / 2 }
             }}>
                 <Screen name="lab test" component={LabTest} />
-                <Screen name="Medicines" component={NeedHelp} />
+                <Screen name="Medicines" component={OtherTab} />
                 <Screen name="Piils reminder" component={NeedHelp} />
                 <Screen name="Lab test" component={NeedHelp} />
             </Navigator>
@@ -104,6 +108,9 @@ function App() {
             <Screen name="SelectLocation" component={SelectLocation} />
             <Screen name="Prescription" component={Prescription} />
             <Screen name="Order" component={Order} />
+            <Screen name="Medicine" component={Medicine} />
+            <Screen name="ProductPage" component={ProductPage} />
+            <Screen name="Filter" component={Filter} />
         </Navigator>
     );
 }

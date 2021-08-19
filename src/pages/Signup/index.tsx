@@ -4,6 +4,7 @@ import { SECONDARY, WHITE } from '../../assets/colors';
 import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE, FONT_MID, INLINE_GAP } from '../../assets/sizes';
 import InputBox from '../../components/InputBox';
 import PrimaryButton from '../../components/PrimaryButton';
+import { styles } from './style';
 
 const index = (props: { navigation: { push: Function } }) => {
     interface form {
@@ -52,25 +53,4 @@ const index = (props: { navigation: { push: Function } }) => {
 
 export default index
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        backgroundColor: WHITE,
-        paddingHorizontal: INLINE_GAP,
-        paddingVertical: DEFAUTL_SPACE
-    },
-    form: {
-        alignSelf: 'stretch',
-    },
-    inputBox: {
-        marginBottom: DEFAUTL_SPACE,
-    },
-    btnStyle: {
 
-    },
-    txtStyle: {
-
-    }
-})

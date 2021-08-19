@@ -8,6 +8,7 @@ import Faicon from 'react-native-vector-icons/FontAwesome';
 import Ioicon from 'react-native-vector-icons/Ionicons';
 import PrimaryButton from '../../components/PrimaryButton';
 import { BLACK, GREY, PRIMARY, SHADE, WHITE } from '../../assets/colors';
+import { styles } from './style';
 const index = (props: { navigation: { pop: Function, push: Function } }) => {
     const [activeRadioBtn, setActiveRadioBtn] = useState(0);
     return (
@@ -62,59 +63,4 @@ const index = (props: { navigation: { pop: Function, push: Function } }) => {
 }
 
 export default index
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'stretch',
-        backgroundColor: WHITE
-    },
-    top__header: {
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        backgroundColor: PRIMARY,
-        alignItems: 'center',
-        padding: INLINE_GAP,
-    },
-    options: {
-        height: 100,
-        borderWidth: BORDER_WIDTH,
-        borderRadius: BORDER_RADIUS,
-        borderColor: PRIMARY,
-        backgroundColor: PRIMARY,
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        flexDirection: 'row',
-    },
-    btnStyle: {
 
-    },
-    radio__box: {
-        height: 80,
-        borderRadius: BORDER_RADIUS,
-        borderColor: SHADE,
-        backgroundColor: SHADE,
-        marginTop: DEFAUTL_SPACE,
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        flexDirection: 'row'
-    },
-    radio__btn: {
-        borderRadius: BORDER_RADIUS_CIRCULAR,
-        backgroundColor: WHITE,
-        width: 20,
-        height: 20,
-        marginHorizontal: DEFAUTL_SPACE,
-        borderColor: PRIMARY,
-        borderWidth: BORDER_WIDTH + 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    inner__radio__btn: {
-        borderRadius: BORDER_RADIUS_CIRCULAR,
-        backgroundColor: PRIMARY,
-        width: 12,
-        height: 12,
-        opacity: 0.8,
-        marginHorizontal: DEFAUTL_SPACE
-    }
-})

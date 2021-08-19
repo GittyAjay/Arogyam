@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image, Button, Pressable, TouchableOpacity } from 'react-native'
 import Carousel from 'react-native-snap-carousel';
@@ -7,6 +6,7 @@ import { PRIMARY, SECONDARY } from '../../assets/colors';
 import { Dimension, DEFAUTL_SPACE, INLINE_GAP, BUTTON_HEIGHT, FONT_MID, FONT_LARGE, FONT_GLARGE, ICON_SIZE } from '../../assets/sizes'
 import PrimaryButton from '../../components/PrimaryButton';
 import Eicon from 'react-native-vector-icons/Entypo';
+import { styles } from './style';
 const Slider = (props: { navigation: { push: Function } }) => {
     const { WIDTH, HEIGHT } = Dimension();
     const [activeCarosel, setactiveCarosel] = useState(0);
@@ -105,19 +105,5 @@ const Slider = (props: { navigation: { push: Function } }) => {
 
 export default Slider
 
-const styles = StyleSheet.create({
-    defaultTxt: {
-        fontFamily: 'Museo700-Regular',
-    },
-    title: {
-        fontSize: FONT_LARGE,
-        fontWeight: 'bold'
-    },
-    button: {
-        backgroundColor: PRIMARY
-    },
-    button_text: {
-        color: 'white',
-    }
-})
+
 

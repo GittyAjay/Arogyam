@@ -5,7 +5,7 @@ import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE, FONT_MID, ICON_SIZE, INLINE
 import InputBox from '../../components/InputBox';
 import PrimaryButton from '../../components/PrimaryButton';
 import Ficon from 'react-native-vector-icons/Feather'
-
+import { styles } from './style';
 const index = (props: { navigation: { push: Function, pop: Function } }) => {
     interface form {
         email: String,
@@ -38,24 +38,4 @@ const index = (props: { navigation: { push: Function, pop: Function } }) => {
 
 export default index
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        backgroundColor: WHITE,
-        paddingHorizontal: INLINE_GAP,
-    },
-    form: {
-        alignSelf: 'stretch',
-    },
-    inputBox: {
-        marginBottom: DEFAUTL_SPACE,
-    },
-    btnStyle: {
 
-    },
-    txtStyle: {
-
-    }
-})

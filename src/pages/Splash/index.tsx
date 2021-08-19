@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image } from 'react-native'
 import StatusBar from '../../components/StatusBar';
 import { PRIMARY, WHITE } from '../../assets/colors';
 import { DEFAUTL_SPACE, FONT_MID } from '../../assets/sizes';
+import { styles } from './style';
 const index = (props: { navigation: { push: Function } }) => {
     setTimeout(() => {
         props.navigation.push("Onboard");
@@ -17,19 +18,5 @@ const index = (props: { navigation: { push: Function } }) => {
         </>
     )
 }
-
 export default index
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: PRIMARY
-    },
-    font: {
-        color: WHITE,
-        fontSize: FONT_MID
-    }
-})

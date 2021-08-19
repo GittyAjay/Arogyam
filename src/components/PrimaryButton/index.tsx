@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, NativeSyntheticEvent, NativeTouchEvent, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { PRIMARY } from '../../assets/colors';
 import { DEFAUTL_SPACE, FONT_MID } from '../../assets/sizes';
+import { styles } from './style'
 interface props {
     title: string,
     onPress: () => void,
@@ -17,18 +18,4 @@ const index: React.FC<props> = ({ title, onPress, button_style, text_style }) =>
 }
 
 export default index;
-const styles = StyleSheet.create({
-    button: {
-        borderRadius: 5,
-        backgroundColor: PRIMARY,
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignSelf: 'stretch',
-        paddingVertical: DEFAUTL_SPACE
-    },
-    text_style: {
-        color: 'white',
-        fontWeight: 'bold',
-        fontSize: FONT_MID
-    }
-})
+

@@ -8,6 +8,7 @@ import Faicon from 'react-native-vector-icons/FontAwesome';
 import Ioicon from 'react-native-vector-icons/Ionicons';
 import PrimaryButton from '../../components/PrimaryButton';
 import { BLACK, GREY, PRIMARY, WHITE } from '../../assets/colors';
+import { styles } from './style';
 const index = (props: { navigation: { pop: Function, push: Function } }) => {
     return (
         <View style={styles.container}>
@@ -52,30 +53,4 @@ const index = (props: { navigation: { pop: Function, push: Function } }) => {
 }
 
 export default index
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'stretch',
-        backgroundColor: WHITE
-    },
-    top__header: {
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        backgroundColor: PRIMARY,
-        alignItems: 'center',
-        padding: INLINE_GAP,
-    },
-    options: {
-        height: 100,
-        borderWidth: BORDER_WIDTH,
-        borderRadius: BORDER_RADIUS,
-        borderColor: PRIMARY,
-        backgroundColor: PRIMARY,
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        flexDirection: 'row',
-    },
-    btnStyle: {
 
-    }
-})
