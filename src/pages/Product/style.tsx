@@ -7,6 +7,11 @@ export const styles = StyleSheet.create({
         alignItems: 'stretch',
         backgroundColor: SHADE
     },
+    flatList: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     top: {
         backgroundColor: PRIMARY
     },

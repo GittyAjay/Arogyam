@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Image, Button, Pressable, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react';
+import { Text, View, TouchableOpacity, Image } from 'react-native'
 import Carousel from 'react-native-snap-carousel';
 import Ficon from 'react-native-vector-icons/Fontisto';
 import { PRIMARY, SECONDARY } from '../../assets/colors';
-import { Dimension, DEFAUTL_SPACE, INLINE_GAP, BUTTON_HEIGHT, FONT_MID, FONT_LARGE, FONT_GLARGE, ICON_SIZE } from '../../assets/sizes'
+import { Dimension, DEFAUTL_SPACE, INLINE_GAP, BUTTON_HEIGHT } from '../../assets/sizes'
 import PrimaryButton from '../../components/PrimaryButton';
 import Eicon from 'react-native-vector-icons/Entypo';
 import { styles } from './style';
+import { ImageSourcePropType } from 'react-native';
 const Slider = (props: { navigation: { push: Function } }) => {
     const { WIDTH, HEIGHT } = Dimension();
     const [activeCarosel, setactiveCarosel] = useState(0);
-    type slide = { title: string, descrption: string, url: NodeRequire, index: number };
+    type slide = { title: string, descrption: string, url: ImageSourcePropType, index: number };
     type SlidesArray = Array<slide>;
 
     const Slides: SlidesArray = [

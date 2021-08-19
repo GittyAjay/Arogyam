@@ -1,8 +1,8 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { Text, View, Image } from 'react-native'
 import StatusBar from '../../components/StatusBar';
-import { PRIMARY, WHITE } from '../../assets/colors';
-import { DEFAUTL_SPACE, FONT_MID } from '../../assets/sizes';
+import { PRIMARY } from '../../assets/colors';
+import { DEFAUTL_SPACE } from '../../assets/sizes';
 import { styles } from './style';
 const index = (props: { navigation: { push: Function } }) => {
     setTimeout(() => {

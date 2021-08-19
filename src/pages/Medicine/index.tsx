@@ -12,27 +12,11 @@ import ProductCard from '../../components/Product';
 import ProductDetail from '../../components/ProductDetail';
 import { Dimension, FONT_MID } from '../../assets/sizes';
 import { styles } from './style';
+import { ImageSourcePropType } from 'react-native';
+import { product_TYPES, prodcut_BRAND, shopByCatagories, shopByBrand } from '../../store/reducers/projectReducer';
 const index = (props: { navigation: { push: Function } }) => {
     const { WIDTH } = Dimension();
     const [showSortBy, setShowSortBy] = useState(false);
-    type prod_type = Array<{ name: String, url: NodeRequire }>
-    const { HEIGHT } = Dimension();
-    const TopBrand: prod_type = [
-        { name: "whisper", url: require("../../assets/images/brand1.png") },
-        { name: "Stayfree", url: require("../../assets/images/brand1.png") },
-        { name: "whisper", url: require("../../assets/images/brand1.png") },
-        { name: "whisper", url: require("../../assets/images/brand1.png") },
-        { name: "whisper", url: require("../../assets/images/brand1.png") },
-        { name: "whisper", url: require("../../assets/images/brand1.png") },
-        { name: "whisper", url: require("../../assets/images/brand1.png") },
-        { name: "whisper", url: require("../../assets/images/brand1.png") },
-        { name: "whisper", url: require("../../assets/images/brand1.png") },
-    ]
-    const categories: prod_type = [
-        { name: "Women nutrition", url: require("../../assets/images/categories1.png") },
-        { name: "Mother nutrition", url: require("../../assets/images/categories1.png") },
-        { name: "Feminine hygiene", url: require("../../assets/images/categories1.png") },
-    ]
     return (
         <>
             <View style={[styles.container]} >
@@ -63,7 +47,7 @@ const index = (props: { navigation: { push: Function } }) => {
                             </View>
                             <View style={{ marginBottom: DEFAUTL_SPACE }}>
                                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                                    {TopBrand.map((value, key) => {
+                                    {shopByBrand.map((value, key) => {
                                         return (
                                             <ProductCard key={key} name={value.name} onClick={() => { }} style={{ width: 150, height: 150, marginLeft: DEFAUTL_SPACE / 2 }} text={{}}>
                                                 <Image source={value.url} />
@@ -83,9 +67,9 @@ const index = (props: { navigation: { push: Function } }) => {
                             </View>
                             <View style={{ marginBottom: DEFAUTL_SPACE }}>
                                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                                    {categories.map((value, key) => {
+                                    {shopByCatagories.map((value, key) => {
                                         return (
-                                            <ProductCard key={key} name={value.name} onClick={() => { }} style={{ width: 150, height: 150, marginLeft: DEFAUTL_SPACE / 2 }} text={{}}>
+                                            <ProductCard key={key} name={value.type} onClick={() => { }} style={{ width: 150, height: 150, marginLeft: DEFAUTL_SPACE / 2 }} text={{}}>
                                                 <Image source={value.url} />
                                             </ProductCard>
                                         );
@@ -102,9 +86,9 @@ const index = (props: { navigation: { push: Function } }) => {
                                 </TouchableOpacity>
                             </View>
                             <View style={{ marginBottom: DEFAUTL_SPACE, flexDirection: 'row', flexWrap: 'wrap' }}>
-                                {categories.map((value, key) => {
+                                {shopByCatagories.map((value, key) => {
                                     return (
-                                        <ProductDetail key={key} name={value.name} onClick={() => { }} style={{ margin: 2 }} text={{ color: WHITE }} discount={15} mrp={400} price={1000} rating={123} star={1}>
+                                        <ProductDetail key={key} name={value.type} onClick={() => { }} style={{ margin: 2 }} text={{ color: WHITE }} discount={15} mrp={400} price={1000} rating={123} star={1}>
                                             <Image source={value.url} style={{ alignSelf: 'center' }} />
                                         </ProductDetail>
                                     );

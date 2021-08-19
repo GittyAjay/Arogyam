@@ -7,44 +7,13 @@ import CategoriesCard from '../../components/CategoryCard';
 import DocotorCard from '../../components/DoctorCard';
 import SelectLocation from '../SelectLocation';
 import { styles } from './style';
-type shopByCatagoriesType = Array<{ name: string, url: NodeRequire, key: number }>
-type doctorType = Array<{ name: string, desc: String, star: number, url: NodeRequire, key: number }>
-type shopByBrandType = Array<{ name: string, url: NodeRequire, key: number }>
-type quickConsultantType = Array<{ name: string, url: NodeRequire, color: String, key: number }>
+import { ImageSourcePropType } from 'react-native'
+import { doctor, doctor_TYPES, doctorElements, product, prodElements, prodcut_BRAND, product_TYPES, quickConsultant, quickConsultantElements, shopByCatagories, shopByBrand, quickConsultants, doctors } from '../../store/reducers/projectReducer';
 const index = (props: { navigation: { push: Function } }) => {
-    const shopByCatagories: shopByCatagoriesType = [
-        { name: "Covid product", url: require('../../assets/images/shopbycategory1.png'), key: 1 },
-        { name: "Ayurdev", url: require('../../assets/images/shopbycategory2.png'), key: 2 },
-        { name: "Eye wear", url: require('../../assets/images/shopbycategory3.png'), key: 3 },
-        { name: "Mom & beby", url: require('../../assets/images/shopbycategory4.png'), key: 4 },
-        { name: "Tretment", url: require('../../assets/images/shopbycategory5.png'), key: 4 },
-        { name: "Sexual wellness", url: require('../../assets/images/shopbycategory6.png'), key: 5 },
-        { name: "Device", url: require('../../assets/images/shopbycategory7.png'), key: 6 },
-        { name: "Fitness", url: require('../../assets/images/shopbycategory8.png'), key: 7 },
-        { name: "Beauty", url: require('../../assets/images/shopbycategory9.png'), key: 8 },
-    ]
-    const shopByBrand: shopByBrandType = [
-        { name: "Dabar", url: require('../../assets/images/shopbycategory1.png'), key: 9 },
-        { name: "Durex", url: require('../../assets/images/shopbycategory2.png'), key: 10 },
-        { name: "Himalaya", url: require('../../assets/images/shopbycategory3.png'), key: 11 },
-        { name: "Dettol", url: require('../../assets/images/shopbycategory4.png'), key: 12 },
-        { name: "Unilever", url: require('../../assets/images/shopbycategory5.png'), key: 13 },
-        { name: "Honey", url: require('../../assets/images/shopbycategory6.png'), key: 14 },
-    ]
-    const quickConsultant: quickConsultantType = [
-        { name: "Diabets", url: require('../../assets/images/shopbycategory1.png'), color: 'red', key: 15 },
-        { name: "Pregnancy", url: require('../../assets/images/shopbycategory2.png'), color: 'green', key: 16 },
-        { name: "Weight loss", url: require('../../assets/images/shopbycategory3.png'), color: 'orange', key: 17 },
-    ]
-    const doctors: doctorType = [
-        { name: "Dr. Avinash", desc: "Heart specilist", star: 1, url: require('../../assets/images/shopbycategory1.png'), key: 18 },
-        { name: "Dr. Sweta", desc: "Depression specilist", star: 1, url: require('../../assets/images/shopbycategory2.png'), key: 19 },
-        { name: "Dr Anupam", desc: "Nurology specilist", star: 1, url: require('../../assets/images/shopbycategory3.png'), key: 20 },
-    ]
     const records = {
         shopByCatagories,
         shopByBrand,
-        quickConsultant,
+        quickConsultants,
         doctors
     }
     const renderFunction = (items: any) => {
@@ -78,10 +47,10 @@ const index = (props: { navigation: { push: Function } }) => {
                         </TouchableOpacity>
                     </View>
                     <View style={styles.shopByCatagories}>
-                        {items.item.shopByCatagories.map((values, key) => {
+                        {items.item.shopByCatagories.map((values: product_TYPES, key: number) => {
                             return (
                                 <View key={key} style={styles.shopByCatagories}>
-                                    <CategoriesCard key={key} name={values.name} style={{ margin: DEFAUTL_SPACE / 2 }} onClick={() => console.log("clicked", key)
+                                    <CategoriesCard key={key} name={values.type} style={{ margin: DEFAUTL_SPACE / 2 }} onClick={() => console.log("clicked", key)
                                     } text={styles.simple_cardtextstyle}>
                                         <Image source={values.url} />
                                     </CategoriesCard>
@@ -99,7 +68,7 @@ const index = (props: { navigation: { push: Function } }) => {
                         </TouchableOpacity>
                     </View>
                     <View style={styles.shopByCatagories}>
-                        {items.item.shopByBrand.map((values, key) => {
+                        {items.item.shopByBrand.map(((values: prodcut_BRAND, key: number) => {
                             return (
                                 <View key={key} style={styles.shopByCatagories}>
                                     <CategoriesCard key={key} name={values.name} style={{ margin: DEFAUTL_SPACE / 2 }} onClick={() => console.log("clicked", key)
@@ -108,7 +77,7 @@ const index = (props: { navigation: { push: Function } }) => {
                                     </CategoriesCard>
                                 </View>
                             );
-                        })}
+                        }))}
                     </View>
                 </View>
                 {/* Quick consultant */}
@@ -120,7 +89,7 @@ const index = (props: { navigation: { push: Function } }) => {
                         </TouchableOpacity>
                     </View>
                     <View style={styles.shopByCatagories}>
-                        {items.item.quickConsultant.map((values, key) => {
+                        {items.item.quickConsultants.map((values: quickConsultantElements, key: number) => {
                             return (
                                 <View key={key} style={styles.shopByCatagories}>
                                     <CategoriesCard key={key} name={values.name} style={{ margin: DEFAUTL_SPACE / 2, backgroundColor: values.color }} text={styles.colored__CardtextStyle} onClick={() => console.log("clicked", key)
@@ -142,7 +111,7 @@ const index = (props: { navigation: { push: Function } }) => {
                     </View>
                 </View>
                 <View style={styles.doctors}>
-                    {items.item.doctors.map((value, key) => {
+                    {items.item.doctors.map((value: doctorElements, key: number) => {
                         return (
                             <DocotorCard key={key} name={value.name} desc={`${value.desc}`} star={value.star} style={{ marginBottom: DEFAUTL_SPACE }}>
                                 <Image source={require('../../assets/images/doctor.png')} />
@@ -155,7 +124,7 @@ const index = (props: { navigation: { push: Function } }) => {
     }
 
     return (
-        <FlatList data={[records]} renderItem={renderFunction} keyExtractor={(item) => `${item.shopByCatagories[0].key}`} />
+        <FlatList data={[records]} renderItem={renderFunction} keyExtractor={(item) => { return ` ${Math.random().toFixed}` }} />
     )
 }
 
