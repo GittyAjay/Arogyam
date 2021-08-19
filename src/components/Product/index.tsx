@@ -1,7 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { GREY, WHITE } from '../../assets/colors'
-import { BORDER_RADIUS, BORDER_RADIUS_CIRCULAR, BORDER_WIDTH } from '../../assets/sizes'
+import { Text, TouchableOpacity } from 'react-native'
 import { styles } from './style'
 interface props {
     name: String,

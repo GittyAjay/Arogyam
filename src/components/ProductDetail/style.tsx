@@ -8,8 +8,6 @@ export const styles = StyleSheet.create({
         borderRadius: BORDER_RADIUS,
         justifyContent: 'space-around',
         alignItems: 'stretch',
-        borderColor: GREY,
-        borderWidth: BORDER_WIDTH,
         backgroundColor: WHITE,
         overflow: 'hidden'
     }
