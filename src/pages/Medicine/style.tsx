@@ -1,40 +1,39 @@
-import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE, FONT_SMALL, ICON_SIZE, INLINE_GAP } from '../../assets/sizes';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View, Image, ScrollView } from 'react-native'
-import { BLACK, GREY, PRIMARY, SECONDARY, SHADE, WHITE } from '../../assets/colors';
-import { Dimension, FONT_MID } from '../../assets/sizes';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native'
+import { BLACK, GREY, PRIMARY, SECONDARY, SHADE, WHITE } from '../../assets/colors'
+import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE, FONT_MID, ICON_SIZE, INLINE_GAP } from '../../assets/sizes'
+
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'stretch',
+        padding: INLINE_GAP,
         backgroundColor: SHADE
     },
-    top: {
-        backgroundColor: PRIMARY
-    },
-    search__Bar: {
+    priscription: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginHorizontal: INLINE_GAP,
-        marginVertical: DEFAUTL_SPACE,
-        backgroundColor: WHITE,
+        justifyContent: 'space-around',
+        padding: INLINE_GAP,
+        borderWidth: BORDER_WIDTH,
         borderRadius: BORDER_RADIUS,
-        paddingHorizontal: DEFAUTL_SPACE
+        borderColor: GREY,
+        overflow: 'hidden',
+        marginBottom: INLINE_GAP
     },
-    promo__card: {
-        height: 200,
-        backgroundColor: WHITE,
-        borderRadius: BORDER_RADIUS,
-        justifyContent: 'center',
-        alignItems: 'center'
+    healthCheckup: {
+        marginBottom: INLINE_GAP
     },
-    topBrands: {
-        paddingVertical: DEFAUTL_SPACE,
-        flexDirection: 'column'
+    shopByCatagories: {
+        flexDirection: 'row',
+        flexWrap: 'wrap'
     },
-    orderBy: {
-        backgroundColor: WHITE,
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start',
+    colored__CardtextStyle: {
+        color: WHITE
+    },
+    simple_cardtextstyle: {
+
+    },
+    doctors: {
+        flexDirection: 'column',
+        flexWrap: 'wrap',
     }
 })

@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'stretch',
         padding: INLINE_GAP,
-        backgroundColor: WHITE
+        backgroundColor: SHADE
     },
     priscription: {
         flexDirection: 'row',

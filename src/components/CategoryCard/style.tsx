@@ -10,7 +10,5 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: WHITE,
-        borderColor: GREY,
-        borderWidth: BORDER_WIDTH,
     }
 })

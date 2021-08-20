@@ -1,150 +1,120 @@
-import React, { useState } from 'react'
-import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE, FONT_SMALL, ICON_SIZE, INLINE_GAP } from '../../assets/sizes';
-import { Text, TextInput, TouchableOpacity, View, Image, ScrollView } from 'react-native'
-import { BLACK, GREY, PRIMARY, SECONDARY, SHADE, WHITE } from '../../assets/colors';
-import Eicon from 'react-native-vector-icons/Entypo';
-import Evicon from 'react-native-vector-icons/EvilIcons';
-import Ficon from 'react-native-vector-icons/Feather';
-import Faicon from 'react-native-vector-icons/FontAwesome';
-import Ioicon from 'react-native-vector-icons/Ionicons';
-import Micon from 'react-native-vector-icons/MaterialIcons';
-import ProductCard from '../../components/Product';
-import ProductDetail from '../../components/ProductDetail';
-import { Dimension, FONT_MID } from '../../assets/sizes';
+import React from 'react'
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View, Image, FlatList } from 'react-native'
+import { BLACK, GREY, PRIMARY, SECONDARY, SHADE, WHITE } from '../../assets/colors'
+import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE, FONT_MID, ICON_SIZE, INLINE_GAP } from '../../assets/sizes'
+import Ioicon from 'react-native-vector-icons/Ionicons'
+import CategoriesCard from '../../components/CategoryCard';
+import DocotorCard from '../../components/DoctorCard';
+import SelectLocation from '../SelectLocation';
 import { styles } from './style';
-import { ImageSourcePropType } from 'react-native';
-import { product_TYPES, prodcut_BRAND, shopByCatagories, shopByBrand } from '../../store/reducers/projectReducer';
+import { ImageSourcePropType } from 'react-native'
+import ProductDetail from '../../components/ProductDetail';
+import { doctor, doctor_TYPES, doctorElements, product, prodElements, prodcut_BRAND, product_TYPES, quickConsultant, quickConsultantElements, shopByCatagories, shopByBrand, quickConsultants, doctors } from '../../store/reducers/projectReducer';
 const index = (props: { navigation: { push: Function } }) => {
-    const { WIDTH } = Dimension();
-    const [showSortBy, setShowSortBy] = useState(false);
-    return (
-        <>
-            <View style={[styles.container]} >
-                <View style={styles.top}>
-                    <View style={styles.search__Bar}>
-                        <TouchableOpacity onPress={() => props.navigation.push("Home")}>
-                            <Ioicon name="arrow-back" size={ICON_SIZE + 5} color={GREY} />
+    const records = {
+        shopByCatagories,
+        shopByBrand,
+        quickConsultants,
+        doctors
+    }
+    const renderFunction = (items: any) => {
+        return (
+            <View style={styles.container}>
+                {/*Priscription */}
+                <View style={styles.priscription}>
+                    <View style={{ flexDirection: 'column' }}>
+                        <Text style={{ paddingBottom: DEFAUTL_SPACE, fontSize: FONT_MID, color: BLACK }}>Quick uplode your priscription</Text>
+                        <Text style={{ width: 250 }}>Pariatur in proident aliquip et magna. Elit eu magna magna reprehende </Text>
+                        <TouchableOpacity style={{ padding: DEFAUTL_SPACE, backgroundColor: PRIMARY, width: 100, borderRadius: BORDER_RADIUS, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', marginTop: INLINE_GAP }} onPress={() => props.navigation.push('Prescription')}>
+                            <Ioicon name="md-camera" size={ICON_SIZE} color={WHITE} style={{ paddingRight: DEFAUTL_SPACE / 2 }} />
+                            <Text style={{ color: WHITE }}>UPLOAD</Text>
                         </TouchableOpacity>
-                        <TextInput placeholder="Search.." style={{ flex: 1 }} />
+                    </View>
+                    <TouchableOpacity>
+                        <Ioicon name="ios-document-attach" size={ICON_SIZE + 20} />
+                    </TouchableOpacity>
+                </View>
+                {/* Health Checkup */}
+                <View style={styles.healthCheckup}>
+                    <Text style={{ fontSize: FONT_MID, paddingBottom: DEFAUTL_SPACE }}>Health checkup</Text>
+                    <View style={{ height: 150, borderRadius: BORDER_RADIUS, backgroundColor: WHITE }}>
+                    </View>
+                </View>
+                {/* SHOP BY CATEGORIES */}
+                <View>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'stretch', paddingBottom: DEFAUTL_SPACE }}>
+                        <Text>SHOP BY CATEGORIES</Text>
                         <TouchableOpacity>
-                            <Micon name="keyboard-voice" size={ICON_SIZE} color={GREY} />
+                            <Text style={{ color: SECONDARY }}>SEE ALL</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.shopByCatagories}>
+                        {items.item.shopByCatagories.map((values: product_TYPES, key: number) => {
+                            if (key < 6)
+                                return (
+                                    <View key={key} style={styles.shopByCatagories}>
+                                        <CategoriesCard key={key} name={values.type} style={{ margin: DEFAUTL_SPACE / 2 }} onClick={() => console.log("clicked", key)
+                                        } text={styles.simple_cardtextstyle}>
+                                            <Image source={values.url} />
+                                        </CategoriesCard>
+                                    </View>
+                                );
+                        })}
+                    </View>
+                </View>
+                {/* SHOP BY BRAND */}
+                <View>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'stretch', paddingBottom: DEFAUTL_SPACE }}>
+                        <Text>SHOP BY BRAND</Text>
+                        <TouchableOpacity>
+                            <Text style={{ color: SECONDARY }}>SEE ALL</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.shopByCatagories}>
+                        {items.item.shopByBrand.map(((values: prodcut_BRAND, key: number) => {
+                            if (key < 6)
+                                return (
+                                    <View key={key} style={styles.shopByCatagories}>
+                                        <CategoriesCard key={key} name={values.name} style={{ margin: DEFAUTL_SPACE / 2 }} onClick={() => console.log("clicked", key)
+                                        } text={styles.simple_cardtextstyle}>
+                                            <Image source={values.url} />
+                                        </CategoriesCard>
+                                    </View>
+                                );
+                        }))}
+                    </View>
+                </View>
+                {/* Banner */}
+                <View style={{ height: 150, borderRadius: BORDER_RADIUS, backgroundColor: WHITE, marginVertical: INLINE_GAP, justifyContent: 'center', alignItems: 'center' }}>
+                    <Text>Banner</Text>
+                </View>
+                {/* Health product */}
+                <View>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'stretch', paddingBottom: DEFAUTL_SPACE }}>
+                        <Text>Health product</Text>
+                        <TouchableOpacity>
+                            <Text style={{ color: SECONDARY }}>SEE ALL</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
-                <ScrollView>
-                    <View style={{ padding: INLINE_GAP, opacity: showSortBy ? 0.5 : 1 }} onTouchStart={() => {
-                        setShowSortBy(false)
-                    }} >
-                        <View style={styles.promo__card}>
-                            <Text>Poster</Text>
-                        </View>
-                        <View style={styles.topBrands}>
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: DEFAUTL_SPACE }}>
-                                <Text>Top brands</Text>
-                                <TouchableOpacity>
-                                    <Text style={{ color: SECONDARY, fontWeight: 'bold' }}>SEE ALL</Text>
-                                </TouchableOpacity>
-                            </View>
-                            <View style={{ marginBottom: DEFAUTL_SPACE }}>
-                                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                                    {shopByBrand.map((value, key) => {
-                                        return (
-                                            <ProductCard key={key} name={value.name} onClick={() => { }} style={{ width: 150, height: 150, marginLeft: DEFAUTL_SPACE / 2 }} text={{}}>
-                                                <Image source={value.url} />
-                                            </ProductCard>
-                                        );
-                                    })}
-                                </ScrollView>
-                            </View>
-                            <View style={[styles.promo__card, { marginBottom: DEFAUTL_SPACE }]}>
-                                <Text>Poster</Text>
-                            </View>
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: DEFAUTL_SPACE }}>
-                                <Text>Shop by categories</Text>
-                                <TouchableOpacity>
-                                    <Text style={{ color: SECONDARY, fontWeight: 'bold' }}>SEE ALL</Text>
-                                </TouchableOpacity>
-                            </View>
-                            <View style={{ marginBottom: DEFAUTL_SPACE }}>
-                                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                                    {shopByCatagories.map((value, key) => {
-                                        return (
-                                            <ProductCard key={key} name={value.type} onClick={() => { }} style={{ width: 150, height: 150, marginLeft: DEFAUTL_SPACE / 2 }} text={{}}>
-                                                <Image source={value.url} />
-                                            </ProductCard>
-                                        );
-                                    })}
-                                </ScrollView>
-                            </View>
-                            <View style={[styles.promo__card, { marginBottom: DEFAUTL_SPACE }]}>
-                                <Text>Poster</Text>
-                            </View>
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: DEFAUTL_SPACE }}>
-                                <Text>All Product</Text>
-                                <TouchableOpacity onPress={() => props.navigation.push("ProductPage")}>
-                                    <Text style={{ color: SECONDARY, fontWeight: 'bold' }}>SEE ALL</Text>
-                                </TouchableOpacity>
-                            </View>
-                            <View style={{ marginBottom: DEFAUTL_SPACE, flexDirection: 'row', flexWrap: 'wrap' }}>
-                                {shopByCatagories.map((value, key) => {
-                                    return (
-                                        <ProductDetail key={key} name={value.type} onClick={() => { }} style={{ margin: 2 }} text={{ color: WHITE }} discount={15} mrp={400} price={1000} rating={123} star={1}>
-                                            <Image source={value.url} style={{ alignSelf: 'center' }} />
-                                        </ProductDetail>
-                                    );
-                                })}
-                            </View>
-                        </View>
-                    </View>
-                </ScrollView>
+                <View style={{ marginBottom: DEFAUTL_SPACE, flexDirection: 'row', flexWrap: 'wrap' }}>
+                    {shopByCatagories.map((value: product_TYPES, key: number) => {
+                        if (key < 4)
+                            return (
+                                <ProductDetail key={key} name={value.type} onClick={() => { }} style={{ margin: 2 }} text={{ color: WHITE }} discount={15} mrp={400} price={1000} rating={123} star={1}>
+                                    <Image source={value.url} style={{ alignSelf: 'center' }} />
+                                </ProductDetail>
+                            );
+                    })}
+                </View>
             </View>
-            {!showSortBy && <View style={{ height: 50, width: WIDTH, backgroundColor: WHITE, justifyContent: 'space-around', alignItems: 'center', flexDirection: 'row' }}>
-                <View style={{ flexDirection: 'row' }}>
-                    <TouchableOpacity onPress={() => { setShowSortBy(true) }}>
-                        <Faicon name="sort" size={ICON_SIZE} color={GREY} style={{ paddingRight: DEFAUTL_SPACE }} />
-                    </TouchableOpacity>
-                    <Text>Sort By</Text>
-                </View>
-                <View style={{ width: 2, height: 50, backgroundColor: SHADE }}></View>
-                <View style={{ flexDirection: 'row' }}>
-                    <Text style={{ paddingRight: DEFAUTL_SPACE }}>Filter</Text>
-                    <TouchableOpacity onPress={() => { props.navigation.push("Filter") }}>
-                        <Ficon name="sliders" size={ICON_SIZE} color={GREY} />
-                    </TouchableOpacity>
-                </View>
-            </View>}
-            {showSortBy && <View style={[styles.orderBy, { height: 220, paddingVertical: DEFAUTL_SPACE }]}>
-                <Text style={{ fontSize: FONT_MID, padding: DEFAUTL_SPACE / 2 }}>Top Brand</Text>
-                <View style={{
-                    paddingHorizontal: INLINE_GAP,
-                    paddingVertical: DEFAUTL_SPACE
-                }}>
-                    <TouchableOpacity style={{ flexDirection: 'row', marginBottom: DEFAUTL_SPACE }} onPress={() => { setShowSortBy(false) }}>
-                        <Ficon name="link" size={ICON_SIZE - 5} style={{ paddingRight: DEFAUTL_SPACE / 2 }} />
-                        <Text>Related</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ flexDirection: 'row', marginBottom: DEFAUTL_SPACE }} onPress={() => { setShowSortBy(false) }}>
-                        <Ioicon name="star-half" size={ICON_SIZE - 5} style={{ paddingRight: DEFAUTL_SPACE / 2 }} />
-                        <Text>Avarage customer rate</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ flexDirection: 'row', marginBottom: DEFAUTL_SPACE }} onPress={() => { setShowSortBy(false) }} >
-                        <Micon name="attach-money" size={ICON_SIZE} style={{ paddingRight: DEFAUTL_SPACE / 2 }} />
-                        <Text>Price low to high</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ flexDirection: 'row', marginBottom: DEFAUTL_SPACE }} onPress={() => { setShowSortBy(false) }} >
-                        <Micon name="attach-money" size={ICON_SIZE} style={{ paddingRight: DEFAUTL_SPACE / 2 }} />
-                        <Text>Price high to low</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ flexDirection: 'row', marginBottom: DEFAUTL_SPACE }} onPress={() => { setShowSortBy(false) }} >
-                        <Ficon name="scissors" size={ICON_SIZE} style={{ paddingRight: DEFAUTL_SPACE / 2 }} />
-                        <Text>Discount</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>}
-        </>
+        );
+    }
 
+    return (
+        <FlatList data={[records]} renderItem={renderFunction} keyExtractor={(item) => { return ` ${Math.random().toFixed}` }} />
     )
 }
 
-export default index;
+export default index
 

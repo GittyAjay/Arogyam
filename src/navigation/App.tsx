@@ -82,8 +82,8 @@ function TopNav() {
                 tabBarScrollEnabled: true,
                 tabBarIndicatorStyle: { backgroundColor: WHITE, marginVertical: DEFAUTL_SPACE / 2 }
             }}>
-                <Screen name="lab test" component={LabTest} />
-                <Screen name="Medicines" component={OtherTab} />
+                <Screen name="Medicines" component={Medicine} />
+                <Screen name="Lab Test" component={LabTest} />
                 <Screen name="Piils reminder" component={NeedHelp} />
                 <Screen name="Lab test" component={NeedHelp} />
             </Navigator>
@@ -108,7 +108,7 @@ function App() {
             <Screen name="SelectLocation" component={SelectLocation} />
             <Screen name="Prescription" component={Prescription} />
             <Screen name="Order" component={Order} />
-            <Screen name="Medicine" component={Medicine} />
+            <Screen name="LabTest" component={LabTest} />
             <Screen name="ProductPage" component={ProductPage} />
             <Screen name="Filter" component={Filter} />
         </Navigator>
