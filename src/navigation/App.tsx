@@ -25,6 +25,7 @@ import LabTest from '../pages/LabTest'
 import Medicine from '../pages/Medicine'
 import ProductPage from '../pages/Product';
 import Filter from '../pages/Filter';
+import Cart from '../pages/Cart';
 import { BORDER_RADIUS, BORDER_RADIUS_CIRCULAR, BORDER_WIDTH, DEFAUTL_SPACE, FONT_SMALL, ICON_SIZE, INLINE_GAP } from '../assets/sizes';
 import { useSelector } from 'react-redux'
 function TopNav() {
@@ -57,7 +58,7 @@ function TopNav() {
                                 <Ficon name="settings" size={ICON_SIZE} color={WHITE} style={{ paddingRight: INLINE_GAP }} />
                             </TouchableOpacity>
                             <TouchableOpacity style={{ position: 'relative' }}>
-                                <Faicon name="shopping-cart" size={ICON_SIZE} color={WHITE} />
+                                <Faicon name="shopping-cart" size={ICON_SIZE} color={WHITE} onPress={() => navigation.navigate("Cart")} />
                                 {cartItems.length > 0 && <View style={styles.cartIcon}>
                                     <Text style={{ fontSize: FONT_SMALL, color: WHITE }}>{cartItems.length}</Text>
                                 </View>}
@@ -115,6 +116,7 @@ function App() {
             <Screen name="LabTest" component={LabTest} />
             <Screen name="ProductPage" component={ProductPage} />
             <Screen name="Filter" component={Filter} />
+            <Screen name="Cart" component={Cart} />
         </Navigator>
     );
 }

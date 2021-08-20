@@ -1,8 +1,8 @@
 import { ImageSourcePropType } from 'react-native'
-import { ADD_TO_CART } from '../actions/action';
+import { ADD_TO_CART, INCREMENT_CART_ITEMS, DECREMENT_CART_ITEMS, REMOVE_CART_ITEMS } from '../actions/action';
 export type product_TYPES = { type: String, url: ImageSourcePropType, id: number }
 export type prodcut_BRAND = { name: String, url: ImageSourcePropType, id: number }
-export type prodElements = { name: String, type: product_TYPES, brand: prodcut_BRAND, url: ImageSourcePropType, id: number }
+export type prodElements = { name: String, type: product_TYPES, brand: prodcut_BRAND, url: ImageSourcePropType, id: number, price: number, count: number }
 export type product = Array<prodElements>
 export type doctor_TYPES = { type: String, url: ImageSourcePropType };
 export type doctorElements = { name: string, type: doctor_TYPES, desc: String, star: number, url: ImageSourcePropType, id: number };
@@ -55,10 +55,10 @@ type action_type = {
 }
 const initialState: initialStateType = {
     products: [
-        { name: "Women nutrition", type: { type: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, brand: { name: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, url: require("../../assets/images/categories1.png"), id: 0 },
-        { name: "Mother nutrition", type: { type: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, brand: { name: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, url: require("../../assets/images/categories1.png"), id: 1 },
-        { name: "Feminine hygiene", type: { type: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, brand: { name: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, url: require("../../assets/images/categories1.png"), id: 2 },
-        { name: "Feminine hygiene", type: { type: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, brand: { name: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, url: require("../../assets/images/categories1.png"), id: 3 },
+        { name: "Women nutrition", type: { type: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, brand: { name: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, price: 100, url: require("../../assets/images/categories1.png"), id: 0, count: 1 },
+        { name: "Mother nutrition", type: { type: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, brand: { name: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, price: 100, url: require("../../assets/images/categories1.png"), id: 1, count: 1 },
+        { name: "Feminine hygiene", type: { type: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, brand: { name: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, price: 100, url: require("../../assets/images/categories1.png"), id: 2, count: 1 },
+        { name: "Feminine hygiene", type: { type: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, brand: { name: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, price: 100, url: require("../../assets/images/categories1.png"), id: 3, count: 1 },
     ],
     cart: [],
     doctors: [
@@ -69,7 +69,7 @@ const initialState: initialStateType = {
     quickConsultant: []
 }
 
-export default function doctorsReducer(state = initialState, action: action_type) {
+export default function doctorsReducer(state = initialState, action: any) {
 
     const __FOUND = state.cart.findIndex(function (values, index) {
         if (values.id == action.payload.id)
@@ -83,6 +83,22 @@ export default function doctorsReducer(state = initialState, action: action_type
                     ...state,
                     cart: [...state.cart, action.payload]
                 }
+            break;
+        case INCREMENT_CART_ITEMS:
+            return {
+                ...state,
+                cart: state.cart.map(item => item.id == action.payload ? { ...item, count: item.count + 1 } : item)
+            }
+        case DECREMENT_CART_ITEMS:
+            return {
+                ...state,
+                cart: state.cart.map(item => item.id == action.payload ? { ...item, count: item.count > 1 ? item.count - 1 : item.count } : item)
+            }
+        case REMOVE_CART_ITEMS:
+            return {
+                ...state,
+                cart: state.cart.filter(item => item.id != action.payload)
+            }
         default:
             return state
     }
