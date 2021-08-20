@@ -1,4 +1,5 @@
 import { ImageSourcePropType } from 'react-native'
+import { ADD_TO_CART } from '../actions/action';
 export type product_TYPES = { type: String, url: ImageSourcePropType, id: number }
 export type prodcut_BRAND = { name: String, url: ImageSourcePropType, id: number }
 export type prodElements = { name: String, type: product_TYPES, brand: prodcut_BRAND, url: ImageSourcePropType, id: number }
@@ -42,17 +43,24 @@ export const doctors: doctor = [
     { name: "Dr Anupam", type: { type: "Covid product", url: require('../../assets/images/shopbycategory1.png') }, desc: "Nurology specilist", star: 1, url: require('../../assets/images/shopbycategory3.png'), id: 20 },
 ]
 
-type initialStateType = {
+export type initialStateType = {
     products: product,
+    cart: product,
     doctors: doctor,
     quickConsultant: quickConsultant,
+}
+type action_type = {
+    type: String,
+    payload: object
 }
 const initialState: initialStateType = {
     products: [
         { name: "Women nutrition", type: { type: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, brand: { name: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, url: require("../../assets/images/categories1.png"), id: 0 },
         { name: "Mother nutrition", type: { type: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, brand: { name: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, url: require("../../assets/images/categories1.png"), id: 1 },
         { name: "Feminine hygiene", type: { type: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, brand: { name: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, url: require("../../assets/images/categories1.png"), id: 2 },
+        { name: "Feminine hygiene", type: { type: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, brand: { name: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, url: require("../../assets/images/categories1.png"), id: 3 },
     ],
+    cart: [],
     doctors: [
         { name: "Dr. Avinash", type: { type: "dentist", url: require('../../assets/images/shopbycategory2.png') }, desc: "Heart specilist", star: 1, url: require('../../assets/images/shopbycategory1.png'), id: 18 },
         { name: "Dr. Sweta", type: { type: "dentist", url: require('../../assets/images/shopbycategory2.png') }, desc: "Depression specilist", star: 1, url: require('../../assets/images/shopbycategory2.png'), id: 19 },
@@ -61,10 +69,20 @@ const initialState: initialStateType = {
     quickConsultant: []
 }
 
-export default function doctorsReducer(state = initialState, action: any) {
+export default function doctorsReducer(state = initialState, action: action_type) {
 
+    const __FOUND = state.cart.findIndex(function (values, index) {
+        if (values.id == action.payload.id)
+            return true;
+        return false;
+    })
     switch (action.type) {
-
+        case ADD_TO_CART:
+            if (__FOUND == -1)
+                return {
+                    ...state,
+                    cart: [...state.cart, action.payload]
+                }
         default:
             return state
     }

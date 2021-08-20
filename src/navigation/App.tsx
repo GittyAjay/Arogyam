@@ -23,14 +23,15 @@ import Ioicon from 'react-native-vector-icons/Ionicons';
 import { BLACK, GREY, PRIMARY, WHITE } from '../assets/colors';
 import LabTest from '../pages/LabTest'
 import Medicine from '../pages/Medicine'
-import OtherTab from '../pages/OtherTab';
 import ProductPage from '../pages/Product';
 import Filter from '../pages/Filter';
-import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE, FONT_SMALL, ICON_SIZE, INLINE_GAP } from '../assets/sizes';
+import { BORDER_RADIUS, BORDER_RADIUS_CIRCULAR, BORDER_WIDTH, DEFAUTL_SPACE, FONT_SMALL, ICON_SIZE, INLINE_GAP } from '../assets/sizes';
+import { useSelector } from 'react-redux'
 function TopNav() {
     const { Navigator, Screen } = createMaterialTopTabNavigator();
     const Header = () => {
         const navigation = useNavigation();
+        const cartItems: Array<{}> = useSelector(selector => selector.project.cart)
         return (
             <View style={styles.container}>
                 <View style={{ backgroundColor: PRIMARY }}>
@@ -55,8 +56,11 @@ function TopNav() {
                             <TouchableOpacity>
                                 <Ficon name="settings" size={ICON_SIZE} color={WHITE} style={{ paddingRight: INLINE_GAP }} />
                             </TouchableOpacity>
-                            <TouchableOpacity>
+                            <TouchableOpacity style={{ position: 'relative' }}>
                                 <Faicon name="shopping-cart" size={ICON_SIZE} color={WHITE} />
+                                {cartItems.length > 0 && <View style={styles.cartIcon}>
+                                    <Text style={{ fontSize: FONT_SMALL, color: WHITE }}>{cartItems.length}</Text>
+                                </View>}
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -141,5 +145,6 @@ const styles = StyleSheet.create({
         backgroundColor: WHITE,
         borderRadius: BORDER_RADIUS,
         paddingHorizontal: DEFAUTL_SPACE
-    }
+    },
+    cartIcon: { width: 20, height: 20, borderRadius: BORDER_RADIUS_CIRCULAR, backgroundColor: 'red', position: 'absolute', bottom: -15, justifyContent: 'center', alignItems: 'center' }
 })

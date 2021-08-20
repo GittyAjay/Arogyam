@@ -1,16 +1,15 @@
 import React from 'react'
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View, Image, FlatList } from 'react-native'
+import { Text, TouchableOpacity, View, Image, FlatList } from 'react-native'
 import { BLACK, GREY, PRIMARY, SECONDARY, SHADE, WHITE } from '../../assets/colors'
 import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE, FONT_MID, ICON_SIZE, INLINE_GAP } from '../../assets/sizes'
 import Ioicon from 'react-native-vector-icons/Ionicons'
 import CategoriesCard from '../../components/CategoryCard';
-import DocotorCard from '../../components/DoctorCard';
-import SelectLocation from '../SelectLocation';
 import { styles } from './style';
-import { ImageSourcePropType } from 'react-native'
 import ProductDetail from '../../components/ProductDetail';
-import { doctor, doctor_TYPES, doctorElements, product, prodElements, prodcut_BRAND, product_TYPES, quickConsultant, quickConsultantElements, shopByCatagories, shopByBrand, quickConsultants, doctors } from '../../store/reducers/projectReducer';
-const index = (props: { navigation: { push: Function } }) => {
+import { connect } from 'react-redux'
+import { addToCart } from '../../store/actions/action';
+import { prodcut_BRAND, product_TYPES, shopByCatagories, shopByBrand, quickConsultants, doctors, product, prodElements } from '../../store/reducers/projectReducer';
+const index = (props: { navigation: { push: Function }, products: product, cart: product, addToCart: Function }) => {
     const records = {
         shopByCatagories,
         shopByBrand,
@@ -98,10 +97,10 @@ const index = (props: { navigation: { push: Function } }) => {
                     </View>
                 </View>
                 <View style={{ marginBottom: DEFAUTL_SPACE, flexDirection: 'row', flexWrap: 'wrap' }}>
-                    {shopByCatagories.map((value: product_TYPES, key: number) => {
+                    {props.products.map((value: prodElements, key: number) => {
                         if (key < 4)
                             return (
-                                <ProductDetail key={key} name={value.type} onClick={() => { }} style={{ margin: 2 }} text={{ color: WHITE }} discount={15} mrp={400} price={1000} rating={123} star={1}>
+                                <ProductDetail key={key} name={value.name} onClick={() => { props.addToCart(value) }} style={{ margin: 2 }} text={{ color: WHITE }} discount={15} mrp={400} price={1000} rating={123} star={1}>
                                     <Image source={value.url} style={{ alignSelf: 'center' }} />
                                 </ProductDetail>
                             );
@@ -115,6 +114,11 @@ const index = (props: { navigation: { push: Function } }) => {
         <FlatList data={[records]} renderItem={renderFunction} keyExtractor={(item) => { return ` ${Math.random().toFixed}` }} />
     )
 }
-
-export default index
+function mapStateToProps(state: any) {
+    return { products: state.project.products, cart: state.project.cart };
+}
+const mapDispatchToProps = {
+    addToCart
+}
+export default connect(mapStateToProps, mapDispatchToProps)(index);
 
