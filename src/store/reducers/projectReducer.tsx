@@ -83,6 +83,10 @@ export default function doctorsReducer(state = initialState, action: any) {
                     ...state,
                     cart: [...state.cart, action.payload]
                 }
+            else
+                return {
+                    ...state
+                }
             break;
         case INCREMENT_CART_ITEMS:
             return {
