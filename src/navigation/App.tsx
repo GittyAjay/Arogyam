@@ -2,7 +2,6 @@ import * as React from 'react';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import Home from '../pages/Home';
 import Splash from '../pages/Splash';
 import OnboardScreen from '../pages/Onboard';
 import Login from '../pages/Login';
@@ -58,8 +57,8 @@ function TopNav() {
                             <TouchableOpacity>
                                 <Ficon name="settings" size={ICON_SIZE} color={WHITE} style={{ paddingRight: INLINE_GAP }} />
                             </TouchableOpacity>
-                            <TouchableOpacity style={{ position: 'relative' }}>
-                                <Faicon name="shopping-cart" size={ICON_SIZE} color={WHITE} onPress={() => navigation.navigate("Cart")} />
+                            <TouchableOpacity style={{ position: 'relative' }} onPress={() => navigation.navigate("Cart")} >
+                                <Faicon name="shopping-cart" size={ICON_SIZE} color={WHITE} />
                                 {cartItems.length > 0 && <View style={styles.cartIcon}>
                                     <Text style={{ fontSize: FONT_SMALL, color: WHITE }}>{cartItems.length}</Text>
                                 </View>}
