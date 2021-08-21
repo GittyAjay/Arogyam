@@ -66,7 +66,7 @@ function TopNav() {
                         </View>
                     </View>
                     <View style={styles.search__Bar}>
-                        <TextInput placeholder="Search medicine and product" style={{ flex: 1 }} />
+                        <TextInput placeholder="Search medicine and product" placeholderTextColor={GREY} style={{ flex: 1 }} />
                         <TouchableOpacity>
                             <Ioicon name="md-search" size={ICON_SIZE} color={GREY} />
                         </TouchableOpacity>

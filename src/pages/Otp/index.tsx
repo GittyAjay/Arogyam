@@ -18,12 +18,12 @@ const index = (props: { navigation: { push: Function, pop: Function } }) => {
             <View style={styles.form}>
                 <Text style={{ fontWeight: 'bold', fontSize: FONT_MID, marginBottom: INLINE_GAP }}>Enter otp</Text>
                 <View style={{ flexDirection: 'row', paddingVertical: DEFAUTL_SPACE }}>
-                    <TextInput placeholder="1" style={styles.otp} textAlign={'center'} />
-                    <TextInput placeholder="2" style={styles.otp} textAlign={'center'} />
-                    <TextInput placeholder="3" style={styles.otp} textAlign={'center'} />
-                    <TextInput placeholder="4" style={styles.otp} textAlign={'center'} />
-                    <TextInput placeholder="5" style={styles.otp} textAlign={'center'} />
-                    <TextInput placeholder="6" style={styles.otp} textAlign={'center'} />
+                    <TextInput placeholder="1" placeholderTextColor={GREY} style={styles.otp} textAlign={'center'} />
+                    <TextInput placeholder="2" placeholderTextColor={GREY} style={styles.otp} textAlign={'center'} />
+                    <TextInput placeholder="3" placeholderTextColor={GREY} style={styles.otp} textAlign={'center'} />
+                    <TextInput placeholder="4" placeholderTextColor={GREY} style={styles.otp} textAlign={'center'} />
+                    <TextInput placeholder="5" placeholderTextColor={GREY} style={styles.otp} textAlign={'center'} />
+                    <TextInput placeholder="6" placeholderTextColor={GREY} style={styles.otp} textAlign={'center'} />
                 </View>
                 <Text style={{ marginBottom: DEFAUTL_SPACE }}>otp has been sent on your phone number .</Text>
             </View>
