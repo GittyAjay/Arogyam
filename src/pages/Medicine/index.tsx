@@ -16,6 +16,15 @@ const index = (props: { navigation: { push: Function }, products: product, cart:
         quickConsultants,
         doctors
     }
+    function upload_click() {
+        props.navigation.push('Prescription')
+    }
+    function categories_click() {
+        console.log("categories click");
+    }
+    function brand_click() {
+        console.log("categories click");
+    }
     const renderFunction = (items: any) => {
         return (
             <View style={styles.container}>
@@ -24,7 +33,7 @@ const index = (props: { navigation: { push: Function }, products: product, cart:
                     <View style={{ flexDirection: 'column' }}>
                         <Text style={{ paddingBottom: DEFAUTL_SPACE, fontSize: FONT_MID, color: BLACK }}>Quick uplode your priscription</Text>
                         <Text style={{ width: 250 }}>Pariatur in proident aliquip et magna. Elit eu magna magna reprehende </Text>
-                        <TouchableOpacity style={{ padding: DEFAUTL_SPACE, backgroundColor: PRIMARY, width: 100, borderRadius: BORDER_RADIUS, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', marginTop: INLINE_GAP }} onPress={() => props.navigation.push('Prescription')}>
+                        <TouchableOpacity style={{ padding: DEFAUTL_SPACE, backgroundColor: PRIMARY, width: 100, borderRadius: BORDER_RADIUS, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', marginTop: INLINE_GAP }} onPress={upload_click}>
                             <Ioicon name="md-camera" size={ICON_SIZE} color={WHITE} style={{ paddingRight: DEFAUTL_SPACE / 2 }} />
                             <Text style={{ color: WHITE }}>UPLOAD</Text>
                         </TouchableOpacity>
@@ -52,8 +61,7 @@ const index = (props: { navigation: { push: Function }, products: product, cart:
                             if (key < 6)
                                 return (
                                     <View key={key} style={styles.shopByCatagories}>
-                                        <CategoriesCard key={key} name={values.type} style={{ margin: DEFAUTL_SPACE / 2 }} onClick={() => console.log("clicked", key)
-                                        } text={styles.simple_cardtextstyle}>
+                                        <CategoriesCard key={key} name={values.type} style={{ margin: DEFAUTL_SPACE / 2 }} onClick={categories_click} text={styles.simple_cardtextstyle}>
                                             <Image source={values.url} />
                                         </CategoriesCard>
                                     </View>
@@ -74,8 +82,7 @@ const index = (props: { navigation: { push: Function }, products: product, cart:
                             if (key < 6)
                                 return (
                                     <View key={key} style={styles.shopByCatagories}>
-                                        <CategoriesCard key={key} name={values.name} style={{ margin: DEFAUTL_SPACE / 2 }} onClick={() => console.log("clicked", key)
-                                        } text={styles.simple_cardtextstyle}>
+                                        <CategoriesCard key={key} name={values.name} style={{ margin: DEFAUTL_SPACE / 2 }} onClick={brand_click} text={styles.simple_cardtextstyle}>
                                             <Image source={values.url} />
                                         </CategoriesCard>
                                     </View>

@@ -33,6 +33,9 @@ function TopNav() {
     const Header = () => {
         const navigation = useNavigation();
         const cartItems: Array<{}> = useSelector(selector => selector.project.cart)
+        function move_to_cart() {
+            navigation.navigate("Cart")
+        }
         return (
             <View style={styles.container}>
                 <View style={{ backgroundColor: PRIMARY }}>
@@ -57,7 +60,7 @@ function TopNav() {
                             <TouchableOpacity>
                                 <Ficon name="settings" size={ICON_SIZE} color={WHITE} style={{ paddingRight: INLINE_GAP }} />
                             </TouchableOpacity>
-                            <TouchableOpacity style={{ position: 'relative' }} onPress={() => navigation.navigate("Cart")} >
+                            <TouchableOpacity style={{ position: 'relative' }} onPress={move_to_cart} >
                                 <Faicon name="shopping-cart" size={ICON_SIZE} color={WHITE} />
                                 {cartItems.length > 0 && <View style={styles.cartIcon}>
                                     <Text style={{ fontSize: FONT_SMALL, color: WHITE }}>{cartItems.length}</Text>

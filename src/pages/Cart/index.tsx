@@ -6,7 +6,7 @@ import Eicon from 'react-native-vector-icons/Entypo';
 import Aicon from 'react-native-vector-icons/AntDesign'
 import { BORDER_RADIUS_CIRCULAR, DEFAUTL_SPACE, Dimension, FONT_MID, FONT_SMALL, ICON_SIZE, INLINE_GAP } from '../../assets/sizes';
 import Carousel from 'react-native-snap-carousel';
-import { PRIMARY, SECONDARY, WHITE } from '../../assets/colors';
+import { BLACK, PRIMARY, SECONDARY, WHITE } from '../../assets/colors';
 import PrimaryButton from '../../components/PrimaryButton';
 import { connect } from 'react-redux';
 import { increment_cart_item, decrement_cart_item, remove_cart_item } from '../../store/actions/action';
@@ -59,10 +59,16 @@ const index = (props: { navigation: { push: Function, pop: Function }, increment
         props.cartItems.map(values => total += values.count * values.price);
         setTotalPrice(total);
     })
+    function addLocation() {
+        props.navigation.push("AddLocation")
+    }
+    function back_btn() {
+        props.navigation.pop()
+    }
     return (
         <>
-            <Header onClick={() => { }} onBackPress={() => { props.navigation.pop() }} title="Cart" >
-                <Aicon name="search1" size={ICON_SIZE} />
+            <Header onClick={() => { }} onBackPress={back_btn} title="Cart" >
+                {props.cartItems.length != 0 && <TouchableOpacity><Aicon name="search1" size={ICON_SIZE} /></TouchableOpacity>}
             </Header>
             {props.cartItems.length === 0 && <NotFound />}
             {props.cartItems.length != 0 && <Fragment>
@@ -140,7 +146,7 @@ const index = (props: { navigation: { push: Function, pop: Function }, increment
                             </View>
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: DEFAUTL_SPACE }}>
                                 <PrimaryButton button_style={{ width: 100 }} onPress={() => { }} text_style={{}} title={`RS ${totalPrice}`} />
-                                <PrimaryButton button_style={{ width: 100 }} onPress={() => { props.navigation.push("AddLocation") }} text_style={{}} title="Address" />
+                                <PrimaryButton button_style={{ width: 100 }} onPress={addLocation} text_style={{}} title="Address" />
                             </View>
                         </View>
                     </ScrollView>
