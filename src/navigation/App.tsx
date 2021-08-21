@@ -26,6 +26,7 @@ import Medicine from '../pages/Medicine'
 import ProductPage from '../pages/Product';
 import Filter from '../pages/Filter';
 import Cart from '../pages/Cart';
+import AddLocation from '../pages/AddLocation';
 import { BORDER_RADIUS, BORDER_RADIUS_CIRCULAR, BORDER_WIDTH, DEFAUTL_SPACE, FONT_SMALL, ICON_SIZE, INLINE_GAP } from '../assets/sizes';
 import { useSelector } from 'react-redux'
 function TopNav() {
@@ -117,6 +118,7 @@ function App() {
             <Screen name="ProductPage" component={ProductPage} />
             <Screen name="Filter" component={Filter} />
             <Screen name="Cart" component={Cart} />
+            <Screen name="AddLocation" component={AddLocation} />
         </Navigator>
     );
 }

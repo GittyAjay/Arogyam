@@ -1,6 +1,5 @@
 import React from 'react'
 import { KeyboardTypeOptions, StyleSheet, Text, TextInput, View } from 'react-native'
-import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE } from '../../assets/sizes'
 import { styles } from './style'
 interface props {
     placeholder: string,

@@ -136,7 +136,7 @@ const index = (props: { navigation: { push: Function, pop: Function }, increment
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: DEFAUTL_SPACE }}>
                         <PrimaryButton button_style={{ width: 100 }} onPress={() => { }} text_style={{}} title={`RS ${totalPrice}`} />
-                        <PrimaryButton button_style={{ width: 100 }} onPress={() => { }} text_style={{}} title="Address" />
+                        <PrimaryButton button_style={{ width: 100 }} onPress={() => { props.navigation.push("AddLocation") }} text_style={{}} title="Address" />
                     </View>
                 </View>
             </ScrollView>
