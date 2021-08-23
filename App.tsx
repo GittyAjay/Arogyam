@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { AppNavigator } from './src/navigation/App';
 import { Provider } from 'react-redux';
 import rootReducer from './src/store/reducers/rootReducer';
@@ -9,6 +9,7 @@ const store = createStore(
   rootReducer,
   applyMiddleware(thunk),
 )
+
 const App = () => {
   return (
     <Provider store={store}>

@@ -1,15 +1,109 @@
 import React from 'react'
-import { StyleSheet, Text, TextInput, TouchableOpacity, View, Image, ScrollView } from 'react-native'
-import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE, FONT_MID, FONT_SMALL, ICON_SIZE, INLINE_GAP } from '../../assets/sizes';
-import Eicon from 'react-native-vector-icons/Entypo';
-import Evicon from 'react-native-vector-icons/EvilIcons';
-import Ficon from 'react-native-vector-icons/Feather';
+import { Text, TouchableOpacity, View, Image } from 'react-native'
+import { DEFAUTL_SPACE, FONT_MID, ICON_SIZE, INLINE_GAP } from '../../assets/sizes';
 import Faicon from 'react-native-vector-icons/FontAwesome';
 import Ioicon from 'react-native-vector-icons/Ionicons';
 import PrimaryButton from '../../components/PrimaryButton';
-import { BLACK, GREY, PRIMARY, WHITE } from '../../assets/colors';
+import { BLACK, PRIMARY, WHITE } from '../../assets/colors';
+import DocumentPicker from 'react-native-document-picker';
+import RNFetchBlob from 'rn-fetch-blob'
+import PDFView from 'react-native-view-pdf';
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import { MediaType } from 'react-native-image-picker';
+import AwesomeLoading from 'react-native-awesome-loading';
+import PdfThumbnail from "react-native-pdf-thumbnail";
+
+
 import { styles } from './style';
 const index = (props: { navigation: { pop: Function, push: Function } }) => {
+    const [loading, setLoading] = React.useState<{ status: boolean, message: string }>({
+        status: false,
+        message: "uploding"
+    });
+    const [options, setOptions] = React.useState<{
+        title: String,
+        customButtons: Array<{}>,
+        storageOptions: {},
+        mediaType: MediaType
+    }>({
+        title: 'Select Image',
+        customButtons: [
+            {
+                name: 'customOptionKey',
+                title: 'Choose file from Custom Option'
+            },
+        ],
+        storageOptions: {
+            skipBackup: true,
+            path: 'images',
+        },
+        mediaType: 'photo'
+    });
+    const [resourcePath, setResourcePath] = React.useState<any>();
+    const [fileThumbnail, setFileThumbnail] = React.useState({
+        uri: "",
+        width: 0,
+        height: 0
+    });
+    const [fileName, setFileName] = React.useState<any>();
+    const pickFile = async () => {
+        setLoading({ status: true, message: "uploading" });
+        try {
+            const File = await DocumentPicker.pick({
+                type: [DocumentPicker.types.pdf],
+            });
+            const result = await RNFetchBlob.fs.readFile(File[0].uri, 'base64');
+            const { uri, width, height } = await PdfThumbnail.generate(File[0].uri, 0);
+            setFileThumbnail({
+                uri,
+                width,
+                height
+            });
+            uploadFile(result, File);
+        } catch (err) {
+            if (DocumentPicker.isCancel(err)) {
+                setLoading({ status: false, message: "Error" + err });
+            } else {
+                throw err;
+            }
+        }
+    }
+    const uploadFile = async (result: any, file: any) => {
+        console.log(file);
+        setLoading({ status: false, message: "Submited" });
+    }
+    const cameraOrGallery = (cameraOrGallery: string) => {
+        if (cameraOrGallery == 'camera')
+            launchCamera(options, (res) => {
+                try {
+                    res.assets.map(val => {
+                        const { uri, fileName, width, height } = val;
+                        setResourcePath(uri);
+                        setFileName(fileName);
+                        setFileThumbnail({ uri: uri, width: width, height: height })
+                    })
+                } catch (error) {
+                    console.log(error);
+                }
+
+            })
+        else
+            launchImageLibrary(options, res => {
+                try {
+                    console.log(res);
+                    setResourcePath(res.assets[0].uri)
+                    const { uri, width, height } = res.assets[0]
+                    setFileThumbnail({ uri: uri, width: width, height: height })
+                } catch (error) {
+                    console.log(error);
+
+                }
+            })
+    }
+    const getFileName = (name, path) => {
+        if (name != null) { return name; }
+        return path.split("/").pop();
+    }
     return (
         <View style={styles.container}>
             <View style={{ backgroundColor: PRIMARY }}>
@@ -26,15 +120,15 @@ const index = (props: { navigation: { pop: Function, push: Function } }) => {
             <View style={{ justifyContent: 'space-between', flex: 1, padding: INLINE_GAP }}>
                 <View>
                     <View style={[styles.options, { marginBottom: DEFAUTL_SPACE }]}>
-                        <TouchableOpacity style={{ flexDirection: 'column', alignItems: 'center' }}>
+                        <TouchableOpacity style={{ flexDirection: 'column', alignItems: 'center' }} onPress={() => cameraOrGallery("camera")}>
                             <Ioicon name="camera" size={ICON_SIZE} color={WHITE} />
                             <Text style={{ color: WHITE }}>Camera</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={{ flexDirection: 'column', alignItems: 'center' }}>
+                        <TouchableOpacity style={{ flexDirection: 'column', alignItems: 'center' }} onPress={() => cameraOrGallery("gallery")}>
                             <Faicon name="photo" size={ICON_SIZE} color={WHITE} />
                             <Text style={{ color: WHITE }}>Gallery</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={{ flexDirection: 'column', alignItems: 'center' }}>
+                        <TouchableOpacity style={{ flexDirection: 'column', alignItems: 'center' }} onPress={pickFile}>
                             <Faicon name="file-text-o" size={ICON_SIZE} color={WHITE} />
                             <Text style={{ color: WHITE }}>Your prescription</Text>
                         </TouchableOpacity>
@@ -44,10 +138,13 @@ const index = (props: { navigation: { pop: Function, push: Function } }) => {
                         <Text>uplode clear image</Text>
                         <Text>below mention point sould be a part of valid precription</Text>
                     </View>
+                    <TouchableOpacity style={{ marginTop: INLINE_GAP }}>
+                        <Image source={fileThumbnail.uri === "" ? require("../../assets/images/pdfFormate.png") : { uri: fileThumbnail.uri }} style={{ width: 200, height: 200 }} />
+                    </TouchableOpacity>
                 </View>
                 <PrimaryButton button_style={styles.btnStyle} text_style={{}} onPress={() => { props.navigation.push('Order') }} title="submit" />
             </View>
-
+            <AwesomeLoading indicatorId={8} size={50} isActive={loading.status} text={loading.message} />
         </View>
     )
 }
