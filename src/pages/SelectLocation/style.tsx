@@ -13,6 +13,7 @@ export const styles = StyleSheet.create({
         backgroundColor: PRIMARY,
         alignItems: 'center',
         padding: INLINE_GAP,
+        position: 'relative'
     },
     search__Bar: {
         flexDirection: 'row',
@@ -22,6 +23,6 @@ export const styles = StyleSheet.create({
         marginBottom: DEFAUTL_SPACE,
         backgroundColor: WHITE,
         borderRadius: BORDER_RADIUS,
-        paddingHorizontal: DEFAUTL_SPACE
+        paddingHorizontal: DEFAUTL_SPACE,
     }
 })
