@@ -22,9 +22,9 @@ export const styles = StyleSheet.create({
     healthCheckup: {
         marginBottom: INLINE_GAP
     },
-    shopByCatagories: {
+    card_layout: {
         flexDirection: 'row',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
     },
     colored__CardtextStyle: {
         color: WHITE

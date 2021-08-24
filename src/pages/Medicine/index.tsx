@@ -3,9 +3,8 @@ import { Text, TouchableOpacity, View, Image, FlatList } from 'react-native'
 import { BLACK, GREY, PRIMARY, SECONDARY, SHADE, WHITE } from '../../assets/colors'
 import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE, FONT_MID, ICON_SIZE, INLINE_GAP } from '../../assets/sizes'
 import Ioicon from 'react-native-vector-icons/Ionicons'
-import CategoriesCard from '../../components/CategoryCard';
 import { styles } from './style';
-import ProductDetail from '../../components/ProductDetail';
+import Product from '../../components/Products_card';
 import { connect } from 'react-redux'
 import { addToCart } from '../../store/actions/action';
 import { prodcut_BRAND, product_TYPES, shopByCatagories, shopByBrand, quickConsultants, doctors, product, prodElements } from '../../store/reducers/projectReducer';
@@ -52,18 +51,18 @@ const index = (props: { navigation: { push: Function }, products: product, cart:
                 <View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'stretch', paddingBottom: DEFAUTL_SPACE }}>
                         <Text>SHOP BY CATEGORIES</Text>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => { props.navigation.push("ProductPage", { type: "shopByCatagories" }) }}>
                             <Text style={{ color: SECONDARY }}>SEE ALL</Text>
                         </TouchableOpacity>
                     </View>
-                    <View style={styles.shopByCatagories}>
+                    <View style={styles.card_layout}>
                         {items.item.shopByCatagories.map((values: product_TYPES, key: number) => {
                             if (key < 6)
                                 return (
-                                    <View key={key} style={styles.shopByCatagories}>
-                                        <CategoriesCard key={key} name={values.type} style={{ margin: DEFAUTL_SPACE / 2 }} onClick={categories_click} text={styles.simple_cardtextstyle}>
+                                    <View key={key} style={styles.card_layout}>
+                                        <Product {...values} key={key} style={{ margin: 2 }} onClick={categories_click} text={styles.simple_cardtextstyle}>
                                             <Image source={values.url} />
-                                        </CategoriesCard>
+                                        </Product>
                                     </View>
                                 );
                         })}
@@ -73,18 +72,18 @@ const index = (props: { navigation: { push: Function }, products: product, cart:
                 <View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'stretch', paddingBottom: DEFAUTL_SPACE }}>
                         <Text>SHOP BY BRAND</Text>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => { props.navigation.push("ProductPage", { type: "shopByBrand" }) }}>
                             <Text style={{ color: SECONDARY }}>SEE ALL</Text>
                         </TouchableOpacity>
                     </View>
-                    <View style={styles.shopByCatagories}>
+                    <View style={styles.card_layout}>
                         {items.item.shopByBrand.map(((values: prodcut_BRAND, key: number) => {
                             if (key < 6)
                                 return (
-                                    <View key={key} style={styles.shopByCatagories}>
-                                        <CategoriesCard key={key} name={values.name} style={{ margin: DEFAUTL_SPACE / 2 }} onClick={brand_click} text={styles.simple_cardtextstyle}>
+                                    <View key={key} style={styles.card_layout}>
+                                        <Product key={key} {...values} style={{ margin: 2 }} onClick={brand_click} text={styles.simple_cardtextstyle}>
                                             <Image source={values.url} />
-                                        </CategoriesCard>
+                                        </Product>
                                     </View>
                                 );
                         }))}
@@ -98,7 +97,7 @@ const index = (props: { navigation: { push: Function }, products: product, cart:
                 <View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'stretch', paddingBottom: DEFAUTL_SPACE }}>
                         <Text>Health product</Text>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => { props.navigation.push("ProductPage", { type: "Products" }) }}>
                             <Text style={{ color: SECONDARY }}>SEE ALL</Text>
                         </TouchableOpacity>
                     </View>
@@ -107,9 +106,9 @@ const index = (props: { navigation: { push: Function }, products: product, cart:
                     {props.products.map((value: prodElements, key: number) => {
                         if (key < 4)
                             return (
-                                <ProductDetail key={key} name={value.name} onClick={() => { props.addToCart(value) }} style={{ margin: 2 }} text={{ color: WHITE }} discount={15} mrp={400} price={1000} rating={123} star={1}>
+                                <Product {...value} key={key} onClick={() => { props.addToCart(value) }} style={{ margin: 2 }} text={{ color: WHITE }} >
                                     <Image source={value.url} style={{ alignSelf: 'center' }} />
-                                </ProductDetail>
+                                </Product>
                             );
                     })}
                 </View>

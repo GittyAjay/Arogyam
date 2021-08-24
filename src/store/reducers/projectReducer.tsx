@@ -1,8 +1,8 @@
 import { ImageSourcePropType } from 'react-native'
 import { ADD_TO_CART, INCREMENT_CART_ITEMS, DECREMENT_CART_ITEMS, REMOVE_CART_ITEMS } from '../actions/action';
-export type product_TYPES = { type: String, url: ImageSourcePropType, id: number }
+export type product_TYPES = { name: String, url: ImageSourcePropType, id: number }
 export type prodcut_BRAND = { name: String, url: ImageSourcePropType, id: number }
-export type prodElements = { name: String, type: product_TYPES, brand: prodcut_BRAND, url: ImageSourcePropType, id: number, price: number, count: number }
+export type prodElements = { name: String, type: product_TYPES, brand: prodcut_BRAND, url: ImageSourcePropType, id: number, price: number, count: number, rating: number, star: number, mrp: number, discount: number }
 export type product = Array<prodElements>
 export type doctor_TYPES = { type: String, url: ImageSourcePropType };
 export type doctorElements = { name: string, type: doctor_TYPES, desc: String, star: number, url: ImageSourcePropType, id: number };
@@ -11,15 +11,15 @@ export type quickConsultantElements = { name: string, url: ImageSourcePropType, 
 export type quickConsultant = Array<quickConsultantElements>
 
 export const shopByCatagories: Array<product_TYPES> = [
-    { type: "Covid product", url: require('../../assets/images/shopbycategory1.png'), id: 1 },
-    { type: "Ayurdev", url: require('../../assets/images/shopbycategory2.png'), id: 2 },
-    { type: "Eye wear", url: require('../../assets/images/shopbycategory3.png'), id: 3 },
-    { type: "Mom & beby", url: require('../../assets/images/shopbycategory4.png'), id: 4 },
-    { type: "Tretment", url: require('../../assets/images/shopbycategory5.png'), id: 4 },
-    { type: "Sexual wellness", url: require('../../assets/images/shopbycategory6.png'), id: 5 },
-    { type: "Device", url: require('../../assets/images/shopbycategory7.png'), id: 6 },
-    { type: "Fitness", url: require('../../assets/images/shopbycategory8.png'), id: 7 },
-    { type: "Beauty", url: require('../../assets/images/shopbycategory9.png'), id: 8 },
+    { name: "Covid product", url: require('../../assets/images/shopbycategory1.png'), id: 1 },
+    { name: "Ayurdev", url: require('../../assets/images/shopbycategory2.png'), id: 2 },
+    { name: "Eye wear", url: require('../../assets/images/shopbycategory3.png'), id: 3 },
+    { name: "Mom & beby", url: require('../../assets/images/shopbycategory4.png'), id: 4 },
+    { name: "Tretment", url: require('../../assets/images/shopbycategory5.png'), id: 4 },
+    { name: "Sexual wellness", url: require('../../assets/images/shopbycategory6.png'), id: 5 },
+    { name: "Device", url: require('../../assets/images/shopbycategory7.png'), id: 6 },
+    { name: "Fitness", url: require('../../assets/images/shopbycategory8.png'), id: 7 },
+    { name: "Beauty", url: require('../../assets/images/shopbycategory9.png'), id: 8 },
 ]
 
 export const shopByBrand: Array<prodcut_BRAND> = [
@@ -55,10 +55,10 @@ type action_type = {
 }
 const initialState: initialStateType = {
     products: [
-        { name: "Women nutrition", type: { type: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, brand: { name: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, price: 100, url: require("../../assets/images/categories1.png"), id: 0, count: 1 },
-        { name: "Mother nutrition", type: { type: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, brand: { name: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, price: 100, url: require("../../assets/images/categories1.png"), id: 1, count: 1 },
-        { name: "Feminine hygiene", type: { type: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, brand: { name: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, price: 100, url: require("../../assets/images/categories1.png"), id: 2, count: 1 },
-        { name: "Feminine hygiene", type: { type: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, brand: { name: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, price: 100, url: require("../../assets/images/categories1.png"), id: 3, count: 1 },
+        { name: "Women nutrition", type: { name: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, brand: { name: "Dabar", url: require("../../assets/images/categories1.png"), id: 1 }, price: 100, url: require("../../assets/images/categories1.png"), id: 0, count: 1, discount: 15, mrp: 500, rating: 5, star: 5 },
+        { name: "Mother nutrition", type: { name: "Cough", url: require("../../assets/images/categories1.png"), id: 2 }, brand: { name: "Mankind", url: require("../../assets/images/categories1.png"), id: 1 }, price: 100, url: require("../../assets/images/categories1.png"), id: 1, count: 1, discount: 15, mrp: 500, rating: 5, star: 5 },
+        { name: "Feminine hygiene", type: { name: "Liver", url: require("../../assets/images/categories1.png"), id: 3 }, brand: { name: "Covaxine", url: require("../../assets/images/categories1.png"), id: 1 }, price: 100, url: require("../../assets/images/categories1.png"), id: 2, count: 1, discount: 15, mrp: 500, rating: 5, star: 5 },
+        { name: "Feminine hygiene", type: { name: "Heart", url: require("../../assets/images/categories1.png"), id: 4 }, brand: { name: "Hinduja", url: require("../../assets/images/categories1.png"), id: 1 }, price: 100, url: require("../../assets/images/categories1.png"), id: 3, count: 1, discount: 15, mrp: 500, rating: 5, star: 5 },
     ],
     cart: [],
     doctors: [
