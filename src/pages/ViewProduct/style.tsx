@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-start',
         alignItems: 'stretch',
+        backgroundColor: WHITE
     },
     imageThumbnail: {
         position: 'relative'
@@ -25,7 +26,8 @@ export const styles = StyleSheet.create({
     description: {
         flexDirection: 'column',
         padding: INLINE_GAP,
-        backgroundColor: SHADE
+        backgroundColor: SHADE,
+        margin: INLINE_GAP
     },
     reviews: {
         flexDirection: 'column',

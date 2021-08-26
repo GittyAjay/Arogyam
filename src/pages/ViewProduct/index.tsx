@@ -5,7 +5,7 @@ import Header from '../../components/Header';
 import { BORDER_RADIUS, BORDER_RADIUS_CIRCULAR, DEFAUTL_SPACE, FONT_GLARGE, FONT_LARGE, FONT_MID, FONT_SMALL, ICON_SIZE, INLINE_GAP } from '../../assets/sizes';
 import Faicon from 'react-native-vector-icons/FontAwesome';
 import Aicon from 'react-native-vector-icons/AntDesign';
-import { PRIMARY, WHITE, RED, GREY, SHADE, RED_TRANSPARENT } from '../../assets/colors';
+import { PRIMARY, WHITE, RED, GREY, SHADE, RED_TRANSPARENT, RED_HEART } from '../../assets/colors';
 import Row from '../../components/Row';
 import Carousel from 'react-native-snap-carousel';
 import { Dimension } from '../../assets/sizes'
@@ -83,9 +83,9 @@ const index = (props: { navigation: { push: Function, pop: Function }, products:
                     <Row style={{ justifyContent: 'space-between', alignItems: 'center' }}>
                         <Row >
                             <Text style={[styles.heading, { fontWeight: 'normal', marginRight: DEFAUTL_SPACE }]}>RS 300</Text>
-                            <Text style={[{ textDecorationLine: 'line-through', fontSize: FONT_MID, color: RED }]}>RS 500</Text>
+                            <Text style={[{ textDecorationLine: 'line-through', fontSize: FONT_MID, color: RED_HEART }]}>RS 500</Text>
                         </Row>
-                        <TouchableOpacity style={[styles.heartSymbol, { borderRadius: BORDER_RADIUS_CIRCULAR, backgroundColor: RED, }]}>
+                        <TouchableOpacity style={[styles.heartSymbol, { borderRadius: BORDER_RADIUS_CIRCULAR, backgroundColor: RED_HEART, }]}>
                             <Aicon name="heart" size={ICON_SIZE} color={WHITE} />
                         </TouchableOpacity>
                     </Row>
@@ -131,7 +131,7 @@ const index = (props: { navigation: { push: Function, pop: Function }, products:
                 </View>
                 <View style={styles.reviews}>
                     <Text style={[styles.heading, { marginBottom: DEFAUTL_SPACE }]}>Reviews</Text>
-                    <Row style={{ justifyContent: "space-between", alignItems: 'flex-start' }}>
+                    <Row style={{ justifyContent: "space-between", alignItems: 'flex-start', marginBottom: DEFAUTL_SPACE }}>
                         <Row>
                             <Text style={{ fontSize: FONT_GLARGE }}>4.9/</Text>
                             <Text style={{ fontSize: FONT_GLARGE, color: GREY }}>5</Text>
@@ -212,7 +212,7 @@ const index = (props: { navigation: { push: Function, pop: Function }, products:
                 </Row>
             </Header>
             <FlatList data={[{ name: "Ajay", id: 1 }]} renderItem={renderFunction} keyExtractor={(value) => `${value.id}`} />
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: INLINE_GAP, alignItems: 'center' }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: INLINE_GAP, alignItems: 'center', backgroundColor: WHITE }}>
                 <Row style={{ justifyContent: 'center', alignItems: 'center' }}>
                     <Text style={{ fontSize: FONT_MID, fontWeight: 'bold', marginRight: DEFAUTL_SPACE }}>RS 4000</Text>
                     <Text style={{ fontSize: FONT_SMALL, marginRight: DEFAUTL_SPACE, color: GREY }}>MRP $5000</Text>
