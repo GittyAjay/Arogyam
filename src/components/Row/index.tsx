@@ -2,7 +2,7 @@ import React from 'react'
 import { ViewStyle, View, TouchableOpacity } from 'react-native'
 import { styles } from './style'
 interface props {
-    style: ViewStyle,
+    style?: ViewStyle,
 }
 const index: React.FC<props> = (props) => {
     return (

@@ -4,11 +4,19 @@ import { BLACK, GREY, PRIMARY, SECONDARY, SHADE, WHITE } from '../../assets/colo
 import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE, FONT_MID, ICON_SIZE, INLINE_GAP } from '../../assets/sizes'
 import Ioicon from 'react-native-vector-icons/Ionicons'
 import { styles } from './style';
-import Product from '../../components/Products_card';
+import ProductDetailCard from '../../components/ProductDetails';
+import ProductCard from '../../components/Product';
 import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { addToCart } from '../../store/actions/action';
+import AwesomeLoading from 'react-native-awesome-loading';
 import { prodcut_BRAND, product_TYPES, shopByCatagories, shopByBrand, quickConsultants, doctors, product, prodElements } from '../../store/reducers/projectReducer';
 const index = (props: { navigation: { push: Function }, products: product, cart: product, addToCart: Function }) => {
+    const [progress_status, setProgress_status] = React.useState(false)
+    const state = useSelector(state => state.project.progress_status)
+    React.useEffect(() => {
+        console.log(state);
+    }, []);
     const records = {
         shopByCatagories,
         shopByBrand,
@@ -23,6 +31,9 @@ const index = (props: { navigation: { push: Function }, products: product, cart:
     }
     function brand_click() {
         console.log("categories click");
+    }
+    function addToCart() {
+
     }
     const renderFunction = (items: any) => {
         return (
@@ -49,10 +60,12 @@ const index = (props: { navigation: { push: Function }, products: product, cart:
                 </View>
                 {/* SHOP BY CATEGORIES */}
                 <View>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'stretch', paddingBottom: DEFAUTL_SPACE }}>
-                        <Text>SHOP BY CATEGORIES</Text>
+                    <View style={styles.headingContainer}>
+                        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                            <Text style={styles.heading}>SHOP BY CATEGORIES</Text>
+                        </View>
                         <TouchableOpacity onPress={() => { props.navigation.push("ProductPage", { type: "shopByCatagories" }) }}>
-                            <Text style={{ color: SECONDARY }}>SEE ALL</Text>
+                            <Text style={styles.seeAll}>SEE ALL</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.card_layout}>
@@ -60,9 +73,9 @@ const index = (props: { navigation: { push: Function }, products: product, cart:
                             if (key < 6)
                                 return (
                                     <View key={key} style={styles.card_layout}>
-                                        <Product {...values} key={key} style={{ margin: 2 }} onClick={categories_click} text={styles.simple_cardtextstyle}>
+                                        <ProductCard {...values} key={key} style={{ margin: 3 }} background={PRIMARY} onClick={categories_click} text={styles.simple_cardtextstyle}>
                                             <Image source={values.url} />
-                                        </Product>
+                                        </ProductCard>
                                     </View>
                                 );
                         })}
@@ -70,10 +83,12 @@ const index = (props: { navigation: { push: Function }, products: product, cart:
                 </View>
                 {/* SHOP BY BRAND */}
                 <View>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'stretch', paddingBottom: DEFAUTL_SPACE }}>
-                        <Text>SHOP BY BRAND</Text>
+                    <View style={styles.headingContainer}>
+                        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                            <Text style={styles.heading}>SHOP BY BRAND</Text>
+                        </View>
                         <TouchableOpacity onPress={() => { props.navigation.push("ProductPage", { type: "shopByBrand" }) }}>
-                            <Text style={{ color: SECONDARY }}>SEE ALL</Text>
+                            <Text style={styles.seeAll}>SEE ALL</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.card_layout}>
@@ -81,9 +96,9 @@ const index = (props: { navigation: { push: Function }, products: product, cart:
                             if (key < 6)
                                 return (
                                     <View key={key} style={styles.card_layout}>
-                                        <Product key={key} {...values} style={{ margin: 2 }} onClick={brand_click} text={styles.simple_cardtextstyle}>
+                                        <ProductCard key={key} {...values} background={SECONDARY} style={{ margin: 3 }} onClick={brand_click} text={styles.simple_cardtextstyle}>
                                             <Image source={values.url} />
-                                        </Product>
+                                        </ProductCard>
                                     </View>
                                 );
                         }))}
@@ -95,10 +110,12 @@ const index = (props: { navigation: { push: Function }, products: product, cart:
                 </View>
                 {/* Health product */}
                 <View>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'stretch', paddingBottom: DEFAUTL_SPACE }}>
-                        <Text>Health product</Text>
+                    <View style={styles.headingContainer}>
+                        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                            <Text style={styles.heading}>Health product</Text>
+                        </View>
                         <TouchableOpacity onPress={() => { props.navigation.push("ProductPage", { type: "Products" }) }}>
-                            <Text style={{ color: SECONDARY }}>SEE ALL</Text>
+                            <Text style={styles.seeAll}>SEE ALL</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -106,18 +123,20 @@ const index = (props: { navigation: { push: Function }, products: product, cart:
                     {props.products.map((value: prodElements, key: number) => {
                         if (key < 4)
                             return (
-                                <Product {...value} key={key} onClick={() => { props.addToCart(value) }} style={{ margin: 2 }} text={{ color: WHITE }} >
+                                <ProductDetailCard isAddToCartButton={true} addToCartMethod={() => props.addToCart(value)} {...value} key={key} onClick={() => { props.navigation.push("ViewProduct") }} style={{ margin: 2 }} text={{ color: WHITE }} >
                                     <Image source={value.url} style={{ alignSelf: 'center' }} />
-                                </Product>
+                                </ProductDetailCard>
                             );
                     })}
                 </View>
             </View>
         );
     }
-
     return (
-        <FlatList data={[records]} renderItem={renderFunction} keyExtractor={(item) => { return ` ${Math.random().toFixed}` }} />
+        <>
+            <AwesomeLoading indicatorId={8} size={50} isActive={progress_status} text="oh" />
+            <FlatList data={[records]} renderItem={renderFunction} keyExtractor={(item) => { return ` ${Math.random().toFixed}` }} />
+        </>
     )
 }
 function mapStateToProps(state: any) {
@@ -127,4 +146,5 @@ const mapDispatchToProps = {
     addToCart
 }
 export default connect(mapStateToProps, mapDispatchToProps)(index);
+
 

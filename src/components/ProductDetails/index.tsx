@@ -1,20 +1,22 @@
 import React from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { BLACK, GREY, WHITE, YELLOW } from '../../assets/colors'
+import { StyleSheet, Text, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native'
+import { BLACK, GREY, SECONDARY, WHITE, YELLOW } from '../../assets/colors'
 import Eicon from 'react-native-vector-icons/Entypo';
 import { Dimension, FONT_LARGE, FONT_MID, FONT_SMALL } from '../../assets/sizes';
 import { BORDER_RADIUS, BORDER_RADIUS_CIRCULAR, BORDER_WIDTH, DEFAUTL_SPACE, ICON_SIZE, INLINE_GAP } from '../../assets/sizes'
 import { styles } from './style'
 interface props {
     name: String,
-    style: object,
-    text: object,
-    rating: number,
-    star: number,
-    mrp: number,
-    discount: number,
-    price: number,
-    onClick: () => void
+    style?: ViewStyle,
+    text?: TextStyle,
+    rating?: number,
+    star?: number,
+    mrp?: number,
+    discount?: number,
+    price?: number,
+    isAddToCartButton?: boolean,
+    addToCartMethod?: () => void,
+    onClick: () => void,
 }
 const index: React.FC<props> = (props) => {
     const { WIDTH } = Dimension();
@@ -34,7 +36,7 @@ const index: React.FC<props> = (props) => {
                     <Text style={{ fontSize: FONT_SMALL }}>Rating</Text>
                 </View>}
             </View>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginBottom: DEFAUTL_SPACE / 2 }}>
+            <View style={styles.prodElement}>
                 {props.mrp && <View style={{ flexDirection: 'row' }}>
                     <Text style={[{ paddingRight: DEFAUTL_SPACE / 2, color: BLACK }]}>MRP</Text>
                     <Text style={[{ paddingRight: DEFAUTL_SPACE / 2, color: BLACK }]}>{props.mrp}</Text>
@@ -44,10 +46,14 @@ const index: React.FC<props> = (props) => {
                     <Text style={{ fontSize: FONT_SMALL }}>OFF</Text>
                 </View>}
             </View>
-            {props.price && <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginBottom: DEFAUTL_SPACE / 2 }}>
+            {props.price && <View style={styles.prodElement}>
                 <Text style={[{ paddingRight: DEFAUTL_SPACE / 2, color: BLACK }]}>${props.price}</Text>
                 <Text style={{ fontSize: FONT_SMALL, paddingRight: DEFAUTL_SPACE / 2 }}>ADD</Text>
             </View>}
+            {props.isAddToCartButton && <TouchableOpacity style={styles.addToCart} onPress={props.addToCartMethod}>
+                <Text>Add To Cart</Text>
+            </TouchableOpacity>
+            }
         </TouchableOpacity>
     )
 }

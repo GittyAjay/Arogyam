@@ -1,5 +1,5 @@
 import { ImageSourcePropType } from 'react-native'
-import { ADD_TO_CART, INCREMENT_CART_ITEMS, DECREMENT_CART_ITEMS, REMOVE_CART_ITEMS } from '../actions/action';
+import { ADD_TO_CART, INCREMENT_CART_ITEMS, DECREMENT_CART_ITEMS, REMOVE_CART_ITEMS, UPDATE_PROGRESS_STATUS } from '../actions/action';
 export type product_TYPES = { name: String, url: ImageSourcePropType, id: number }
 export type prodcut_BRAND = { name: String, url: ImageSourcePropType, id: number }
 export type prodElements = { name: String, type: product_TYPES, brand: prodcut_BRAND, url: ImageSourcePropType, id: number, price: number, count: number, rating: number, star: number, mrp: number, discount: number }
@@ -48,6 +48,7 @@ export type initialStateType = {
     cart: product,
     doctors: doctor,
     quickConsultant: quickConsultant,
+    progress_status: boolean
 }
 type action_type = {
     type: String,
@@ -66,7 +67,8 @@ const initialState: initialStateType = {
         { name: "Dr. Sweta", type: { type: "dentist", url: require('../../assets/images/shopbycategory2.png') }, desc: "Depression specilist", star: 1, url: require('../../assets/images/shopbycategory2.png'), id: 19 },
         { name: "Dr Anupam", type: { type: "dentist", url: require('../../assets/images/shopbycategory2.png') }, desc: "Nurology specilist", star: 1, url: require('../../assets/images/shopbycategory3.png'), id: 20 },
     ],
-    quickConsultant: []
+    quickConsultant: [],
+    progress_status: false
 }
 
 export default function doctorsReducer(state = initialState, action: any) {
@@ -78,11 +80,12 @@ export default function doctorsReducer(state = initialState, action: any) {
     })
     switch (action.type) {
         case ADD_TO_CART:
-            if (__FOUND == -1)
+            if (__FOUND == -1) {
                 return {
                     ...state,
                     cart: [...state.cart, action.payload]
                 }
+            }
             else
                 return {
                     ...state
@@ -102,6 +105,11 @@ export default function doctorsReducer(state = initialState, action: any) {
             return {
                 ...state,
                 cart: state.cart.filter(item => item.id != action.payload)
+            }
+        case UPDATE_PROGRESS_STATUS:
+            return {
+                ...state,
+                progress_status: action.payload
             }
         default:
             return state

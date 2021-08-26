@@ -6,8 +6,8 @@ import { styles } from './style'
 interface props {
     title: string,
     onPress: () => void,
-    button_style: ViewStyle,
-    text_style: ViewStyle
+    button_style?: ViewStyle,
+    text_style?: ViewStyle
 }
 const index: React.FC<props> = ({ title, onPress, button_style, text_style }) => {
     return (

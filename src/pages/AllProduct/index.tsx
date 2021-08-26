@@ -4,7 +4,7 @@ import { TextInput, TouchableOpacity, View, Image, ScrollView, ImageSourcePropTy
 import { BLACK, GREY, PRIMARY, SECONDARY, SHADE, WHITE } from '../../assets/colors';
 import Ioicon from 'react-native-vector-icons/Ionicons';
 import Micon from 'react-native-vector-icons/MaterialIcons';
-import Product from '../../components/Products_card';
+import Product from '../../components/ProductDetails';
 import { styles } from './style'
 import { prodElements, product_TYPES, product } from '../../store/reducers/projectReducer';
 import { connect } from 'react-redux';

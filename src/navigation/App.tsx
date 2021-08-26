@@ -22,10 +22,11 @@ import Ioicon from 'react-native-vector-icons/Ionicons';
 import { BLACK, GREY, PRIMARY, WHITE } from '../assets/colors';
 import LabTest from '../pages/LabTest'
 import Medicine from '../pages/Medicine'
-import ProductPage from '../pages/Product';
+import AllProducts from '../pages/AllProduct';
 import Filter from '../pages/Filter';
 import Cart from '../pages/Cart';
 import AddLocation from '../pages/AddLocation';
+import ViewProduct from '../pages/ViewProduct';
 import { BORDER_RADIUS, BORDER_RADIUS_CIRCULAR, BORDER_WIDTH, DEFAUTL_SPACE, FONT_SMALL, ICON_SIZE, INLINE_GAP } from '../assets/sizes';
 import { useSelector } from 'react-redux'
 function TopNav() {
@@ -117,7 +118,8 @@ function App() {
             <Screen name="Prescription" component={Prescription} />
             <Screen name="Order" component={Order} />
             <Screen name="LabTest" component={LabTest} />
-            <Screen name="ProductPage" component={ProductPage} />
+            <Screen name="ProductPage" component={AllProducts} />
+            <Screen name="ViewProduct" component={ViewProduct} />
             <Screen name="Filter" component={Filter} />
             <Screen name="Cart" component={Cart} />
             <Screen name="AddLocation" component={AddLocation} />

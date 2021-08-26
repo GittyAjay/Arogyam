@@ -12,10 +12,12 @@ import { connect } from 'react-redux';
 import { increment_cart_item, decrement_cart_item, remove_cart_item } from '../../store/actions/action';
 import { product } from '../../store/reducers/projectReducer';
 import NotFound from './not_found';
+import { useDispatch } from 'react-redux';
 type slide = { url: ImageSourcePropType, index: number };
 const index = (props: { navigation: { push: Function, pop: Function }, increment_cart_item: Function, decrement_cart_item: Function, remove_cart_item: Function, cartItems: product }) => {
     const [totalPrice, setTotalPrice] = React.useState(0);
     const [activeCarosel, setactiveCarosel] = React.useState(0);
+    const progress_bar_dispatcher = useDispatch();
     // props.cartItems
     const Slides = [
         {

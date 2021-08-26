@@ -8,7 +8,7 @@ import Ficon from 'react-native-vector-icons/Feather';
 import Faicon from 'react-native-vector-icons/FontAwesome';
 import Ioicon from 'react-native-vector-icons/Ionicons';
 import Micon from 'react-native-vector-icons/MaterialIcons';
-import ProductDetail from '../../components/Products_card';
+import ProductDetail from '../../components/ProductDetails';
 import { Dimension, FONT_MID } from '../../assets/sizes';
 import { styles } from './style'
 const index = (props: { navigation: { push: Function, pop: Function } }) => {
