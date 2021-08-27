@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 import { PRIMARY, WHITE } from '../../assets/colors';
-import { FONT_MID } from '../../assets/sizes';
+import { DEFAUTL_SPACE, FONT_MID } from '../../assets/sizes';
 
 export const styles = StyleSheet.create({
     container: {
@@ -10,8 +10,14 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: PRIMARY
     },
-    font: {
+    logo__text: {
         color: WHITE,
-        fontSize: FONT_MID
+        fontSize: FONT_MID,
+        fontFamily: 'Nunito-Regular'
+    },
+    logo__img: {
+        width: 50,
+        height: 50,
+        marginBottom: DEFAUTL_SPACE
     }
 })

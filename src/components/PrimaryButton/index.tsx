@@ -1,13 +1,11 @@
 import React from 'react'
-import { Button, NativeSyntheticEvent, NativeTouchEvent, StyleSheet, Text, TouchableOpacity, View, ViewStyle } from 'react-native'
-import { PRIMARY } from '../../assets/colors';
-import { DEFAUTL_SPACE, FONT_MID } from '../../assets/sizes';
+import { Text, TextStyle, TouchableOpacity, ViewStyle } from 'react-native'
 import { styles } from './style'
 interface props {
     title: string,
     onPress: () => void,
     button_style?: ViewStyle,
-    text_style?: ViewStyle
+    text_style?: TextStyle
 }
 const index: React.FC<props> = ({ title, onPress, button_style, text_style }) => {
     return (

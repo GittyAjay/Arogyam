@@ -1,35 +1,30 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, PermissionsAndroid, TextInput } from 'react-native'
-import { GREY, SECONDARY, WHITE } from '../../assets/colors';
-import { BORDER_WIDTH, DEFAUTL_SPACE, FONT_MID, INLINE_GAP } from '../../assets/sizes';
+import { StyleSheet } from 'react-native'
+import { BLACK, WHITE } from '../../assets/colors';
+import { DEFAUTL_SPACE, FONT_MID, FONT_SMALL, INLINE_GAP } from '../../assets/sizes';
 
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'flex-start',
+        justifyContent: 'space-between',
         alignItems: 'center',
         backgroundColor: WHITE,
         paddingHorizontal: INLINE_GAP,
+        paddingVertical: DEFAUTL_SPACE
     },
     form: {
-        alignItems: 'center',
         justifyContent: 'center',
-        paddingVertical: INLINE_GAP
+        alignItems: 'center'
     },
-    inputBox: {
-        marginBottom: DEFAUTL_SPACE,
+    heading: {
+        fontFamily: 'Nunito-Bold',
+        color: BLACK,
+        fontSize: FONT_MID
     },
-    btnStyle: {
-        marginVertical: INLINE_GAP
+    description: {
+        fontFamily: 'Nunito-Regular',
+        color: BLACK,
+        fontSize: FONT_SMALL
     },
-    txtStyle: {
 
-    },
-    otp: {
-        width: 50,
-        height: 50,
-        borderColor: GREY,
-        borderWidth: BORDER_WIDTH,
-        textAlignVertical: 'top',
-        marginRight: DEFAUTL_SPACE,
-    }
+
 })

@@ -14,5 +14,8 @@ export const styles = StyleSheet.create({
     },
     normal: {
         fontFamily: 'Nunito-Regular',
+    },
+    margin__bottom: {
+        marginBottom: DEFAUTL_SPACE
     }
 })

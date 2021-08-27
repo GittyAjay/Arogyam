@@ -1,5 +1,5 @@
-import { DEFAUTL_SPACE, INLINE_GAP } from '../../assets/sizes';
-import { WHITE } from '../../assets/colors';
+import { DEFAUTL_SPACE, FONT_MID, FONT_SMALL, INLINE_GAP } from '../../assets/sizes';
+import { BLACK, SECONDARY, WHITE } from '../../assets/colors';
 import { StyleSheet } from 'react-native'
 export const styles = StyleSheet.create({
     container: {
@@ -15,11 +15,21 @@ export const styles = StyleSheet.create({
     },
     inputBox: {
         marginBottom: DEFAUTL_SPACE,
+        fontFamily: 'Nunito-Regular',
     },
-    btnStyle: {
-
+    heading: {
+        fontFamily: 'Nunito-Regular',
+        color: BLACK,
+        fontSize: FONT_MID
     },
-    txtStyle: {
-
+    description: {
+        fontFamily: 'Nunito-Regular',
+        color: BLACK,
+        fontSize: FONT_SMALL
+    },
+    bottom__text: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 })

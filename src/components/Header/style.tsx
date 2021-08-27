@@ -13,6 +13,6 @@ export const styles = StyleSheet.create({
     },
     title: {
         fontSize: FONT_MID,
-        fontWeight: 'bold'
+        fontFamily: 'Nunito-Regular'
     }
 })

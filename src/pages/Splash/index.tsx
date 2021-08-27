@@ -2,7 +2,6 @@ import React from 'react'
 import { Text, View, Image } from 'react-native'
 import StatusBar from '../../components/StatusBar';
 import { PRIMARY } from '../../assets/colors';
-import { DEFAUTL_SPACE } from '../../assets/sizes';
 import { styles } from './style';
 const index = (props: { navigation: { push: Function } }) => {
     setTimeout(() => {
@@ -12,8 +11,8 @@ const index = (props: { navigation: { push: Function } }) => {
         <>
             <StatusBar color={PRIMARY} />
             <View style={styles.container}>
-                <Image source={require('../../assets/images/logo.png')} style={{ width: 60, height: 60, marginBottom: DEFAUTL_SPACE }} />
-                <Text style={styles.font}>AROGYAM</Text>
+                <Image source={require('../../assets/images/logo.png')} style={styles.logo__img} />
+                <Text style={styles.logo__text}>AROGYAM</Text>
             </View>
         </>
     )

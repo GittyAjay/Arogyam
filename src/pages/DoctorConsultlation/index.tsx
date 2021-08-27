@@ -6,14 +6,15 @@ import Row from '../../components/Row'
 import Product from '../../components/ProductDetails';
 import { DEFAUTL_SPACE, ICON_SIZE } from '../../assets/sizes'
 import { doctor_categories } from '../../store/reducers/projectReducer'
-import { FlatList } from 'react-native-gesture-handler'
+import { FlatList } from 'react-native-gesture-handler';
+import HeaderContainer from '../../components/HeadingContainer';
 const index = (props: { navigation: { push: Function } }) => {
 
-    function renderFunction(value) {
+    function renderFunction(value: any) {
         if (value.index < 5)
             return (
                 <Row style={{ flexWrap: 'wrap' }}>
-                    <Product name={value.item.type} onClick={() => { }} style={{ margin: DEFAUTL_SPACE / 2 }}>
+                    <Product name={value.item.type} onClick={() => { props.navigation.push("SelectForm") }} style={{ margin: DEFAUTL_SPACE / 2 }}>
                         <Image source={value.item.url} style={{ margin: DEFAUTL_SPACE / 2 }} />
                     </Product>
                 </Row>
@@ -28,13 +29,13 @@ const index = (props: { navigation: { push: Function } }) => {
     return (
         <>
             <HomeMenu />
-            <Row style={{ justifyContent: 'space-between', margin: DEFAUTL_SPACE }}>
-                <Text style={styles.header}>Categories</Text>
-                <TouchableOpacity onPress={() => props.navigation.push("ProductPage", { type: "doctorCategories" })}>
-                    <Text style={styles.normal}>See All</Text>
-                </TouchableOpacity>
-            </Row>
             <View style={styles.container}>
+                <HeaderContainer style={styles.margin__bottom}>
+                    <Text style={styles.header}>Categories</Text>
+                    <TouchableOpacity onPress={() => props.navigation.push("ProductPage", { type: "doctorCategories" })}>
+                        <Text style={styles.normal}>See All</Text>
+                    </TouchableOpacity>
+                </HeaderContainer>
                 <FlatList numColumns={3} renderItem={renderFunction} data={doctor_categories} keyExtractor={(values, index) => index.toString()} />
             </View>
         </>

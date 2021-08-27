@@ -1,16 +1,17 @@
 import React from 'react'
 import { Text, TouchableOpacity, View, Image, FlatList } from 'react-native'
-import { BLACK, GREY, PRIMARY, SECONDARY, SHADE, WHITE } from '../../assets/colors'
-import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE, Dimension, FONT_MID, ICON_SIZE, INLINE_GAP } from '../../assets/sizes'
-import Ioicon from 'react-native-vector-icons/Ionicons'
+import { PRIMARY, SECONDARY, WHITE } from '../../assets/colors'
+import { DEFAUTL_SPACE, Dimension } from '../../assets/sizes'
 import { styles } from './style';
 import ProductDetailCard from '../../components/ProductDetails';
 import ProductCard from '../../components/Product';
 import { connect } from 'react-redux'
-import { useSelector } from 'react-redux'
 import { addToCart } from '../../store/actions/action';
 import AwesomeLoading from 'react-native-awesome-loading';
 import { prodcut_BRAND, product_TYPES, shopByCatagories, shopByBrand, quickConsultants, doctors, product, prodElements } from '../../store/reducers/projectReducer';
+import Priscription from '../../components/Priscription'
+import PosterCard from '../../components/PosterCard'
+import HeadingContainer from '../../components/HeadingContainer'
 const index = (props: { navigation: { push: Function }, products: product, cart: product, addToCart: Function }) => {
     const [progress_status, setProgress_status] = React.useState(false)
     const { WIDTH } = Dimension();
@@ -36,91 +37,64 @@ const index = (props: { navigation: { push: Function }, products: product, cart:
         return (
             <View style={styles.container}>
                 {/*Priscription */}
-                <View style={styles.priscription}>
-                    <View style={{ flexDirection: 'column' }}>
-                        <Text style={{ paddingBottom: DEFAUTL_SPACE, fontSize: FONT_MID, color: BLACK }}>Quick uplode your priscription</Text>
-                        <Text style={{ width: 250 }}>Pariatur in proident aliquip et magna. Elit eu magna magna reprehende </Text>
-                        <TouchableOpacity style={{ padding: DEFAUTL_SPACE, backgroundColor: PRIMARY, width: 100, borderRadius: BORDER_RADIUS, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', marginTop: INLINE_GAP }} onPress={upload_click}>
-                            <Ioicon name="md-camera" size={ICON_SIZE} color={WHITE} style={{ paddingRight: DEFAUTL_SPACE / 2 }} />
-                            <Text style={{ color: WHITE }}>UPLOAD</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <TouchableOpacity>
-                        <Ioicon name="ios-document-attach" size={ICON_SIZE + 20} />
-                    </TouchableOpacity>
-                </View>
+                <Priscription onPress={upload_click} />
                 {/* Health Checkup */}
-                <View style={styles.healthCheckup}>
-                    <Text style={{ fontSize: FONT_MID, paddingBottom: DEFAUTL_SPACE }}>Health checkup</Text>
-                    <View style={{ height: 150, borderRadius: BORDER_RADIUS, backgroundColor: WHITE }}>
-                    </View>
+                <View style={[styles.healthCheckup, styles.margin__bottom]}>
+                    <Text style={[styles.heading, styles.margin__bottom]}>Health checkup</Text>
+                    <PosterCard onPress={() => { }} style={styles.margin__bottom} />
                 </View>
                 {/* SHOP BY CATEGORIES */}
-                <View>
-                    <View style={styles.headingContainer}>
-                        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                            <Text style={styles.heading}>SHOP BY CATEGORIES</Text>
-                        </View>
-                        <TouchableOpacity onPress={() => { props.navigation.push("ProductPage", { type: "shopByCatagories" }) }}>
-                            <Text style={styles.seeAll}>SEE ALL</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.card_layout}>
-                        {items.item.shopByCatagories.map((values: product_TYPES, key: number) => {
-                            if (key < 6)
-                                return (
-                                    <View key={key} style={styles.card_layout}>
-                                        <ProductCard {...values} key={key} style={{ margin: 3 }} background={PRIMARY} onClick={categories_click} text={styles.simple_cardtextstyle}>
-                                            <Image source={values.url} />
-                                        </ProductCard>
-                                    </View>
-                                );
-                        })}
-                    </View>
+                <HeadingContainer style={styles.margin__bottom}>
+                    <Text style={styles.heading}>SHOP BY CATEGORIES</Text>
+                    <TouchableOpacity onPress={() => { props.navigation.push("ProductPage", { type: "shopByCatagories" }) }}>
+                        <Text style={styles.seeAll}>SEE ALL</Text>
+                    </TouchableOpacity>
+                </HeadingContainer>
+                <View style={[styles.card_layout, styles.margin__bottom]}>
+                    {items.item.shopByCatagories.map((values: product_TYPES, key: number) => {
+                        if (key < 6)
+                            return (
+                                <View key={key} style={styles.card_layout}>
+                                    <ProductCard {...values} key={key} style={{ margin: 3 }} background={PRIMARY} onClick={categories_click} text={styles.simple_cardtextstyle}>
+                                        <Image source={values.url} />
+                                    </ProductCard>
+                                </View>
+                            );
+                    })}
                 </View>
                 {/* SHOP BY BRAND */}
-                <View>
-                    <View style={styles.headingContainer}>
-                        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                            <Text style={styles.heading}>SHOP BY BRAND</Text>
-                        </View>
-                        <TouchableOpacity onPress={() => { props.navigation.push("ProductPage", { type: "shopByBrand" }) }}>
-                            <Text style={styles.seeAll}>SEE ALL</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.card_layout}>
-                        {items.item.shopByBrand.map(((values: prodcut_BRAND, key: number) => {
-                            if (key < 6)
-                                return (
-                                    <View key={key} style={styles.card_layout}>
-                                        <ProductCard key={key} {...values} background={SECONDARY} style={{ margin: 3 }} onClick={brand_click} text={styles.simple_cardtextstyle}>
-                                            <Image source={values.url} />
-                                        </ProductCard>
-                                    </View>
-                                );
-                        }))}
-                    </View>
+                <HeadingContainer style={styles.margin__bottom}>
+                    <Text style={styles.heading}>SHOP BY BRAND</Text>
+                    <TouchableOpacity onPress={() => { props.navigation.push("ProductPage", { type: "shopByBrand" }) }}>
+                        <Text style={styles.seeAll}>SEE ALL</Text>
+                    </TouchableOpacity>
+                </HeadingContainer>
+                <View style={[styles.card_layout, styles.margin__bottom]}>
+                    {items.item.shopByBrand.map(((values: prodcut_BRAND, key: number) => {
+                        if (key < 6)
+                            return (
+                                <View key={key} style={styles.card_layout}>
+                                    <ProductCard key={key} {...values} background={SECONDARY} style={{ margin: 3 }} onClick={brand_click} text={styles.simple_cardtextstyle}>
+                                        <Image source={values.url} />
+                                    </ProductCard>
+                                </View>
+                            );
+                    }))}
                 </View>
                 {/* Banner */}
-                <View style={{ height: 150, borderRadius: BORDER_RADIUS, backgroundColor: WHITE, marginVertical: INLINE_GAP, justifyContent: 'center', alignItems: 'center' }}>
-                    <Text>Banner</Text>
-                </View>
+                <PosterCard onPress={() => { }} style={styles.margin__bottom} />
                 {/* Health product */}
-                <View>
-                    <View style={styles.headingContainer}>
-                        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                            <Text style={styles.heading}>Health product</Text>
-                        </View>
-                        <TouchableOpacity onPress={() => { props.navigation.push("ProductPage", { type: "Products" }) }}>
-                            <Text style={styles.seeAll}>SEE ALL</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-                <View style={{ marginBottom: DEFAUTL_SPACE, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'flex-start' }}>
+                <HeadingContainer style={styles.margin__bottom}>
+                    <Text style={styles.heading}>Health product</Text>
+                    <TouchableOpacity onPress={() => { props.navigation.push("ProductPage", { type: "Products" }) }}>
+                        <Text style={styles.seeAll}>SEE ALL</Text>
+                    </TouchableOpacity>
+                </HeadingContainer>
+                <View style={[styles.card_layout, styles.margin__bottom]}>
                     {props.products.map((value: prodElements, key: number) => {
                         if (key < 4)
                             return (
-                                <ProductDetailCard isAddToCartButton={true} addToCartMethod={() => props.addToCart(value)} {...value} key={key} onClick={() => { props.navigation.push("ViewProduct") }} style={{ width: WIDTH / 2 - 25, margin: 2 }} text={{ color: WHITE }} >
+                                <ProductDetailCard isAddToCartButton={true} addToCartMethod={() => props.addToCart(value)} {...value} key={key} onClick={() => { props.navigation.push("ViewProduct") }} style={{ width: WIDTH / 2 - 25, margin: 2 }} text={{ color: WHITE }}>
                                     <Image source={value.url} style={{ alignSelf: 'center' }} />
                                 </ProductDetailCard>
                             );

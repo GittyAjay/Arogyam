@@ -1,18 +1,58 @@
-import { View, Text, StyleSheet, Image, Button, Pressable, TouchableOpacity } from 'react-native'
-import { PRIMARY, SECONDARY } from '../../assets/colors';
-import { Dimension, DEFAUTL_SPACE, INLINE_GAP, BUTTON_HEIGHT, FONT_MID, FONT_LARGE, FONT_GLARGE, ICON_SIZE } from '../../assets/sizes'
+import { StyleSheet } from 'react-native'
+import { PRIMARY } from '../../assets/colors';
+import { BUTTON_HEIGHT, FONT_LARGE } from '../../assets/sizes'
 export const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'white',
+    },
+    carosel: {
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    carosel__Container: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'white',
+        flex: 1,
+    },
+    carosel__item: {
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    slider__Indicator: {
+        flex: 0.1,
+        flexDirection: 'row'
+    },
     defaultTxt: {
-        fontFamily: 'Museo700-Regular',
+        fontFamily: 'Nunito-Regular'
     },
     title: {
         fontSize: FONT_LARGE,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontFamily: 'Nunito-Regular'
     },
     button: {
-        backgroundColor: PRIMARY
+        backgroundColor: PRIMARY,
+        height: BUTTON_HEIGHT
     },
     button_text: {
         color: 'white',
+        fontFamily: 'Nunito-Regular'
+    },
+    bottom: {
+        flex: 0.2,
+        justifyContent: 'center',
+        alignSelf: 'stretch'
+    },
+    bottom__Text: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        paddingVertical: 10,
+        fontFamily: 'Nunito-Regular'
     }
 })

@@ -4,7 +4,7 @@ import Row from '../Row'
 import { styles } from './style'
 import Aicon from 'react-native-vector-icons/AntDesign';
 import { GREY, RED } from '../../assets/colors';
-import { DEFAUTL_SPACE, FONT_LARGE, FONT_MID, ICON_SIZE } from '../../assets/sizes';
+import { DEFAUTL_SPACE, FONT_MID, ICON_SIZE } from '../../assets/sizes';
 interface props {
     rating_count: number,
     date: string,
@@ -22,12 +22,12 @@ const index: React.FC<props> = (props) => {
                     <Aicon name="star" color={RED} size={ICON_SIZE - 5} />
                     <Aicon name="star" color={RED} size={ICON_SIZE - 5} />
                     <Aicon name="star" color={RED} size={ICON_SIZE - 5} />
-                    <Text style={{ paddingLeft: DEFAUTL_SPACE, fontSize: FONT_MID }}>{props.rating_count}.0</Text>
+                    <Text style={[styles.description, { paddingLeft: DEFAUTL_SPACE }]}>{props.rating_count}.0</Text>
                 </Row>
-                <Text style={{ fontSize: FONT_MID, color: GREY }}>{props.date}</Text>
+                <Text style={[styles.description, { color: GREY }]}>{props.date}</Text>
             </Row>
-            <Text style={{ fontSize: FONT_MID }}>{props.name}</Text>
-            <Text style={{ fontSize: FONT_MID, color: GREY }}>{props.rating_description}</Text>
+            <Text style={styles.description}>{props.name}</Text>
+            <Text style={[styles.description, { color: GREY }]}>{props.rating_description}</Text>
         </View>
     )
 }

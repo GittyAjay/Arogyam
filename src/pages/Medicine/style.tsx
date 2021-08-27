@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'stretch',
+        justifyContent: 'space-between',
         padding: INLINE_GAP,
         backgroundColor: SHADE
     },
@@ -47,5 +48,8 @@ export const styles = StyleSheet.create({
         borderColor: SECONDARY,
         borderWidth: BORDER_WIDTH,
         padding: DEFAUTL_SPACE
+    },
+    margin__bottom: {
+        marginBottom: DEFAUTL_SPACE
     }
 })

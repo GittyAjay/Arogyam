@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, PermissionsAndroid, TextInput } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { GREY, WHITE } from '../../assets/colors';
-import { BORDER_WIDTH, DEFAUTL_SPACE, INLINE_GAP } from '../../assets/sizes';
+import { BORDER_WIDTH, DEFAUTL_SPACE, FONT_LARGE, FONT_SMALL, INLINE_GAP } from '../../assets/sizes';
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -15,21 +15,26 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingVertical: INLINE_GAP
     },
-    inputBox: {
-        marginBottom: DEFAUTL_SPACE,
-    },
-    btnStyle: {
-        marginVertical: INLINE_GAP
-    },
-    txtStyle: {
-
-    },
-    otp: {
+    otp__box: {
         width: 50,
         height: 50,
         borderColor: GREY,
         borderWidth: BORDER_WIDTH,
         textAlignVertical: 'top',
         marginRight: DEFAUTL_SPACE,
+    },
+    heading: {
+        fontSize: FONT_LARGE,
+        fontFamily: 'Nunito-Regular'
+    },
+    description: {
+        fontSize: FONT_SMALL,
+        fontFamily: 'Nunito-Regular'
+    },
+    bottom: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'stretch'
     }
 })

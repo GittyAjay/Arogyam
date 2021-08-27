@@ -19,7 +19,7 @@ import Evicon from 'react-native-vector-icons/EvilIcons';
 import Ficon from 'react-native-vector-icons/Feather';
 import Faicon from 'react-native-vector-icons/FontAwesome';
 import Ioicon from 'react-native-vector-icons/Ionicons';
-import { BLACK, GREY, PRIMARY, WHITE } from '../assets/colors';
+import { GREY, PRIMARY, WHITE } from '../assets/colors';
 import LabTest from '../pages/LabTest'
 import Medicine from '../pages/Medicine'
 import AllProducts from '../pages/AllProduct';
@@ -29,6 +29,7 @@ import AddLocation from '../pages/AddLocation';
 import ViewProduct from '../pages/ViewProduct';
 import DoctorConsultants from '../pages/DoctorConsultlation';
 import DoctorConsultantRedirect from '../pages/DoctorConsultantRedirect';
+import SelectForm from '../pages/SelectForm';
 import { BORDER_RADIUS, BORDER_RADIUS_CIRCULAR, DEFAUTL_SPACE, FONT_SMALL, ICON_SIZE, INLINE_GAP } from '../assets/sizes';
 import { useSelector } from 'react-redux'
 function TopNav() {
@@ -127,6 +128,7 @@ function App() {
             <Screen name="Cart" component={Cart} />
             <Screen name="AddLocation" component={AddLocation} />
             <Screen name="DoctorConsultant" component={DoctorConsultants} />
+            <Screen name="SelectForm" component={SelectForm} />
         </Navigator>
     );
 }

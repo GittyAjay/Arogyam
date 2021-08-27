@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
-import { SECONDARY, WHITE } from '../../assets/colors';
-import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE, FONT_MID, INLINE_GAP } from '../../assets/sizes';
+import { StyleSheet } from 'react-native'
+import { WHITE } from '../../assets/colors';
+import { DEFAUTL_SPACE, FONT_MID, INLINE_GAP } from '../../assets/sizes';
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -10,16 +10,13 @@ export const styles = StyleSheet.create({
         paddingHorizontal: INLINE_GAP,
         paddingVertical: DEFAUTL_SPACE
     },
-    form: {
-
+    heading: {
+        fontSize: FONT_MID,
+        fontFamily: 'Nunito-Regular',
+        alignSelf: 'center'
     },
     inputBox: {
         marginBottom: DEFAUTL_SPACE,
+        fontFamily: 'Nunito-Regular'
     },
-    btnStyle: {
-
-    },
-    txtStyle: {
-
-    }
 })

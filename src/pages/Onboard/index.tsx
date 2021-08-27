@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, Image } from 'react-native'
 import Carousel from 'react-native-snap-carousel';
-import Ficon from 'react-native-vector-icons/Fontisto';
 import { PRIMARY, SECONDARY } from '../../assets/colors';
 import { Dimension, DEFAUTL_SPACE, INLINE_GAP, BUTTON_HEIGHT } from '../../assets/sizes'
 import PrimaryButton from '../../components/PrimaryButton';
@@ -49,14 +48,8 @@ const Slider = (props: { navigation: { push: Function } }) => {
 
     const renderItem = ({ item, index }: { item: slide, index: number }) => {
         return (
-            <View style={{
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: 'white',
-                flex: 1,
-            }}>
-                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+            <View style={styles.carosel__Container}>
+                <View style={styles.carosel__item}>
                     <Image source={item.url} />
                     <Text style={[styles.title, { paddingTop: DEFAUTL_SPACE }]}>{item.title}</Text>
                     <Text style={{ paddingTop: DEFAUTL_SPACE / 2, width: WIDTH - 2 * INLINE_GAP }}>{item.descrption}</Text>
@@ -65,8 +58,8 @@ const Slider = (props: { navigation: { push: Function } }) => {
         )
     }
     return (
-        <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: 'white', }}>
-            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+        <View style={styles.container}>
+            <View style={styles.carosel}>
                 <Carousel
                     layout={'stack'}
                     data={Slides}
@@ -81,18 +74,18 @@ const Slider = (props: { navigation: { push: Function } }) => {
                     style={{ flex: 0.7 }}
                     onSnapToItem={index => setactiveCarosel(index)}
                     renderItem={renderItem} />
-                <View style={{ flex: 0.1, flexDirection: 'row' }}>
+                <View style={styles.slider__Indicator}>
                     {Slides.map((records, index) => {
                         return (
                             <Eicon key={index} name="dot-single" color={activeCarosel === index ? PRIMARY : "grey"} size={15} />
                         )
                     })}
                 </View>
-                <View style={{ flex: 0.2, justifyContent: 'center', alignSelf: 'stretch' }}>
+                <View style={styles.bottom}>
                     <PrimaryButton title="Get Started" onPress={() => {
                         props.navigation.push('Signup')
-                    }} button_style={[styles.button, { height: BUTTON_HEIGHT }]} text_style={styles.button_text} />
-                    <View style={{ flexDirection: 'row', justifyContent: 'center', paddingVertical: 10 }}>
+                    }} button_style={styles.button} text_style={styles.button_text} />
+                    <View style={styles.bottom__Text}>
                         <Text>Have an Account?</Text>
                         <TouchableOpacity style={{ paddingLeft: DEFAUTL_SPACE / 2 }} onPress={() => props.navigation.push('Login')}>
                             <Text style={{ color: SECONDARY }}>Login</Text>

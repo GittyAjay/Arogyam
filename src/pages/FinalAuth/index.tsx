@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, Image, TouchableOpacity, PermissionsAndroid, TextInput } from 'react-native'
-import { GREY, SECONDARY, WHITE } from '../../assets/colors';
-import { BORDER_WIDTH, DEFAUTL_SPACE, FONT_MID, INLINE_GAP } from '../../assets/sizes';
+import { Text, View, Image } from 'react-native'
+import { DEFAUTL_SPACE, FONT_MID, INLINE_GAP } from '../../assets/sizes';
 import PrimaryButton from '../../components/PrimaryButton';
 import { styles } from './style'
 const index = (props: { navigation: { push: Function, pop: Function } }) => {
@@ -17,16 +16,14 @@ const index = (props: { navigation: { push: Function, pop: Function } }) => {
         <View style={styles.container}>
             <View style={styles.form}>
                 <Image source={require('../../assets/images/congrats.png')} />
-                <Text style={{ fontWeight: 'bold', fontSize: FONT_MID, marginBottom: INLINE_GAP }}>congratulation</Text>
-                <Text style={{ marginBottom: DEFAUTL_SPACE }}>you have successful varified the account
+                <Text style={[styles.heading, { marginBottom: INLINE_GAP }]}>congratulation</Text>
+                <Text style={[styles.description, { marginBottom: DEFAUTL_SPACE }]}>you have successful varified the account
                     go to dashboard</Text>
             </View>
-            <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center', alignSelf: 'stretch' }}>
-                <PrimaryButton button_style={styles.btnStyle} text_style={styles.txtStyle} onPress={() => {
-                    console.log("sign up form data ===>", formData);
-                    props.navigation.push('Home')
-                }} title="Continue" />
-            </View>
+            <PrimaryButton onPress={() => {
+                console.log("sign up form data ===>", formData);
+                props.navigation.push('Home')
+            }} title="Continue" />
         </View>
     );
 }

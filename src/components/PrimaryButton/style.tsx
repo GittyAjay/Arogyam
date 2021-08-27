@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
     },
     text_style: {
         color: 'white',
-        fontWeight: 'bold',
-        fontSize: FONT_MID
+        fontSize: FONT_MID,
+        fontFamily: 'Nunito-Bold'
     }
 })
