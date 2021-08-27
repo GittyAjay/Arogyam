@@ -36,6 +36,20 @@ export const quickConsultants: Array<quickConsultantElements> = [
     { name: "Pregnancy", url: require('../../assets/images/shopbycategory2.png'), color: 'green', key: 16 },
     { name: "Weight loss", url: require('../../assets/images/shopbycategory3.png'), color: 'orange', key: 17 },
 ]
+export const doctor_categories: Array<doctor_TYPES> = [
+    { type: "Physician", url: require('../../assets/images/doctorCategories1.png') },
+    { type: "Pediatric", url: require('../../assets/images/doctorCategories1.png') },
+    { type: "Dentist", url: require('../../assets/images/doctorCategories1.png') },
+    { type: "Ent", url: require('../../assets/images/doctorCategories1.png') },
+    { type: "Ophthalmic", url: require('../../assets/images/doctorCategories1.png') },
+    { type: "Psycology", url: require('../../assets/images/doctorCategories1.png') },
+    { type: "Pulmonolog", url: require('../../assets/images/doctorCategories1.png') },
+    { type: "KGEH", url: require('../../assets/images/doctorCategories1.png') },
+    { type: "Cardiolog", url: require('../../assets/images/doctorCategories1.png') },
+    { type: "Gred", url: require('../../assets/images/doctorCategories1.png') },
+    { type: "Nephrolog", url: require('../../assets/images/doctorCategories1.png') },
+    { type: "Orthopedics", url: require('../../assets/images/doctorCategories1.png') },
+]
 
 export const doctors: doctor = [
     { name: "Dr. Avinash", type: { type: "Covid product", url: require('../../assets/images/shopbycategory1.png') }, desc: "Heart specilist", star: 1, url: require('../../assets/images/shopbycategory1.png'), id: 18 },

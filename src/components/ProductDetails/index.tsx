@@ -7,6 +7,7 @@ import { BORDER_RADIUS, BORDER_RADIUS_CIRCULAR, BORDER_WIDTH, DEFAUTL_SPACE, ICO
 import { styles } from './style'
 interface props {
     name: String,
+    type: String,
     style?: ViewStyle,
     text?: TextStyle,
     rating?: number,
@@ -19,13 +20,12 @@ interface props {
     onClick: () => void,
 }
 const index: React.FC<props> = (props) => {
-    const { WIDTH } = Dimension();
     return (
-        <TouchableOpacity style={[styles.card, props.style, { width: (WIDTH / 2) - 25 }]} onPress={props.onClick}>
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <TouchableOpacity style={[styles.card, props.style]} onPress={props.onClick}>
+            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                 {props.children}
             </View>
-            <Text style={{ fontSize: FONT_MID, alignSelf: 'center', marginBottom: DEFAUTL_SPACE / 2 }}>{props.name}</Text>
+            <Text style={{ fontSize: FONT_MID, alignSelf: 'center', textAlign: 'center', marginBottom: DEFAUTL_SPACE / 2, maxWidth: 150, minWidth: 100 }}>{props.name === undefined ? `${props.type}` : `${props.name}`}</Text>
             <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginBottom: DEFAUTL_SPACE / 2 }}>
                 {props.star && <View style={{ flexDirection: 'row', padding: DEFAUTL_SPACE / 2, backgroundColor: 'green', borderRadius: BORDER_RADIUS }}>
                     <Text style={[props.text, { paddingRight: DEFAUTL_SPACE / 2 }]}>{props.star}</Text>

@@ -9,8 +9,9 @@ export const styles = StyleSheet.create({
         alignItems: 'stretch',
         backgroundColor: WHITE,
         overflow: 'hidden',
-        elevation: 1
+        elevation: 1,
+        padding: DEFAUTL_SPACE
     },
-    addToCart: { flex: 1, alignItems: 'center', height: 30, borderWidth: BORDER_WIDTH, borderColor: SECONDARY, borderStyle: 'solid', margin: DEFAUTL_SPACE / 2, borderRadius: BORDER_RADIUS, justifyContent: 'center' },
+    addToCart: { alignItems: 'center', height: 30, borderWidth: BORDER_WIDTH, borderColor: SECONDARY, borderStyle: 'solid', borderRadius: BORDER_RADIUS, justifyContent: 'center' },
     prodElement: { flexDirection: 'row', justifyContent: 'space-around', marginBottom: DEFAUTL_SPACE / 2 }
 })

@@ -14,9 +14,6 @@ import { prodcut_BRAND, product_TYPES, shopByCatagories, shopByBrand, quickConsu
 const index = (props: { navigation: { push: Function }, products: product, cart: product, addToCart: Function }) => {
     const [progress_status, setProgress_status] = React.useState(false)
     const state = useSelector(state => state.project.progress_status)
-    React.useEffect(() => {
-        console.log(state);
-    }, []);
     const records = {
         shopByCatagories,
         shopByBrand,
@@ -119,7 +116,7 @@ const index = (props: { navigation: { push: Function }, products: product, cart:
                         </TouchableOpacity>
                     </View>
                 </View>
-                <View style={{ marginBottom: DEFAUTL_SPACE, flexDirection: 'row', flexWrap: 'wrap' }}>
+                <View style={{ marginBottom: DEFAUTL_SPACE, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'flex-start' }}>
                     {props.products.map((value: prodElements, key: number) => {
                         if (key < 4)
                             return (

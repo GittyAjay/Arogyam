@@ -4,13 +4,8 @@ import { BORDER_RADIUS, DEFAUTL_SPACE, INLINE_GAP } from '../../assets/sizes';
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'stretch',
-        backgroundColor: SHADE
-    },
-    flatList: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        backgroundColor: SHADE,
+        padding: INLINE_GAP
     },
     top: {
         backgroundColor: PRIMARY

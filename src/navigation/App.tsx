@@ -27,13 +27,16 @@ import Filter from '../pages/Filter';
 import Cart from '../pages/Cart';
 import AddLocation from '../pages/AddLocation';
 import ViewProduct from '../pages/ViewProduct';
-import { BORDER_RADIUS, BORDER_RADIUS_CIRCULAR, BORDER_WIDTH, DEFAUTL_SPACE, FONT_SMALL, ICON_SIZE, INLINE_GAP } from '../assets/sizes';
+import DoctorConsultants from '../pages/DoctorConsultlation';
+import DoctorConsultantRedirect from '../pages/DoctorConsultantRedirect';
+import { BORDER_RADIUS, BORDER_RADIUS_CIRCULAR, DEFAUTL_SPACE, FONT_SMALL, ICON_SIZE, INLINE_GAP } from '../assets/sizes';
 import { useSelector } from 'react-redux'
 function TopNav() {
     const { Navigator, Screen } = createMaterialTopTabNavigator();
     const Header = () => {
-        const navigation = useNavigation();
         const cartItems: Array<{}> = useSelector(selector => selector.project.cart)
+        const { Navigator, Screen } = createMaterialTopTabNavigator();
+        const navigation = useNavigation();
         function move_to_cart() {
             navigation.navigate("Cart")
         }
@@ -86,13 +89,13 @@ function TopNav() {
                 tabBarActiveTintColor: WHITE,
                 tabBarInactiveTintColor: GREY,
                 tabBarLabelStyle: { fontSize: FONT_SMALL, color: WHITE, fontWeight: 'bold' },
-                tabBarItemStyle: { width: 140 },
+                tabBarItemStyle: { width: 200 },
                 tabBarStyle: { backgroundColor: PRIMARY },
                 tabBarScrollEnabled: true,
                 tabBarIndicatorStyle: { backgroundColor: WHITE, marginVertical: DEFAUTL_SPACE / 2 }
             }}>
                 <Screen name="Medicines" component={Medicine} />
-                <Screen name="Lab Test" component={LabTest} />
+                <Screen name="Doctor consultlation" component={DoctorConsultantRedirect} />
                 <Screen name="Piils reminder" component={NeedHelp} />
                 <Screen name="Lab test" component={NeedHelp} />
             </Navigator>
@@ -123,6 +126,7 @@ function App() {
             <Screen name="Filter" component={Filter} />
             <Screen name="Cart" component={Cart} />
             <Screen name="AddLocation" component={AddLocation} />
+            <Screen name="DoctorConsultant" component={DoctorConsultants} />
         </Navigator>
     );
 }

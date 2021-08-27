@@ -8,9 +8,9 @@ import Product from '../../components/ProductDetails';
 import { styles } from './style'
 import { prodElements, product_TYPES, product } from '../../store/reducers/projectReducer';
 import { connect } from 'react-redux';
-import { shopByBrand, shopByCatagories } from '../../store/reducers/projectReducer';
+import { shopByBrand, shopByCatagories, doctor_categories } from '../../store/reducers/projectReducer';
+import Row from '../../components/Row';
 const index = (props: { navigation: { push: Function, pop: Function }, route: { params: { type: String } }, products: product }) => {
-    console.log(props.route.params.type);
     const [filtered_product, setFilteredProduct] = React.useState<Array<object>>();
     React.useEffect(() => {
         switch (props.route.params.type) {
@@ -19,6 +19,9 @@ const index = (props: { navigation: { push: Function, pop: Function }, route: { 
                 break;
             case "shopByBrand":
                 setFilteredProduct([...shopByBrand])
+                break;
+            case "doctorCategories":
+                setFilteredProduct([...doctor_categories])
                 break;
             case "Products":
                 setFilteredProduct([...props.products])
@@ -45,18 +48,18 @@ const index = (props: { navigation: { push: Function, pop: Function }, route: { 
     function renderFunction(items: { item: prodElements }) {
         console.log(items.item);
         return (
-            <Product {...items.item} key={items.item.id} onClick={() => { }} style={{ margin: DEFAUTL_SPACE / 2 }} text={{ color: WHITE }}>
-                <Image source={items.item.url} style={{ alignSelf: 'center' }} />
+            <Product {...items.item} onClick={() => { }} style={{ margin: 2 }} text={{ color: WHITE }}>
+                <Image source={items.item.url} style={{ alignSelf: 'center', maxWidth: 60, maxHeight: 60 }} />
             </Product>
         );
     }
     return (
-        <View style={styles.container}>
+        <>
             <TopNav />
-            <View style={styles.flatList}>
-                <FlatList numColumns={2} data={filtered_product} renderItem={renderFunction} keyExtractor={items => `${items.id}`} />
+            <View style={styles.container}>
+                <FlatList numColumns={props.route.params.type === "Products" ? 2 : 3} data={filtered_product} renderItem={renderFunction} keyExtractor={(items, index) => index.toString()} />
             </View>
-        </View>
+        </>
     )
 }
 function mapStateToProps(state: any) {
