@@ -189,7 +189,7 @@ const index = (props: { navigation: { push: Function, pop: Function }, products:
                         {props.products.map((values, key) => {
                             if (key < 6)
                                 return (
-                                    <ProductDetailCard {...values} key={key} onClick={() => { props.navigation.push("ViewProduct") }} style={{ margin: 2 }} text={{ color: WHITE }}>
+                                    <ProductDetailCard {...values} key={key} onClick={() => { props.navigation.push("ViewProduct") }} style={{ width: WIDTH / 2 - 25, margin: 2 }} text={{ color: WHITE }}>
                                         <Image source={values.url} />
                                     </ProductDetailCard>
                                 )

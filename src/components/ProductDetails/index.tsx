@@ -7,7 +7,7 @@ import { BORDER_RADIUS, BORDER_RADIUS_CIRCULAR, BORDER_WIDTH, DEFAUTL_SPACE, ICO
 import { styles } from './style'
 interface props {
     name: String,
-    type: String,
+    type?: String,
     style?: ViewStyle,
     text?: TextStyle,
     rating?: number,

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, TouchableOpacity, View, Image, FlatList } from 'react-native'
 import { BLACK, GREY, PRIMARY, SECONDARY, SHADE, WHITE } from '../../assets/colors'
-import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE, FONT_MID, ICON_SIZE, INLINE_GAP } from '../../assets/sizes'
+import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE, Dimension, FONT_MID, ICON_SIZE, INLINE_GAP } from '../../assets/sizes'
 import Ioicon from 'react-native-vector-icons/Ionicons'
 import { styles } from './style';
 import ProductDetailCard from '../../components/ProductDetails';
@@ -13,7 +13,7 @@ import AwesomeLoading from 'react-native-awesome-loading';
 import { prodcut_BRAND, product_TYPES, shopByCatagories, shopByBrand, quickConsultants, doctors, product, prodElements } from '../../store/reducers/projectReducer';
 const index = (props: { navigation: { push: Function }, products: product, cart: product, addToCart: Function }) => {
     const [progress_status, setProgress_status] = React.useState(false)
-    const state = useSelector(state => state.project.progress_status)
+    const { WIDTH } = Dimension();
     const records = {
         shopByCatagories,
         shopByBrand,
@@ -120,7 +120,7 @@ const index = (props: { navigation: { push: Function }, products: product, cart:
                     {props.products.map((value: prodElements, key: number) => {
                         if (key < 4)
                             return (
-                                <ProductDetailCard isAddToCartButton={true} addToCartMethod={() => props.addToCart(value)} {...value} key={key} onClick={() => { props.navigation.push("ViewProduct") }} style={{ margin: 2 }} text={{ color: WHITE }} >
+                                <ProductDetailCard isAddToCartButton={true} addToCartMethod={() => props.addToCart(value)} {...value} key={key} onClick={() => { props.navigation.push("ViewProduct") }} style={{ width: WIDTH / 2 - 25, margin: 2 }} text={{ color: WHITE }} >
                                     <Image source={value.url} style={{ alignSelf: 'center' }} />
                                 </ProductDetailCard>
                             );

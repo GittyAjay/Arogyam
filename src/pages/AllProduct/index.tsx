@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE, FONT_SMALL, ICON_SIZE, INLINE_GAP } from '../../assets/sizes';
+import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE, Dimension, FONT_SMALL, ICON_SIZE, INLINE_GAP } from '../../assets/sizes';
 import { TextInput, TouchableOpacity, View, Image, ScrollView, ImageSourcePropType, FlatList } from 'react-native'
 import { BLACK, GREY, PRIMARY, SECONDARY, SHADE, WHITE } from '../../assets/colors';
 import Ioicon from 'react-native-vector-icons/Ionicons';
@@ -12,6 +12,7 @@ import { shopByBrand, shopByCatagories, doctor_categories } from '../../store/re
 import Row from '../../components/Row';
 const index = (props: { navigation: { push: Function, pop: Function }, route: { params: { type: String } }, products: product }) => {
     const [filtered_product, setFilteredProduct] = React.useState<Array<object>>();
+    const { WIDTH } = Dimension();
     React.useEffect(() => {
         switch (props.route.params.type) {
             case "shopByCatagories":
@@ -48,7 +49,7 @@ const index = (props: { navigation: { push: Function, pop: Function }, route: { 
     function renderFunction(items: { item: prodElements }) {
         console.log(items.item);
         return (
-            <Product {...items.item} onClick={() => { }} style={{ margin: 2 }} text={{ color: WHITE }}>
+            <Product {...items.item} onClick={() => { }} style={{ margin: 2, width: props.route.params.type === "Products" ? WIDTH / 2 - 20 : WIDTH / 3 - 20 }} text={{ color: WHITE }}>
                 <Image source={items.item.url} style={{ alignSelf: 'center', maxWidth: 60, maxHeight: 60 }} />
             </Product>
         );
