@@ -31,6 +31,7 @@ import DoctorConsultants from '../pages/DoctorConsultlation';
 import DoctorConsultantRedirect from '../pages/DoctorConsultantRedirect';
 import SelectForm from '../pages/SelectForm';
 import DoctorProfile from '../pages/DoctorProfile';
+import AppointmentCheckout from '../pages/AppointmentCheckout';
 import { BORDER_RADIUS, BORDER_RADIUS_CIRCULAR, DEFAUTL_SPACE, FONT_SMALL, ICON_SIZE, INLINE_GAP } from '../assets/sizes';
 import { useSelector } from 'react-redux'
 function TopNav() {
@@ -131,6 +132,7 @@ function App() {
             <Screen name="DoctorConsultant" component={DoctorConsultants} />
             <Screen name="SelectForm" component={SelectForm} />
             <Screen name="DoctorProfile" component={DoctorProfile} />
+            <Screen name="AppointmentCheckout" component={AppointmentCheckout} />
         </Navigator>
     );
 }

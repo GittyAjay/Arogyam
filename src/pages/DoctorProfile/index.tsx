@@ -132,7 +132,7 @@ const index = (props: { navigation: { push: Function } }) => {
                             })}
                         </ScrollView>
                     </HeadingContainer>
-                    <PrimaryButton title="Book an appointment" onPress={() => { }} />
+                    <PrimaryButton title="Book an appointment" onPress={() => { props.navigation.push('AppointmentCheckout') }} />
                 </Column>
             </View>
         )
