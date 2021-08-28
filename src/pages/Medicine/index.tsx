@@ -94,7 +94,7 @@ const index = (props: { navigation: { push: Function }, products: product, cart:
                     {props.products.map((value: prodElements, key: number) => {
                         if (key < 4)
                             return (
-                                <ProductDetailCard isAddToCartButton={true} addToCartMethod={() => props.addToCart(value)} {...value} key={key} onClick={() => { props.navigation.push("ViewProduct") }} style={{ width: WIDTH / 2 - 25, margin: 2 }} text={{ color: WHITE }}>
+                                <ProductDetailCard isAddToCartButton={true} addToCartMethod={() => props.addToCart(value)} {...value} key={key} onClick={() => { props.navigation.push("ViewProduct") }} style={{ width: WIDTH / 2 - 20, margin: 3 }} text={{ color: WHITE }}>
                                     <Image source={value.url} style={{ alignSelf: 'center' }} />
                                 </ProductDetailCard>
                             );

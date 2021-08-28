@@ -2,10 +2,6 @@ import React from 'react'
 import { StyleSheet, Text, TextInput, TouchableOpacity, View, Image, ScrollView } from 'react-native'
 import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE, FONT_MID, FONT_SMALL, ICON_SIZE, INLINE_GAP } from '../../assets/sizes';
 import Eicon from 'react-native-vector-icons/Entypo';
-import Evicon from 'react-native-vector-icons/EvilIcons';
-import Ficon from 'react-native-vector-icons/Feather';
-import Faicon from 'react-native-vector-icons/FontAwesome';
-import Ioicon from 'react-native-vector-icons/Ionicons';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { BLACK, GREY, PRIMARY, SHADE, WHITE } from '../../assets/colors';
 import { styles } from "./style";

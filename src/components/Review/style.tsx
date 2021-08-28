@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
-import { SHADE, WHITE } from '../../assets/colors'
-import { FONT_MID, INLINE_GAP } from '../../assets/sizes'
+import { LIGHT_SHADE, SHADE, WHITE } from '../../assets/colors'
+import { FONT_MID, FONT_SMALL, INLINE_GAP } from '../../assets/sizes'
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -9,14 +9,14 @@ export const styles = StyleSheet.create({
         alignItems: 'stretch',
         padding: INLINE_GAP,
         elevation: 1,
-        backgroundColor: SHADE
+        backgroundColor: LIGHT_SHADE
     },
     heading: {
         fontSize: FONT_MID,
         fontFamily: 'Nunito-Bold'
     },
     description: {
-        fontSize: FONT_MID,
+        fontSize: FONT_SMALL,
         fontFamily: 'Nunito-Regular'
     }
 })

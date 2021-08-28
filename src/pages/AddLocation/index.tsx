@@ -14,13 +14,14 @@ import ModeForm from '../../components/ModelForm';
 import InputBox from '../../components/InputBox';
 import { Payment } from '../../components/Payment'
 import { Alert, Image } from 'react-native';
+import { PRIMARY, WHITE } from '../../assets/colors';
 const index = (props: { navigation: { push: Function, pop: Function } }) => {
     const [isActive, setActive] = React.useState(false);
     const modelFormRef = React.useRef();
     return (
         <>
-            <Header onBackPress={() => props.navigation.pop()} onClick={() => { }} title="Select Address" >
-                <Aicon name="search1" size={ICON_SIZE} />
+            <Header onBackPress={() => props.navigation.pop()} onClick={() => { }} title="Select Address" style={{ backgroundColor: PRIMARY }} text={{ color: WHITE }} iconColor={WHITE}>
+                <Aicon name="search1" size={ICON_SIZE} color={WHITE} />
             </Header>
             <ScrollView>
                 <View style={styles.container}>

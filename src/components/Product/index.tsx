@@ -14,7 +14,7 @@ const index: React.FC<props> = (props) => {
     const { WIDTH } = Dimension();
     return (
         <TouchableOpacity style={[styles.container]} onPress={props.onClick}>
-            <View style={[styles.card, props.style, { width: WIDTH / 2 - 30, backgroundColor: `${props.background}` }]}>
+            <View style={[styles.card, props.style, { width: WIDTH / 2 - 20, backgroundColor: `${props.background}` }]}>
                 {props.children}
             </View>
             <Text style={[styles.heading, { alignSelf: 'center', marginBottom: DEFAUTL_SPACE / 2 }]}>{props.name}</Text>

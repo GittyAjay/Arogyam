@@ -7,18 +7,8 @@ export const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'stretch',
         justifyContent: 'space-between',
-        padding: INLINE_GAP,
+        padding: DEFAUTL_SPACE,
         backgroundColor: SHADE
-    },
-    priscription: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        padding: INLINE_GAP,
-        borderWidth: BORDER_WIDTH,
-        borderRadius: BORDER_RADIUS,
-        borderColor: GREY,
-        overflow: 'hidden',
-        marginBottom: INLINE_GAP
     },
     healthCheckup: {
         marginBottom: INLINE_GAP

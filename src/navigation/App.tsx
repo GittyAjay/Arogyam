@@ -152,18 +152,18 @@ function SidenavDoctor() {
                         </HeaderContainer>
                     </Col>
                     <Col>
-                        <DrawerItem label="My Order" icon={() => <Foicon name="shopping-cart" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
-                        <DrawerItem label="Lab Test" icon={() => <Fa5icon name="hand-point-right" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
-                        <DrawerItem label="My Consultation" icon={() => <Micon name="perm-contact-cal" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('ConsultantTopNav') }} />
-                        <DrawerItem label="Pills Remainder" icon={() => <Ioicon name="notifications" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
-                        <DrawerItem label="My prescription" icon={() => <Mcicon name="clipboard-list-outline" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
-                        <DrawerItem label="Manage address" icon={() => <Fa5icon name="location-arrow" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
-                        <DrawerItem label="Need help?" icon={() => <Fa5icon name="thumbs-up" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
-                        <DrawerItem label="About us" icon={() => <Mcicon name="face-profile" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
-                        <DrawerItem label="Privacy Policy" icon={() => <Micon name="policy" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
-                        <DrawerItem label="Terms And Conditions" icon={() => <Mcicon name="folder-multiple-outline" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
+                        <DrawerItem label="My Order" labelStyle={[styles.desc, { fontFamily: 'Nunito-Bold' }]} icon={() => <Foicon name="shopping-cart" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
+                        <DrawerItem label="Lab Test" labelStyle={[styles.desc, { fontFamily: 'Nunito-Bold' }]} icon={() => <Fa5icon name="hand-point-right" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
+                        <DrawerItem label="My Consultation" labelStyle={[styles.desc, { fontFamily: 'Nunito-Bold' }]} icon={() => <Micon name="perm-contact-cal" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('ConsultantTopNav') }} />
+                        <DrawerItem label="Pills Remainder" labelStyle={[styles.desc, { fontFamily: 'Nunito-Bold' }]} icon={() => <Ioicon name="notifications" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
+                        <DrawerItem label="My prescription" labelStyle={[styles.desc, { fontFamily: 'Nunito-Bold' }]} icon={() => <Mcicon name="clipboard-list-outline" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
+                        <DrawerItem label="Manage address" labelStyle={[styles.desc, { fontFamily: 'Nunito-Bold' }]} icon={() => <Fa5icon name="location-arrow" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
+                        <DrawerItem label="Need help?" labelStyle={[styles.desc, { fontFamily: 'Nunito-Bold' }]} icon={() => <Fa5icon name="thumbs-up" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
+                        <DrawerItem label="About us" labelStyle={[styles.desc, { fontFamily: 'Nunito-Bold' }]} icon={() => <Mcicon name="face-profile" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
+                        <DrawerItem label="Privacy Policy" labelStyle={[styles.desc, { fontFamily: 'Nunito-Bold' }]} icon={() => <Micon name="policy" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
+                        <DrawerItem label="Terms And Conditions" labelStyle={[styles.desc, { fontFamily: 'Nunito-Bold' }]} icon={() => <Mcicon name="folder-multiple-outline" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
                         <Hr />
-                        <DrawerItem label="Setting" icon={() => <Ioicon name="md-settings-sharp" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { }} />
+                        <DrawerItem label="Setting" labelStyle={[styles.desc, { fontFamily: 'Nunito-Bold' }]} icon={() => <Ioicon name="md-settings-sharp" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { }} />
                         <PrimaryButton title="Sign out" onPress={() => { }} button_style={{ borderWidth: BORDER_WIDTH, borderColor: PRIMARY, backgroundColor: WHITE, margin: DEFAUTL_SPACE }} text_style={{ color: PRIMARY }} />
                     </Col>
 

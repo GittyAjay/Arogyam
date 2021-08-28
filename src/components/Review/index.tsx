@@ -15,7 +15,7 @@ interface props {
 const index: React.FC<props> = (props) => {
     return (
         <View style={[styles.container, props.style]}>
-            <Row style={{ justifyContent: 'space-between', alignItems: 'center' }}>
+            <Row style={{ justifyContent: 'space-between', alignItems: 'center', paddingBottom: DEFAUTL_SPACE / 2 }}>
                 <Row style={{ alignItems: 'center' }}>
                     <Aicon name="star" color={RED} size={ICON_SIZE - 5} />
                     <Aicon name="star" color={RED} size={ICON_SIZE - 5} />
@@ -24,9 +24,9 @@ const index: React.FC<props> = (props) => {
                     <Aicon name="star" color={RED} size={ICON_SIZE - 5} />
                     <Text style={[styles.description, { paddingLeft: DEFAUTL_SPACE }]}>{props.rating_count}.0</Text>
                 </Row>
-                <Text style={[styles.description, { color: GREY }]}>{props.date}</Text>
+                <Text style={[styles.description, { color: GREY, paddingBottom: DEFAUTL_SPACE / 2 }]}>{props.date}</Text>
             </Row>
-            <Text style={styles.description}>{props.name}</Text>
+            <Text style={[styles.description, { paddingBottom: DEFAUTL_SPACE / 2 }]}>{props.name}</Text>
             <Text style={[styles.description, { color: GREY }]}>{props.rating_description}</Text>
         </View>
     )

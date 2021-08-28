@@ -102,7 +102,7 @@ const index = (props: { navigation: { push: Function, pop: Function }, products:
                     </Row>
                     <PrimaryButton button_style={{ width: 200 }} onPress={() => { }} text_style={{}} title="Cachback 10%" />
                 </View>
-                <Hr style={{ marginHorizontal: INLINE_GAP }} />
+                <Hr style={{ marginHorizontal: DEFAUTL_SPACE }} />
                 <View style={styles.description}>
                     <Row style={{ justifyContent: 'space-between', alignItems: 'center', marginBottom: DEFAUTL_SPACE }}>
                         <Text style={styles.heading}>Product Information:</Text>
@@ -183,14 +183,14 @@ const index = (props: { navigation: { push: Function, pop: Function }, products:
                     <Row style={{ justifyContent: 'space-between', alignItems: 'center', marginVertical: DEFAUTL_SPACE }}>
                         <Text style={styles.text__description}>Suggestions Products</Text>
                         <TouchableOpacity onPress={() => { props.navigation.push("ProductPage", { type: "Products" }) }}>
-                            <Text style={styles.text__description}>View all</Text>
+                            <Text style={[styles.text__description, { fontFamily: 'Nunito-Bold' }]}>View all</Text>
                         </TouchableOpacity>
                     </Row>
                     <Row style={{ flexWrap: 'wrap' }}>
                         {props.products.map((values, key) => {
                             if (key < 6)
                                 return (
-                                    <ProductDetailCard {...values} key={key} onClick={() => { props.navigation.push("ViewProduct") }} style={{ width: WIDTH / 2 - 25, margin: 2 }} text={{ color: WHITE }}>
+                                    <ProductDetailCard {...values} key={key} onClick={() => { props.navigation.push("ViewProduct") }} style={{ width: WIDTH / 2 - 20, margin: 3 }} text={{ color: WHITE }}>
                                         <Image source={values.url} />
                                     </ProductDetailCard>
                                 )

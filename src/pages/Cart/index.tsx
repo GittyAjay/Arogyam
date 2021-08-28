@@ -69,8 +69,8 @@ const index = (props: { navigation: { push: Function, pop: Function }, increment
     }
     return (
         <>
-            <Header onClick={() => { }} onBackPress={back_btn} title="Cart" >
-                {props.cartItems.length != 0 && <TouchableOpacity><Aicon name="search1" size={ICON_SIZE} /></TouchableOpacity>}
+            <Header onClick={() => { }} onBackPress={back_btn} title="Cart" style={{ backgroundColor: PRIMARY }} iconColor={WHITE} text={{ color: WHITE }}>
+                {props.cartItems.length != 0 && <TouchableOpacity><Aicon name="search1" size={ICON_SIZE} color={WHITE} /></TouchableOpacity>}
             </Header>
             {props.cartItems.length === 0 && <NotFound />}
             {props.cartItems.length != 0 && <Fragment>
