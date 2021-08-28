@@ -56,6 +56,23 @@ export const doctors: doctor = [
     { name: "Dr. Sweta", type: { type: "Covid product", url: require('../../assets/images/shopbycategory1.png') }, desc: "Depression specilist", star: 1, url: require('../../assets/images/shopbycategory2.png'), id: 19 },
     { name: "Dr Anupam", type: { type: "Covid product", url: require('../../assets/images/shopbycategory1.png') }, desc: "Nurology specilist", star: 1, url: require('../../assets/images/shopbycategory3.png'), id: 20 },
 ]
+export type apointments_type = {
+    name: String,
+    type: String,
+    desc: String,
+    experience: number,
+    date: String,
+    time: String
+}
+export const appoitments: Array<apointments_type> = [
+    { name: "Ajay", type: "Physician", desc: "mst doctor", date: "10/11/2020", time: "12:20:11", experience: 10 },
+    { name: "Sanjay", type: "Physician", desc: "mst doctor", date: "10/11/2020", time: "12:20:11", experience: 10 },
+    { name: "Dhananjay", type: "Physician", desc: "mst doctor", date: "10/11/2020", time: "12:20:11", experience: 10 },
+    { name: "Suraj", type: "Physician", desc: "mst doctor", date: "10/11/2020", time: "12:20:11", experience: 10 },
+    { name: "Dhiraj", type: "Physician", desc: "mst doctor", date: "10/11/2020", time: "12:20:11", experience: 10 },
+    { name: "Rahul", type: "Physician", desc: "mst doctor", date: "10/11/2020", time: "12:20:11", experience: 10 },
+    { name: "Shyamal", type: "Physician", desc: "mst doctor", date: "10/11/2020", time: "12:20:11", experience: 10 },
+]
 
 export type initialStateType = {
     products: product,
@@ -68,6 +85,7 @@ type action_type = {
     type: String,
     payload: object
 }
+
 const initialState: initialStateType = {
     products: [
         { name: "Women nutrition", type: { name: "Covid", url: require("../../assets/images/categories1.png"), id: 1 }, brand: { name: "Dabar", url: require("../../assets/images/categories1.png"), id: 1 }, price: 100, url: require("../../assets/images/categories1.png"), id: 0, count: 1, discount: 15, mrp: 500, rating: 5, star: 5 },

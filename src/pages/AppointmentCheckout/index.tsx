@@ -7,6 +7,7 @@ import { GREY, WHITE } from '../../assets/colors';
 import Col from '../../components/Column';
 import Header from '../../components/Header';
 import { FONT_MID } from '../../assets/sizes';
+import { Payment } from '../../components/Payment';
 
 interface props {
     onClick: () => void
@@ -59,10 +60,10 @@ const index: React.FC<props> = (props) => {
                     <Text style={styles.heading}>Reach out to us</Text>
                     <PrimaryButton title="Need Help" onPress={() => { }} button_style={[styles.padding, styles.grey_bck, styles.margin__top]} text_style={{ color: GREY }} />
                     <PrimaryButton title="Cancel" onPress={() => { }} button_style={[styles.padding, styles.grey_bck, styles.margin__top]} text_style={{ color: GREY }} />
-                    <PrimaryButton title="Pay RS 5000" onPress={() => { }} button_style={[styles.padding, styles.margin__top]} />
+                    <PrimaryButton title="Pay RS 5000" onPress={() => { Payment(5000) }} button_style={[styles.padding, styles.margin__top]} />
                 </Col>
-
             </View>
+
         </>
     )
 }
