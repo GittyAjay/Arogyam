@@ -1,12 +1,12 @@
 import React from 'react'
-import { Text, View } from 'react-native'
-import { styles } from './style'
+import { View, Text } from 'react-native'
 import Header from '../../components/Header';
 import { PRIMARY, WHITE } from '../../assets/colors';
 import AddPatients from '../../components/AddPatients';
 import AddDiases from '../../components/AddDieases';
 import Addspeacialist from '../../components/Addspeacialist';
 import AddPhysian from '../../components/AddPhysian';
+import { styles } from './style';
 const index = (props: { navigation: { pop: Function } }) => {
     const [step, setStep] = React.useState(0);
     const HeaderValues = ['Select patient', 'Select disease', 'Select specialist', 'Add Physician']
@@ -26,7 +26,9 @@ const index = (props: { navigation: { pop: Function } }) => {
     }
     return (
         <>
-            <Header onBackPress={() => { step > 0 ? setStep(step => step - 1) : props.navigation.pop() }} title={HeaderValues[step]} onClick={() => { }} style={{ backgroundColor: PRIMARY }} text={{ color: WHITE }} iconColor={WHITE} />
+            <Header onBackPress={() => { step > 0 ? setStep(step => step - 1) : props.navigation.pop() }} title={HeaderValues[step]} onClick={() => { }} style={{ backgroundColor: PRIMARY }} text={{ color: WHITE }} iconColor={WHITE}>
+                <Text style={styles.description}>Filter</Text>
+            </Header>
             <View>
                 {ReturnForm(step)}
             </View>
