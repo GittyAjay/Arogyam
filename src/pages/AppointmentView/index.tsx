@@ -13,7 +13,6 @@ import AvtarSimple from '../../components/AvtarSimpleCard';
 const index = (props: { navigation: { push: Function } }) => {
     return (
         <>
-            <Header title="Appointment View" onBackPress={() => { }} onClick={() => { }} style={styles.header_bck} text={styles.header_txt} iconColor={WHITE} />
             <View>
                 <View style={[styles.doctors, styles.padding]}>
                     <View style={[styles.padding, styles.align_center, styles.button__border, { backgroundColor: PRIMARY }]}>

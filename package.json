@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@react-native-community/datetimepicker": "^3.5.2",
+    "@react-navigation/drawer": "^6.1.4",
     "@react-navigation/material-top-tabs": "^6.0.2",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.0.5",
@@ -35,6 +36,7 @@
     "react-native-pdf-thumbnail": "^1.0.2",
     "react-native-permissions": "^3.0.5",
     "react-native-razorpay": "^2.2.7",
+    "react-native-reanimated": "^2.0.0",
     "react-native-safe-area-context": "^3.2.0",
     "react-native-screens": "^3.5.0",
     "react-native-size-matters": "^0.4.0",

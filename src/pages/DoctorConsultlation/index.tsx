@@ -8,8 +8,7 @@ import { DEFAUTL_SPACE, ICON_SIZE } from '../../assets/sizes'
 import { doctor_categories } from '../../store/reducers/projectReducer'
 import { FlatList } from 'react-native-gesture-handler';
 import HeaderContainer from '../../components/HeadingContainer';
-const index = (props: { navigation: { push: Function } }) => {
-
+const index = (props: { navigation: { push: Function, toggleDrawer: Function } }) => {
     function renderFunction(value: any) {
         if (value.index < 5)
             return (
@@ -26,9 +25,12 @@ const index = (props: { navigation: { push: Function } }) => {
                 </Product>
             )
     }
+    function toggleDrawer() {
+        props.navigation.toggleDrawer();
+    }
     return (
         <>
-            <HomeMenu />
+            <HomeMenu menuPress={toggleDrawer} />
             <View style={styles.container}>
                 <HeaderContainer style={styles.margin__bottom}>
                     <Text style={styles.header}>Categories</Text>

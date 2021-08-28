@@ -13,7 +13,7 @@ import Faicon5 from 'react-native-vector-icons/FontAwesome5';
 const index = (props: { navigation: { push: Function } }) => {
     function render(values: any) {
         return (
-            <Col>
+            <Col style={{ marginHorizontal: DEFAUTL_SPACE, marginTop: DEFAUTL_SPACE }}>
                 <AppointmentCard textcolor={PRIMARY} onPress={() => { }} style={{ marginBottom: DEFAUTL_SPACE / 2 }} {...values.item} >
                     <Faicon5 name="edit" size={ICON_SIZE - 5} color={WHITE} />
                 </AppointmentCard>
@@ -22,7 +22,6 @@ const index = (props: { navigation: { push: Function } }) => {
     }
     return (
         <>
-            <Header title="Appointment History" onBackPress={() => { }} onClick={() => { }} style={styles.header_bck} text={styles.header_txt} iconColor={WHITE} />
             <FlatList renderItem={render} data={appoitments} keyExtractor={(value, id) => id.toString()} />
         </>
     )

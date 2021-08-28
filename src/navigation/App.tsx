@@ -2,6 +2,7 @@ import * as React from 'react';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import Splash from '../pages/Splash';
 import OnboardScreen from '../pages/Onboard';
 import Login from '../pages/Login';
@@ -13,13 +14,17 @@ import NeedHelp from '../pages/NeedHelp';
 import SelectLocation from '../pages/SelectLocation';
 import Prescription from '../pages/Prescription';
 import Order from '../pages/Order';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import Eicon from 'react-native-vector-icons/Entypo';
 import Evicon from 'react-native-vector-icons/EvilIcons';
 import Ficon from 'react-native-vector-icons/Feather';
 import Faicon from 'react-native-vector-icons/FontAwesome';
 import Ioicon from 'react-native-vector-icons/Ionicons';
-import { GREY, PRIMARY, WHITE } from '../assets/colors';
+import Foicon from 'react-native-vector-icons/Foundation';
+import Fa5icon from 'react-native-vector-icons/FontAwesome5';
+import Micon from 'react-native-vector-icons/MaterialIcons';
+import Mcicon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { BLACK, GREY, PRIMARY, WHITE } from '../assets/colors';
 import LabTest from '../pages/LabTest'
 import Medicine from '../pages/Medicine'
 import AllProducts from '../pages/AllProduct';
@@ -34,8 +39,14 @@ import DoctorProfile from '../pages/DoctorProfile';
 import AppointmentCheckout from '../pages/AppointmentCheckout';
 import AppointmentHistory from '../pages/AppointmentHistory';
 import AppointmentView from '../pages/AppointmentView';
-import { BORDER_RADIUS, BORDER_RADIUS_CIRCULAR, DEFAUTL_SPACE, FONT_SMALL, ICON_SIZE, INLINE_GAP } from '../assets/sizes';
+import Col from '../components/Column';
+import HeaderContainer from '../components/HeadingContainer';
+import Hr from '../components/HorizentalLine';
+import PrimaryButton from '../components/PrimaryButton';
+import Header from '../components/Header';
+import { BORDER_RADIUS, BORDER_RADIUS_CIRCULAR, BORDER_WIDTH, DEFAUTL_SPACE, FONT_MID, FONT_SMALL, ICON_SIZE, INLINE_GAP } from '../assets/sizes';
 import { useSelector } from 'react-redux'
+import Row from '../components/Row';
 function TopNav() {
     const { Navigator, Screen } = createMaterialTopTabNavigator();
     const Header = () => {
@@ -107,14 +118,73 @@ function TopNav() {
         </>
     );
 }
+function Consultant_TopNav() {
+    const { Navigator, Screen } = createMaterialTopTabNavigator();
+    return (
+        <>
+            <Header onBackPress={() => { }} onClick={() => { }} title="Consultant Form" style={{ backgroundColor: PRIMARY }} text={{ color: WHITE }} iconColor={WHITE} />
+            <Navigator screenOptions={{
+                tabBarActiveTintColor: WHITE,
+                tabBarInactiveTintColor: GREY,
+                tabBarLabelStyle: { fontSize: FONT_SMALL, color: WHITE, fontWeight: 'bold' },
+                tabBarItemStyle: { width: 200 },
+                tabBarStyle: { backgroundColor: PRIMARY },
+                tabBarScrollEnabled: true,
+                tabBarIndicatorStyle: { backgroundColor: WHITE, marginVertical: DEFAUTL_SPACE / 2 }
+            }}>
+                <Screen name="Appointment History" component={AppointmentHistory} />
+                <Screen name="View Appointment" component={AppointmentView} />
+            </Navigator>
+        </>
+    );
+}
+function SidenavDoctor() {
+    const Drawer = createDrawerNavigator();
+    const drawerContent = (props: { navigation: { navigate: Function } }) => {
+        return (
+            <View style={styles.drawer}>
+                <DrawerContentScrollView>
+                    <Col style={{ backgroundColor: PRIMARY, padding: INLINE_GAP }}>
+                        <Text style={[styles.header, { color: WHITE }]}>Hii Ajay</Text>
+                        <HeaderContainer>
+                            <Text style={[styles.desc, { color: WHITE }]}>Rightmajay@gmail.com</Text>
+                            <Text style={[styles.desc, { fontFamily: 'Nunito-Bold', color: WHITE }]}>Edit</Text>
+                        </HeaderContainer>
+                    </Col>
+                    <Col>
+                        <DrawerItem label="My Order" icon={() => <Foicon name="shopping-cart" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
+                        <DrawerItem label="Lab Test" icon={() => <Fa5icon name="hand-point-right" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
+                        <DrawerItem label="My Consultation" icon={() => <Micon name="perm-contact-cal" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('ConsultantTopNav') }} />
+                        <DrawerItem label="Pills Remainder" icon={() => <Ioicon name="notifications" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
+                        <DrawerItem label="My prescription" icon={() => <Mcicon name="clipboard-list-outline" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
+                        <DrawerItem label="Manage address" icon={() => <Fa5icon name="location-arrow" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
+                        <DrawerItem label="Need help?" icon={() => <Fa5icon name="thumbs-up" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
+                        <DrawerItem label="About us" icon={() => <Mcicon name="face-profile" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
+                        <DrawerItem label="Privacy Policy" icon={() => <Micon name="policy" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
+                        <DrawerItem label="Terms And Conditions" icon={() => <Mcicon name="folder-multiple-outline" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { props.navigation.navigate('AppointmentView') }} />
+                        <Hr />
+                        <DrawerItem label="Setting" icon={() => <Ioicon name="md-settings-sharp" size={ICON_SIZE + 10} color={PRIMARY} />} onPress={() => { }} />
+                        <PrimaryButton title="Sign out" onPress={() => { }} button_style={{ borderWidth: BORDER_WIDTH, borderColor: PRIMARY, backgroundColor: WHITE, margin: DEFAUTL_SPACE }} text_style={{ color: PRIMARY }} />
+                    </Col>
+
+                </DrawerContentScrollView>
+            </View>
+        );
+    }
+    return (
+        <Drawer.Navigator screenOptions={{ headerShown: false }} drawerContent={drawerContent}>
+            <Drawer.Screen name="AppointmentHistory" component={DoctorConsultants} />
+            <Drawer.Screen name="AppointmentView" component={AppointmentView} />
+            <Drawer.Screen name="ConsultantTopNav" component={Consultant_TopNav} />
+        </Drawer.Navigator>
+    );
+}
 function App() {
     const { Navigator, Screen } = createNativeStackNavigator();
     return (
         <Navigator screenOptions={{
             headerShown: false
         }}>
-
-            <Screen name="AppointmentView" component={AppointmentView} />
             <Screen name="Splash" component={Splash} />
             <Screen name="Onboard" component={OnboardScreen} />
             <Screen name="Login" component={Login} />
@@ -133,11 +203,12 @@ function App() {
             <Screen name="Filter" component={Filter} />
             <Screen name="Cart" component={Cart} />
             <Screen name="AddLocation" component={AddLocation} />
-            <Screen name="DoctorConsultant" component={DoctorConsultants} />
+            <Screen name="DoctorConsultant" component={SidenavDoctor} />
             <Screen name="SelectForm" component={SelectForm} />
             <Screen name="DoctorProfile" component={DoctorProfile} />
             <Screen name="AppointmentCheckout" component={AppointmentCheckout} />
             <Screen name="AppointmentHistory" component={AppointmentHistory} />
+            <Screen name="AppointmentView" component={AppointmentView} />
         </Navigator>
     );
 }
@@ -170,4 +241,17 @@ const styles = StyleSheet.create({
         paddingHorizontal: DEFAUTL_SPACE
     },
     cartIcon: { width: 20, height: 20, borderRadius: BORDER_RADIUS_CIRCULAR, backgroundColor: 'red', position: 'absolute', bottom: -15, justifyContent: 'center', alignItems: 'center' }
+    , drawer: {
+        flex: 1,
+        justifyContent: 'flex-start',
+        alignItems: 'stretch',
+    },
+    header: {
+        fontSize: FONT_MID,
+        fontFamily: 'Nunito-Bold'
+    },
+    desc: {
+        fontSize: FONT_SMALL,
+        fontFamily: 'Nunito-Regular'
+    }
 })

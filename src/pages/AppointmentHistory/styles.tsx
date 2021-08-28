@@ -45,5 +45,8 @@ export const styles = StyleSheet.create({
     },
     padding: {
         padding: DEFAUTL_SPACE
+    },
+    margin: {
+        margin: INLINE_GAP
     }
 })
