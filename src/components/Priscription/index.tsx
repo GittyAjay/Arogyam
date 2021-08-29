@@ -1,9 +1,10 @@
 import React from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
-import { BLACK, PRIMARY, WHITE } from '../../assets/colors'
-import { BORDER_RADIUS, DEFAUTL_SPACE, FONT_MID, ICON_SIZE, INLINE_GAP } from '../../assets/sizes'
+import { WHITE } from '../../assets/colors'
+import { ICON_SIZE } from '../../assets/sizes'
 import Ioicon from 'react-native-vector-icons/Ionicons'
 import { styles } from './style';
+import { globalstyles } from '../../globalcss'
 interface props {
     onPress: () => void
 }
@@ -11,11 +12,11 @@ const index: React.FC<props> = (props) => {
     return (
         <View style={styles.priscription}>
             <View style={{ flexDirection: 'column' }}>
-                <Text style={{ paddingBottom: DEFAUTL_SPACE, fontSize: FONT_MID, color: BLACK }}>Quick uplode your priscription</Text>
-                <Text style={{ width: 250 }}>Pariatur in proident aliquip et magna. Elit eu magna magna reprehende </Text>
-                <TouchableOpacity style={{ padding: DEFAUTL_SPACE, backgroundColor: PRIMARY, width: 100, borderRadius: BORDER_RADIUS, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', marginTop: INLINE_GAP }} onPress={props.onPress}>
-                    <Ioicon name="md-camera" size={ICON_SIZE} color={WHITE} style={{ paddingRight: DEFAUTL_SPACE / 2 }} />
-                    <Text style={{ color: WHITE }}>UPLOAD</Text>
+                <Text style={[globalstyles.padding__Bottom, globalstyles.title__bold]}>Quick uplode your priscription</Text>
+                <Text style={[globalstyles.description, { width: 250 }]}>Pariatur in proident aliquip et magna. Elit eu magna magna reprehende </Text>
+                <TouchableOpacity style={styles.iconButton} onPress={props.onPress}>
+                    <Ioicon name="md-camera" size={ICON_SIZE} color={WHITE} />
+                    <Text style={[globalstyles.description, globalstyles.padding_left, { color: WHITE }]}>UPLOAD</Text>
                 </TouchableOpacity>
             </View>
             <TouchableOpacity>

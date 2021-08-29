@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, TouchableOpacity, View } from 'react-native'
+import { TouchableOpacity } from 'react-native'
 import { styles } from './style'
 interface props {
     onPress: () => void

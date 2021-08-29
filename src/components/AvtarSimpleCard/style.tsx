@@ -20,14 +20,5 @@ export const styles = StyleSheet.create({
         fontSize: FONT_MID,
         fontFamily: 'Nunito-Bold'
     },
-    desc: {
-        fontSize: FONT_SMALL,
-        fontFamily: 'Nunito-Regular'
-    },
-    marginLeft: {
-        marginLeft: DEFAUTL_SPACE / 2
-    },
-    marginHorizental: {
-        marginHorizontal: DEFAUTL_SPACE / 2
-    }
+
 })

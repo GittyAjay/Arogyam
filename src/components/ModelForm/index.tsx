@@ -11,7 +11,6 @@ interface props {
 const index: React.FC<props> = (props) => {
     function onClose() {
         console.log("on open");
-        // props.ref.current.close();
     }
     function onOpen() {
         console.log("on open");

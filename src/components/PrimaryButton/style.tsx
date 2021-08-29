@@ -1,5 +1,5 @@
-import { Button, NativeSyntheticEvent, NativeTouchEvent, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { DEFAUTL_SPACE, FONT_MID } from '../../assets/sizes';
+import { StyleSheet } from 'react-native'
+import { DEFAUTL_SPACE } from '../../assets/sizes';
 import { PRIMARY } from '../../assets/colors';
 
 export const styles = StyleSheet.create({
@@ -11,9 +11,4 @@ export const styles = StyleSheet.create({
         alignSelf: 'stretch',
         paddingVertical: DEFAUTL_SPACE
     },
-    text_style: {
-        color: 'white',
-        fontSize: FONT_MID,
-        fontFamily: 'Nunito-Bold'
-    }
 })

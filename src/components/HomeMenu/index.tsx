@@ -4,24 +4,23 @@ import Aicon from 'react-native-vector-icons/AntDesign';
 import Mcicon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ioicon from 'react-native-vector-icons/Ionicons';
 import Ficon from 'react-native-vector-icons/Feather';
-import { DEFAUTL_SPACE, FONT_LARGE, FONT_SMALL, ICON_SIZE, INLINE_GAP } from '../../assets/sizes';
-import { useSelector } from 'react-redux'
+import { ICON_SIZE, INLINE_GAP } from '../../assets/sizes';
 import { styles } from './style'
 import { GREY, PRIMARY, WHITE } from '../../assets/colors'
 import Row from '../Row';
+import { globalstyles } from '../../globalcss';
 interface props {
     menuPress: Function
 }
 const index: React.FC<props> = (props) => {
     return (
         <View style={styles.container}>
-            <View style={{
-                backgroundColor: PRIMARY, paddingVertical: INLINE_GAP,
-                paddingHorizontal: INLINE_GAP
-            }}>
+            <View style={[globalstyles.padding, {
+                backgroundColor: PRIMARY
+            }]}>
                 <View style={styles.top__header}>
                     <TouchableOpacity onPress={props.menuPress}>
-                        <Ficon name="menu" size={ICON_SIZE} color={WHITE} style={{ paddingRight: INLINE_GAP }} />
+                        <Ficon name="menu" size={ICON_SIZE} color={WHITE} style={globalstyles.padding_right} />
                     </TouchableOpacity>
                     <Row>
                         <TouchableOpacity>
@@ -35,10 +34,10 @@ const index: React.FC<props> = (props) => {
                         </TouchableOpacity>
                     </Row>
                 </View>
-                <Text style={[styles.normal, { paddingBottom: DEFAUTL_SPACE }]}>Hello Ajay</Text>
-                <Text style={[styles.header, { paddingBottom: DEFAUTL_SPACE }]}>Find Your Specialist</Text>
+                <Text style={[globalstyles.description, globalstyles.padding__Bottom]}>Hello Ajay</Text>
+                <Text style={[globalstyles.heading, globalstyles.padding__Bottom]}>Find Your Specialist</Text>
                 <View style={styles.search__Bar}>
-                    <TextInput placeholder="Find your speacilist" placeholderTextColor={GREY} style={[styles.normal, { flex: 1 }]} />
+                    <TextInput placeholder="Find your speacilist" placeholderTextColor={GREY} style={[globalstyles.description, { flex: 1 }]} />
                     <TouchableOpacity>
                         <Ioicon name="md-search" size={ICON_SIZE} color={GREY} />
                     </TouchableOpacity>

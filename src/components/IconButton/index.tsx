@@ -1,8 +1,6 @@
 import React from 'react'
-import { Text, TouchableOpacity, View, ViewStyle } from 'react-native'
+import { TouchableOpacity, ViewStyle } from 'react-native'
 import { styles } from './style'
-import Aicon from 'react-native-vector-icons/AntDesign'
-import { WHITE } from '../../assets/colors'
 interface props {
     style?: ViewStyle
     onPress: () => void

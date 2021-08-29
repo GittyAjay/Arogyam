@@ -15,16 +15,4 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    heading: {
-        fontFamily: 'Nunito-Bold',
-        color: BLACK,
-        fontSize: FONT_MID
-    },
-    description: {
-        fontFamily: 'Nunito-Regular',
-        color: BLACK,
-        fontSize: FONT_SMALL
-    },
-
-
 })

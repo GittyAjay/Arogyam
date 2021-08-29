@@ -17,13 +17,11 @@ const payment_options = {
     theme: { color: PRIMARY }
 }
 export function Payment(amount: number) {
-    RazorpayCheckout.open({ ...payment_options, amount }).then((data) => {
-        // handle success
+    RazorpayCheckout.open({ ...payment_options, amount }).then((data: any) => {
         const payId = data.razorpay_payment_id;
         Alert.alert(`Sucess: ${payId}`);
 
-    }).catch((error) => {
-        // handle failure
+    }).catch((error: any) => {
         Alert.alert(`Error: ${error.code} | ${error.description}`);
     });
 }

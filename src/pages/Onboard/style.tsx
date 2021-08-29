@@ -28,21 +28,9 @@ export const styles = StyleSheet.create({
         flex: 0.1,
         flexDirection: 'row'
     },
-    defaultTxt: {
-        fontFamily: 'Nunito-Regular'
-    },
-    title: {
-        fontSize: FONT_LARGE,
-        fontWeight: 'bold',
-        fontFamily: 'Nunito-Regular'
-    },
     button: {
         backgroundColor: PRIMARY,
         height: BUTTON_HEIGHT
-    },
-    button_text: {
-        color: 'white',
-        fontFamily: 'Nunito-Regular'
     },
     bottom: {
         flex: 0.2,

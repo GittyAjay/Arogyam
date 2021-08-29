@@ -1,9 +1,10 @@
 import { StyleSheet } from 'react-native'
-import { GREY_BCK, PRIMARY, WHITE } from '../../assets/colors'
+import { GREY_BCK, LIGHT_SHADE, PRIMARY, SHADE, WHITE } from '../../assets/colors'
 import { DEFAUTL_SPACE, FONT_MID, FONT_SMALL, INLINE_GAP } from '../../assets/sizes'
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: WHITE
     },
     header_bck: {
         backgroundColor: PRIMARY
@@ -12,7 +13,7 @@ export const styles = StyleSheet.create({
         color: WHITE
     },
     grey_bck: {
-        backgroundColor: GREY_BCK
+        backgroundColor: LIGHT_SHADE
     },
     heading: {
         fontSize: FONT_SMALL,

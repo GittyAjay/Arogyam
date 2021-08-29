@@ -1,5 +1,5 @@
 import React from 'react'
-import { KeyboardTypeOptions, StyleSheet, Text, TextInput, TextStyle, TouchableOpacity, View } from 'react-native'
+import { KeyboardTypeOptions, TextInput, TextStyle, TouchableOpacity } from 'react-native'
 import { GREY } from '../../assets/colors'
 import { styles } from './style'
 import Aicon from 'react-native-vector-icons/AntDesign';

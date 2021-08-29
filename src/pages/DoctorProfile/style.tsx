@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
         paddingHorizontal: INLINE_GAP
     },
     padding: {
-        padding: INLINE_GAP
+        padding: DEFAUTL_SPACE
     },
     heading: {
         fontSize: FONT_MID,

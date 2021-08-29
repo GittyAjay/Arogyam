@@ -11,12 +11,4 @@ export const styles = StyleSheet.create({
         elevation: 1,
         backgroundColor: LIGHT_SHADE
     },
-    heading: {
-        fontSize: FONT_MID,
-        fontFamily: 'Nunito-Bold'
-    },
-    description: {
-        fontSize: FONT_SMALL,
-        fontFamily: 'Nunito-Regular'
-    }
 })

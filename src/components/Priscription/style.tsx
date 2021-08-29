@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native'
-import { GREY, BLUE_SHADE, YELLOW } from '../../assets/colors'
-import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE, Dimension, INLINE_GAP } from '../../assets/sizes'
+import { StyleSheet, } from 'react-native'
+import { GREY, PRIMARY } from '../../assets/colors'
+import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE, INLINE_GAP } from '../../assets/sizes'
 
 export const styles = StyleSheet.create({
     priscription: {
@@ -13,4 +13,15 @@ export const styles = StyleSheet.create({
         overflow: 'hidden',
         marginBottom: INLINE_GAP
     },
+    iconButton:
+    {
+        padding: DEFAUTL_SPACE,
+        backgroundColor: PRIMARY,
+        width: 100,
+        borderRadius: BORDER_RADIUS,
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        marginTop: INLINE_GAP
+    }
 })

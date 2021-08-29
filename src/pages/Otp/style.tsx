@@ -23,14 +23,6 @@ export const styles = StyleSheet.create({
         textAlignVertical: 'top',
         marginRight: DEFAUTL_SPACE,
     },
-    heading: {
-        fontSize: FONT_LARGE,
-        fontFamily: 'Nunito-Regular'
-    },
-    description: {
-        fontSize: FONT_SMALL,
-        fontFamily: 'Nunito-Regular'
-    },
     bottom: {
         flexDirection: 'column',
         justifyContent: 'center',

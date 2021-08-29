@@ -15,6 +15,7 @@ import InputBox from '../../components/InputBox';
 import { Payment } from '../../components/Payment'
 import { Alert, Image } from 'react-native';
 import { PRIMARY, WHITE } from '../../assets/colors';
+import { globalstyles } from '../../globalcss';
 const index = (props: { navigation: { push: Function, pop: Function } }) => {
     const [isActive, setActive] = React.useState(false);
     const modelFormRef = React.useRef();
@@ -25,14 +26,14 @@ const index = (props: { navigation: { push: Function, pop: Function } }) => {
             </Header>
             <ScrollView>
                 <View style={styles.container}>
-                    <BorderCard style={{ marginBottom: DEFAUTL_SPACE }} onPress={() => { modelFormRef.current.open() }} isDisable={false}>
+                    <BorderCard style={globalstyles.margin__Bottom} onPress={() => { modelFormRef.current.open() }} isDisable={false}>
                         <Text>Add new</Text>
                     </BorderCard>
-                    <Row style={{ paddingBottom: DEFAUTL_SPACE, alignItems: 'center' }}>
+                    <Row style={[globalstyles.padding__Bottom, globalstyles.align_center]}>
                         <Mcicon name="truck-fast-outline" size={ICON_SIZE} style={{ paddingRight: DEFAUTL_SPACE }} />
                         <Text>Deliver to</Text>
                     </Row>
-                    <BorderCard style={{ marginBottom: DEFAUTL_SPACE }} onPress={() => { }} isDisable={true}>
+                    <BorderCard style={globalstyles.margin__Bottom} onPress={() => { }} isDisable={true}>
                         <Row style={{ justifyContent: 'space-between', alignItems: 'stretch', marginBottom: DEFAUTL_SPACE / 2 }}>
                             <Row style={{ marginBottom: DEFAUTL_SPACE, alignItems: 'center', }}>
                                 <Mcicon name="home-outline" size={ICON_SIZE} style={{ paddingRight: DEFAUTL_SPACE }} />
@@ -40,11 +41,11 @@ const index = (props: { navigation: { push: Function, pop: Function } }) => {
                             </Row>
                             <RadioButton isActive={isActive} onPress={() => { setActive(value => !value) }} />
                         </Row>
-                        <Text style={{ marginBottom: DEFAUTL_SPACE / 2 }}>User Name</Text>
-                        <Text style={{ marginBottom: DEFAUTL_SPACE / 2 }}>Address</Text>
-                        <Text style={{ marginBottom: DEFAUTL_SPACE / 2 }}>City</Text>
-                        <Text style={{ marginBottom: DEFAUTL_SPACE / 2 }}>Pin Code</Text>
-                        <Text style={{ marginBottom: DEFAUTL_SPACE / 2 }}>Mobile no</Text>
+                        <Text style={globalstyles.margin__Bottom}>User Name</Text>
+                        <Text style={globalstyles.margin__Bottom}>Address</Text>
+                        <Text style={globalstyles.margin__Bottom}>City</Text>
+                        <Text style={globalstyles.margin__Bottom}>Pin Code</Text>
+                        <Text style={globalstyles.margin__Bottom}>Mobile no</Text>
                         <Row style={{ justifyContent: 'space-between', alignItems: 'stretch', marginVertical: DEFAUTL_SPACE }}>
                             <TouchableOpacity style={{ flexDirection: 'row', marginBottom: DEFAUTL_SPACE, alignItems: 'center' }}>
                                 <Micon name="delete" size={ICON_SIZE} style={{ paddingRight: DEFAUTL_SPACE }} />

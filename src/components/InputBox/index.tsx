@@ -1,5 +1,5 @@
 import React from 'react'
-import { KeyboardTypeOptions, StyleSheet, Text, TextInput, TextStyle, View } from 'react-native'
+import { KeyboardTypeOptions, TextInput, TextStyle } from 'react-native'
 import { GREY } from '../../assets/colors'
 import { styles } from './style'
 interface props {

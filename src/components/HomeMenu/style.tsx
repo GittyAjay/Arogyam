@@ -21,15 +21,14 @@ export const styles = StyleSheet.create({
         paddingHorizontal: DEFAUTL_SPACE,
         marginVertical: DEFAUTL_SPACE
     },
-    cartIcon: { width: 20, height: 20, borderRadius: BORDER_RADIUS_CIRCULAR, backgroundColor: 'red', position: 'absolute', bottom: -15, justifyContent: 'center', alignItems: 'center' },
-    header: {
-        fontSize: FONT_LARGE,
-        color: WHITE,
-        fontFamily: 'Nunito-SemiBold',
+    cartIcon: {
+        width: 20,
+        height: 20,
+        borderRadius: BORDER_RADIUS_CIRCULAR,
+        backgroundColor: 'red',
+        position: 'absolute',
+        bottom: -15,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
-    normal: {
-        fontSize: FONT_MID,
-        fontFamily: 'Nunito-Regular',
-        color: WHITE
-    }
 })

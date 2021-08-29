@@ -12,9 +12,9 @@ import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { MediaType } from 'react-native-image-picker';
 import AwesomeLoading from 'react-native-awesome-loading';
 import PdfThumbnail from "react-native-pdf-thumbnail";
-
-
 import { styles } from './style';
+import { NUNITO_BOLD, NUNITO_REGULAR } from '../../assets/fontnames';
+import { globalstyles } from '../../globalcss';
 const index = (props: { navigation: { pop: Function, push: Function } }) => {
     const [loading, setLoading] = React.useState<{ status: boolean, message: string }>({
         status: false,
@@ -112,8 +112,8 @@ const index = (props: { navigation: { pop: Function, push: Function } }) => {
                         <Ioicon name="arrow-back" size={ICON_SIZE + 5} color={WHITE} />
                     </TouchableOpacity>
                     <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start' }}>
-                        <Text style={{ color: WHITE, fontSize: FONT_MID }}>Uplode prescription</Text>
-                        <Text style={{ color: WHITE }}>have a priscription ? uplode here</Text>
+                        <Text style={{ color: WHITE, fontSize: FONT_MID, fontFamily: NUNITO_BOLD }}>Uplode prescription</Text>
+                        <Text style={{ color: WHITE, fontFamily: NUNITO_REGULAR }}>have a priscription ? uplode here</Text>
                     </View>
                 </View>
             </View>
@@ -122,27 +122,27 @@ const index = (props: { navigation: { pop: Function, push: Function } }) => {
                     <View style={[styles.options, { marginBottom: DEFAUTL_SPACE }]}>
                         <TouchableOpacity style={{ flexDirection: 'column', alignItems: 'center' }} onPress={() => cameraOrGallery("camera")}>
                             <Ioicon name="camera" size={ICON_SIZE} color={WHITE} />
-                            <Text style={{ color: WHITE }}>Camera</Text>
+                            <Text style={[globalstyles.description, { color: WHITE }]}>Camera</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={{ flexDirection: 'column', alignItems: 'center' }} onPress={() => cameraOrGallery("gallery")}>
                             <Faicon name="photo" size={ICON_SIZE} color={WHITE} />
-                            <Text style={{ color: WHITE }}>Gallery</Text>
+                            <Text style={[globalstyles.description, { color: WHITE }]}>Gallery</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={{ flexDirection: 'column', alignItems: 'center' }} onPress={pickFile}>
                             <Faicon name="file-text-o" size={ICON_SIZE} color={WHITE} />
-                            <Text style={{ color: WHITE }}>Your prescription</Text>
+                            <Text style={[globalstyles.description, { color: WHITE }]}>Your prescription</Text>
                         </TouchableOpacity>
                     </View>
                     <View>
-                        <Text style={{ fontSize: FONT_MID }}>priscription uplode guide here</Text>
-                        <Text>uplode clear image</Text>
-                        <Text>below mention point sould be a part of valid precription</Text>
+                        <Text style={[globalstyles.heading, { fontSize: FONT_MID }]}>priscription uplode guide here</Text>
+                        <Text style={globalstyles.description}>uplode clear image</Text>
+                        <Text style={globalstyles.description}>below mention point sould be a part of valid precription</Text>
                     </View>
                     <TouchableOpacity style={{ marginTop: INLINE_GAP }}>
                         <Image source={fileThumbnail.uri === "" ? require("../../assets/images/pdfFormate.png") : { uri: fileThumbnail.uri }} style={{ width: 200, height: 200 }} />
                     </TouchableOpacity>
                 </View>
-                <PrimaryButton button_style={styles.btnStyle} text_style={{}} onPress={() => { props.navigation.push('Order') }} title="submit" />
+                <PrimaryButton text_style={globalstyles.button__text} onPress={() => { props.navigation.push('Order') }} title="submit" />
             </View>
             <AwesomeLoading indicatorId={8} size={50} isActive={loading.status} text={loading.message} />
         </View>

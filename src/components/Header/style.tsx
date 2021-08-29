@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { WHITE } from '../../assets/colors'
-import { FONT_MID, INLINE_GAP } from '../../assets/sizes'
+import { INLINE_GAP } from '../../assets/sizes'
 export const styles = StyleSheet.create({
     header: {
         justifyContent: 'space-between',
@@ -11,8 +11,5 @@ export const styles = StyleSheet.create({
         paddingHorizontal: INLINE_GAP,
         elevation: 5
     },
-    title: {
-        fontSize: FONT_MID,
-        fontFamily: 'Nunito-Regular'
-    }
+
 })

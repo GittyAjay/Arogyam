@@ -24,7 +24,4 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
     },
-    btnStyle: {
-
-    }
 })

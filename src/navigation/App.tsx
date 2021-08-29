@@ -61,7 +61,9 @@ function TopNav() {
                 <View style={{ backgroundColor: PRIMARY }}>
                     <View style={styles.top__header}>
                         <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                            <Eicon name="menu" size={ICON_SIZE + 10} color={WHITE} />
+                            <TouchableOpacity>
+                                <Eicon name="menu" size={ICON_SIZE + 10} color={WHITE} />
+                            </TouchableOpacity>
                             <View style={{ flexDirection: 'column', paddingLeft: INLINE_GAP, justifyContent: 'flex-start', alignItems: 'flex-start' }}>
                                 <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                                     <Text style={{ fontWeight: 'bold', color: WHITE }}>Location</Text>

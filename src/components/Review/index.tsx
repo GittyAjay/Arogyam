@@ -4,7 +4,9 @@ import Row from '../Row'
 import { styles } from './style'
 import Aicon from 'react-native-vector-icons/AntDesign';
 import { GREY, RED } from '../../assets/colors';
-import { DEFAUTL_SPACE, FONT_MID, ICON_SIZE } from '../../assets/sizes';
+import { ICON_SIZE } from '../../assets/sizes';
+import HorizentalContainer from '../../components/HeadingContainer';
+import { globalstyles } from '../../globalcss';
 interface props {
     rating_count: number,
     date: string,
@@ -15,19 +17,19 @@ interface props {
 const index: React.FC<props> = (props) => {
     return (
         <View style={[styles.container, props.style]}>
-            <Row style={{ justifyContent: 'space-between', alignItems: 'center', paddingBottom: DEFAUTL_SPACE / 2 }}>
+            <HorizentalContainer style={[globalstyles.padding__Bottom]}>
                 <Row style={{ alignItems: 'center' }}>
                     <Aicon name="star" color={RED} size={ICON_SIZE - 5} />
                     <Aicon name="star" color={RED} size={ICON_SIZE - 5} />
                     <Aicon name="star" color={RED} size={ICON_SIZE - 5} />
                     <Aicon name="star" color={RED} size={ICON_SIZE - 5} />
                     <Aicon name="star" color={RED} size={ICON_SIZE - 5} />
-                    <Text style={[styles.description, { paddingLeft: DEFAUTL_SPACE }]}>{props.rating_count}.0</Text>
+                    <Text style={[globalstyles.description, globalstyles.padding_left]}>{props.rating_count}.0</Text>
                 </Row>
-                <Text style={[styles.description, { color: GREY, paddingBottom: DEFAUTL_SPACE / 2 }]}>{props.date}</Text>
-            </Row>
-            <Text style={[styles.description, { paddingBottom: DEFAUTL_SPACE / 2 }]}>{props.name}</Text>
-            <Text style={[styles.description, { color: GREY }]}>{props.rating_description}</Text>
+                <Text style={[globalstyles.description, globalstyles.padding__Bottom, { color: GREY }]}>{props.date}</Text>
+            </HorizentalContainer>
+            <Text style={[globalstyles.description, globalstyles.padding__Bottom]}>{props.name}</Text>
+            <Text style={[globalstyles.description, { color: GREY }]}>{props.rating_description}</Text>
         </View>
     )
 }

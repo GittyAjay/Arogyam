@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 import { SECONDARY, WHITE } from '../../assets/colors'
-import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE, FONT_MID, FONT_SMALL } from '../../assets/sizes'
+import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE } from '../../assets/sizes'
 
 export const styles = StyleSheet.create({
     card: {
@@ -28,12 +28,4 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-around',
         marginBottom: DEFAUTL_SPACE / 2
     },
-    heading: {
-        fontSize: FONT_MID,
-        fontFamily: 'Nunito-Bold'
-    },
-    description: {
-        fontSize: FONT_SMALL,
-        fontFamily: 'Nunito-Regular'
-    }
 })

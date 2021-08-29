@@ -27,11 +27,6 @@ export const styles = StyleSheet.create({
         flexDirection: 'column',
         flexWrap: 'wrap',
     },
-    heading: {
-        fontSize: FONT_SMALL,
-        fontWeight: 'bold'
-    },
-    headingContainer: { flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'stretch', paddingVertical: DEFAUTL_SPACE / 2 },
     seeAll: {
         color: SECONDARY,
         borderRadius: BORDER_RADIUS,
@@ -39,7 +34,4 @@ export const styles = StyleSheet.create({
         borderWidth: BORDER_WIDTH,
         padding: DEFAUTL_SPACE
     },
-    margin__bottom: {
-        marginBottom: DEFAUTL_SPACE
-    }
 })

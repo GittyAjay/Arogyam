@@ -1,5 +1,5 @@
 import React from 'react'
-import { ViewStyle, View, TouchableOpacity } from 'react-native'
+import { ViewStyle, View } from 'react-native'
 import { styles } from './style'
 interface props {
     style?: ViewStyle,

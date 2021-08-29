@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, Image } from 'react-native'
 import Carousel from 'react-native-snap-carousel';
-import { PRIMARY, SECONDARY } from '../../assets/colors';
+import { GREY, PRIMARY, SECONDARY } from '../../assets/colors';
 import { Dimension, DEFAUTL_SPACE, INLINE_GAP, BUTTON_HEIGHT } from '../../assets/sizes'
 import PrimaryButton from '../../components/PrimaryButton';
 import Eicon from 'react-native-vector-icons/Entypo';
 import { styles } from './style';
 import { ImageSourcePropType } from 'react-native';
+import { globalstyles } from '../../globalcss';
 const Slider = (props: { navigation: { push: Function } }) => {
     const { WIDTH, HEIGHT } = Dimension();
     const [activeCarosel, setactiveCarosel] = useState(0);
@@ -51,8 +52,8 @@ const Slider = (props: { navigation: { push: Function } }) => {
             <View style={styles.carosel__Container}>
                 <View style={styles.carosel__item}>
                     <Image source={item.url} />
-                    <Text style={[styles.title, { paddingTop: DEFAUTL_SPACE }]}>{item.title}</Text>
-                    <Text style={{ paddingTop: DEFAUTL_SPACE / 2, width: WIDTH - 2 * INLINE_GAP }}>{item.descrption}</Text>
+                    <Text style={[globalstyles.heading, globalstyles.padding__top]}>{item.title}</Text>
+                    <Text style={[globalstyles.padding__top, globalstyles.description, { width: WIDTH - 2 * INLINE_GAP }]}>{item.descrption}</Text>
                 </View>
             </View>
         )
@@ -77,18 +78,18 @@ const Slider = (props: { navigation: { push: Function } }) => {
                 <View style={styles.slider__Indicator}>
                     {Slides.map((records, index) => {
                         return (
-                            <Eicon key={index} name="dot-single" color={activeCarosel === index ? PRIMARY : "grey"} size={15} />
+                            <Eicon key={index} name="dot-single" color={activeCarosel === index ? PRIMARY : GREY} size={15} />
                         )
                     })}
                 </View>
                 <View style={styles.bottom}>
                     <PrimaryButton title="Get Started" onPress={() => {
                         props.navigation.push('Signup')
-                    }} button_style={styles.button} text_style={styles.button_text} />
+                    }} text_style={globalstyles.button__text} />
                     <View style={styles.bottom__Text}>
-                        <Text>Have an Account?</Text>
-                        <TouchableOpacity style={{ paddingLeft: DEFAUTL_SPACE / 2 }} onPress={() => props.navigation.push('Login')}>
-                            <Text style={{ color: SECONDARY }}>Login</Text>
+                        <Text style={globalstyles.description}>Have an Account?</Text>
+                        <TouchableOpacity style={globalstyles.padding_left} onPress={() => props.navigation.push('Login')}>
+                            <Text style={[globalstyles.description, { color: SECONDARY }]}>Login</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

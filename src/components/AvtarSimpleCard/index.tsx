@@ -6,27 +6,28 @@ import Col from '../../components/Column';
 import Row from '../../components/Row';
 import Ficon from 'react-native-vector-icons/Fontisto';
 import Fa5icon from 'react-native-vector-icons/FontAwesome5';
-import { DEFAUTL_SPACE, ICON_SIZE, INLINE_GAP } from '../../assets/sizes';
+import { ICON_SIZE } from '../../assets/sizes';
+import { globalstyles } from '../../globalcss';
 interface props {
     onPress: () => void
 }
 const index: React.FC<props> = (props) => {
     return (
         <HeaderContainer style={styles.container}>
-            <Row style={{ justifyContent: 'center', alignItems: 'center' }}>
-                <TouchableOpacity style={[styles.awtar, styles.marginHorizental]} onPress={props.onPress}>
+            <Row style={globalstyles.align_center}>
+                <TouchableOpacity style={[styles.awtar, globalstyles.margin__horizental]} onPress={props.onPress}>
                     {props.children}
                 </TouchableOpacity>
-                <Col style={styles.marginLeft}>
+                <Col style={globalstyles.margin__left}>
                     <Text style={styles.head}>Ajay</Text>
-                    <Row style={{ marginTop: DEFAUTL_SPACE }}>
-                        <Row style={{ marginRight: INLINE_GAP }}>
+                    <Row style={globalstyles.margin__top}>
+                        <Row style={globalstyles.margin__right}>
                             <Ficon name="stethoscope" size={ICON_SIZE - 5} />
-                            <Text style={[styles.desc, styles.marginLeft]}>Physician</Text>
+                            <Text style={[globalstyles.description, globalstyles.margin__left]}>Physician</Text>
                         </Row>
                         <Row>
                             <Fa5icon name="clinic-medical" size={ICON_SIZE - 5} />
-                            <Text style={[styles.desc, styles.marginLeft]}>Cleveland Clinic</Text>
+                            <Text style={[globalstyles.description, globalstyles.margin__left]}>Cleveland Clinic</Text>
                         </Row>
                     </Row>
                 </Col>

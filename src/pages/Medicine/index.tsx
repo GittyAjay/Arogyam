@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, TouchableOpacity, View, Image, FlatList } from 'react-native'
 import { PRIMARY, SECONDARY, WHITE } from '../../assets/colors'
-import { DEFAUTL_SPACE, Dimension } from '../../assets/sizes'
+import { DEFAUTL_SPACE, Dimension, FONT_MID, FONT_SMALL } from '../../assets/sizes'
 import { styles } from './style';
 import ProductDetailCard from '../../components/ProductDetails';
 import ProductCard from '../../components/Product';
@@ -12,6 +12,7 @@ import { prodcut_BRAND, product_TYPES, shopByCatagories, shopByBrand, quickConsu
 import Priscription from '../../components/Priscription'
 import PosterCard from '../../components/PosterCard'
 import HeadingContainer from '../../components/HeadingContainer'
+import { globalstyles } from '../../globalcss';
 const index = (props: { navigation: { push: Function }, products: product, cart: product, addToCart: Function }) => {
     const [progress_status, setProgress_status] = React.useState(false)
     const { WIDTH } = Dimension();
@@ -39,23 +40,23 @@ const index = (props: { navigation: { push: Function }, products: product, cart:
                 {/*Priscription */}
                 <Priscription onPress={upload_click} />
                 {/* Health Checkup */}
-                <View style={[styles.healthCheckup, styles.margin__bottom]}>
-                    <Text style={[styles.heading, styles.margin__bottom]}>Health checkup</Text>
-                    <PosterCard onPress={() => { }} style={styles.margin__bottom} />
+                <View style={[styles.healthCheckup, globalstyles.margin__Bottom]}>
+                    <Text style={[globalstyles.heading, { fontSize: FONT_SMALL }, globalstyles.margin__Bottom]}>Health checkup</Text>
+                    <PosterCard onPress={() => { }} style={globalstyles.margin__Bottom} />
                 </View>
                 {/* SHOP BY CATEGORIES */}
-                <HeadingContainer style={styles.margin__bottom}>
-                    <Text style={styles.heading}>SHOP BY CATEGORIES</Text>
+                <HeadingContainer style={globalstyles.margin__Bottom}>
+                    <Text style={[globalstyles.heading, { fontSize: FONT_SMALL }]}>SHOP BY CATEGORIES</Text>
                     <TouchableOpacity onPress={() => { props.navigation.push("ProductPage", { type: "shopByCatagories" }) }}>
-                        <Text style={styles.seeAll}>SEE ALL</Text>
+                        <Text style={[styles.seeAll]}>SEE ALL</Text>
                     </TouchableOpacity>
                 </HeadingContainer>
-                <View style={[styles.card_layout, styles.margin__bottom]}>
+                <View style={[styles.card_layout, globalstyles.margin__Bottom]}>
                     {items.item.shopByCatagories.map((values: product_TYPES, key: number) => {
                         if (key < 6)
                             return (
                                 <View key={key} style={styles.card_layout}>
-                                    <ProductCard {...values} key={key} style={{ margin: 3 }} background={PRIMARY} onClick={categories_click} text={styles.simple_cardtextstyle}>
+                                    <ProductCard {...values} key={key} style={{ margin: 3 }} background={PRIMARY} onClick={categories_click} >
                                         <Image source={values.url} />
                                     </ProductCard>
                                 </View>
@@ -63,18 +64,18 @@ const index = (props: { navigation: { push: Function }, products: product, cart:
                     })}
                 </View>
                 {/* SHOP BY BRAND */}
-                <HeadingContainer style={styles.margin__bottom}>
-                    <Text style={styles.heading}>SHOP BY BRAND</Text>
+                <HeadingContainer style={globalstyles.margin__Bottom}>
+                    <Text style={[globalstyles.heading, { fontSize: FONT_SMALL }]}>SHOP BY BRAND</Text>
                     <TouchableOpacity onPress={() => { props.navigation.push("ProductPage", { type: "shopByBrand" }) }}>
                         <Text style={styles.seeAll}>SEE ALL</Text>
                     </TouchableOpacity>
                 </HeadingContainer>
-                <View style={[styles.card_layout, styles.margin__bottom]}>
+                <View style={[styles.card_layout, globalstyles.margin__Bottom]}>
                     {items.item.shopByBrand.map(((values: prodcut_BRAND, key: number) => {
                         if (key < 6)
                             return (
                                 <View key={key} style={styles.card_layout}>
-                                    <ProductCard key={key} {...values} background={SECONDARY} style={{ margin: 3 }} onClick={brand_click} text={styles.simple_cardtextstyle}>
+                                    <ProductCard key={key} {...values} background={SECONDARY} style={{ margin: 3 }} onClick={brand_click}>
                                         <Image source={values.url} />
                                     </ProductCard>
                                 </View>
@@ -82,15 +83,15 @@ const index = (props: { navigation: { push: Function }, products: product, cart:
                     }))}
                 </View>
                 {/* Banner */}
-                <PosterCard onPress={() => { }} style={styles.margin__bottom} />
+                <PosterCard onPress={() => { }} style={globalstyles.margin__Bottom} />
                 {/* Health product */}
-                <HeadingContainer style={styles.margin__bottom}>
-                    <Text style={styles.heading}>Health product</Text>
+                <HeadingContainer style={globalstyles.margin__vertical}>
+                    <Text style={[globalstyles.heading, { fontSize: FONT_SMALL }]}>Health product</Text>
                     <TouchableOpacity onPress={() => { props.navigation.push("ProductPage", { type: "Products" }) }}>
                         <Text style={styles.seeAll}>SEE ALL</Text>
                     </TouchableOpacity>
                 </HeadingContainer>
-                <View style={[styles.card_layout, styles.margin__bottom]}>
+                <View style={[styles.card_layout, globalstyles.margin__Bottom]}>
                     {props.products.map((value: prodElements, key: number) => {
                         if (key < 4)
                             return (
