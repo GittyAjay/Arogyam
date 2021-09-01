@@ -34,8 +34,8 @@ const index: React.FC<props> = (props) => {
                         </TouchableOpacity>
                     </Row>
                 </View>
-                <Text style={[globalstyles.description, globalstyles.padding__Bottom]}>Hello Ajay</Text>
-                <Text style={[globalstyles.heading, globalstyles.padding__Bottom]}>Find Your Specialist</Text>
+                <Text style={[globalstyles.title, globalstyles.padding__Bottom, { color: WHITE }]}>Hello Ajay</Text>
+                <Text style={[globalstyles.heading, globalstyles.padding__Bottom, { color: WHITE }]}>Find Your Specialist</Text>
                 <View style={styles.search__Bar}>
                     <TextInput placeholder="Find your speacilist" placeholderTextColor={GREY} style={[globalstyles.description, { flex: 1 }]} />
                     <TouchableOpacity>

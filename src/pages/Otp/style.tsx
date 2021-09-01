@@ -9,19 +9,24 @@ export const styles = StyleSheet.create({
         backgroundColor: WHITE,
         paddingHorizontal: INLINE_GAP,
     },
+    otp__container: {
+        flex: 1,
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        backgroundColor: WHITE,
+        paddingHorizontal: INLINE_GAP,
+    },
     form: {
         alignSelf: 'stretch',
         alignItems: 'center',
         justifyContent: 'center',
         paddingVertical: INLINE_GAP
     },
-    otp__box: {
-        width: 50,
-        height: 50,
-        borderColor: GREY,
-        borderWidth: BORDER_WIDTH,
-        textAlignVertical: 'top',
-        marginRight: DEFAUTL_SPACE,
+    otp__form: {
+        alignSelf: 'stretch',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: INLINE_GAP
     },
     bottom: {
         flexDirection: 'column',

@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
-import { LIGHT_SHADE, RED_HEART, SHADE, WHITE } from '../../assets/colors'
-import { BORDER_RADIUS, BORDER_WIDTH, DEFAUTL_SPACE, FONT_GLARGE, FONT_MID, FONT_SMALL, INLINE_GAP } from '../../assets/sizes'
+import { LIGHT_SHADE, RED, RED_HEART, SHADE, WHITE } from '../../assets/colors'
+import { BORDER_RADIUS, BORDER_RADIUS_CIRCULAR, BORDER_WIDTH, DEFAUTL_SPACE, FONT_GLARGE, FONT_MID, FONT_SMALL, INLINE_GAP } from '../../assets/sizes'
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -61,5 +61,16 @@ export const styles = StyleSheet.create({
         fontSize: FONT_MID,
         color: RED_HEART,
         fontFamily: 'Nunito-Bold'
+    },
+    cartCount: {
+        height: 20,
+        width: 20,
+        backgroundColor: RED_HEART,
+        borderRadius: BORDER_RADIUS_CIRCULAR,
+        position: 'absolute',
+        right: 0,
+        bottom: 0,
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 })

@@ -13,6 +13,7 @@ import { increment_cart_item, decrement_cart_item, remove_cart_item } from '../.
 import { product } from '../../store/reducers/projectReducer';
 import NotFound from './not_found';
 import { useDispatch } from 'react-redux';
+import { Payment } from '../../components/Payment';
 type slide = { url: ImageSourcePropType, index: number };
 const index = (props: { navigation: { push: Function, pop: Function }, increment_cart_item: Function, decrement_cart_item: Function, remove_cart_item: Function, cartItems: product }) => {
     const [totalPrice, setTotalPrice] = React.useState(0);
@@ -152,7 +153,7 @@ const index = (props: { navigation: { push: Function, pop: Function }, increment
                             </View>
                         </View>
                     </ScrollView>
-                    <PrimaryButton button_style={{ margin: DEFAUTL_SPACE / 2 }} onPress={() => { }} text_style={{}} title="PROCEED TO BUY " />
+                    <PrimaryButton button_style={{ margin: DEFAUTL_SPACE / 2 }} onPress={() => { Payment(totalPrice) }} text_style={{}} title="PROCEED TO BUY " />
                 </View>
             </Fragment>}
         </>

@@ -190,9 +190,9 @@ function App() {
             <Screen name="Splash" component={Splash} />
             <Screen name="Onboard" component={OnboardScreen} />
             <Screen name="Login" component={Login} />
+            <Screen name="Otp" component={Otp} />
             <Screen name="Signup" component={Signup} />
             <Screen name="Profile" component={Profile} />
-            <Screen name="Otp" component={Otp} />
             <Screen name="FinalAuth" component={FinalAuth} />
             <Screen name="NeedHelp" component={NeedHelp} />
             <Screen name="Home" component={TopNav} />

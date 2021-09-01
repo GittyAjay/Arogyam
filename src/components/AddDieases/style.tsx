@@ -10,8 +10,8 @@ export const styles = StyleSheet.create({
     buttonStyle: {
         marginRight: DEFAUTL_SPACE / 2,
         marginTop: DEFAUTL_SPACE,
-        backgroundColor: WHITE,
         borderWidth: 2,
+        backgroundColor: WHITE,
         borderColor: PRIMARY,
         padding: DEFAUTL_SPACE
     }

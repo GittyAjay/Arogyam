@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "933561497249",
+    "project_id": "arogyam-77704",
+    "storage_bucket": "arogyam-77704.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:933561497249:android:bbd3186f232d3ba21f62e0",
+        "android_client_info": {
+          "package_name": "com.arogyam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "933561497249-39ptlnnui8ta7gh645ktq996g107rkn3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.arogyam",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "933561497249-g51ing1dnd7qhbjj1jt79a44rvos4i1a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjNCzH5sTl5z4W8rAWIUO0L88tI6jmd_8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "933561497249-g51ing1dnd7qhbjj1jt79a44rvos4i1a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -16,11 +16,19 @@ import ProductDetailCard from '../../components/ProductDetails';
 import { product } from '../../store/reducers/projectReducer';
 import { connect } from 'react-redux';
 import { addToCart } from '../../store/actions/action';
+import { useSelector } from 'react-redux'
 import HeadingContainer from "../../components/HeadingContainer";
+import { globalstyles } from '../../globalcss';
 type slide = { url: ImageSourcePropType, index: number };
 const index = (props: { navigation: { push: Function, pop: Function }, products: product, addToCart: Function }) => {
     const [activeCarosel, setactiveCarosel] = React.useState(0);
     const { WIDTH, HEIGHT } = Dimension()
+    const cartItems: Array<{}> = useSelector(selector => selector.project.cart)
+    const { discount, mrp, name, price, rating, star, } = props.route.params;
+    const brand = props.route.params.brand;
+    const type = props.route.params.type;
+    console.log(type);
+    console.log(brand);
     function back_btn() {
         props.navigation.pop()
     }
@@ -61,6 +69,15 @@ const index = (props: { navigation: { push: Function, pop: Function }, products:
             </View>
         )
     }
+    function starGenerator(count: number) {
+        const items = [];
+        for (let index = 0; index < count; index++)
+            items.push(<Aicon key={index} name="star" color={RED} size={ICON_SIZE} />)
+        return items;
+    }
+    function move_to_cart() {
+        props.navigation.push("Cart")
+    }
     function renderFunction() {
         return (
             <View style={styles.container}>
@@ -83,24 +100,20 @@ const index = (props: { navigation: { push: Function, pop: Function }, products:
                 <View style={styles.summary}>
                     <HeadingContainer >
                         <Row >
-                            <Text style={[styles.heading, { fontWeight: 'normal', marginRight: DEFAUTL_SPACE }]}>RS 300</Text>
-                            <Text style={styles.text__cross}>RS 500</Text>
+                            <Text style={[styles.heading, { fontWeight: 'normal', marginRight: DEFAUTL_SPACE }]}>RS {price}</Text>
+                            <Text style={styles.text__cross}>RS {mrp}</Text>
                         </Row>
                         <TouchableOpacity style={[styles.heartSymbol, { borderRadius: BORDER_RADIUS_CIRCULAR, backgroundColor: RED_HEART, }]}>
                             <Aicon name="heart" size={ICON_SIZE} color={WHITE} />
                         </TouchableOpacity>
                     </HeadingContainer>
-                    <Text style={[styles.heading]}>Yello Sweater Hypes</Text>
+                    <Text style={[styles.heading]}>{name}</Text>
                     <Row style={{ alignItems: 'center', marginVertical: INLINE_GAP - 5 }}>
-                        <Aicon name="star" color={RED} size={ICON_SIZE} />
-                        <Aicon name="star" color={RED} size={ICON_SIZE} />
-                        <Aicon name="star" color={RED} size={ICON_SIZE} />
-                        <Aicon name="star" color={RED} size={ICON_SIZE} />
-                        <Aicon name="star" color={RED} size={ICON_SIZE} />
+                        {starGenerator(star)}
                         <Text style={[styles.text__description, { marginHorizontal: DEFAUTL_SPACE }]}>5.0</Text>
-                        <Text style={styles.text__description}>(48)</Text>
+                        <Text style={styles.text__description}>({rating})</Text>
                     </Row>
-                    <PrimaryButton button_style={{ width: 200 }} onPress={() => { }} text_style={{}} title="Cachback 10%" />
+                    <PrimaryButton button_style={{ width: 200 }} onPress={() => { }} text_style={{}} title={`Discount ${discount}%`} />
                 </View>
                 <Hr style={{ marginHorizontal: DEFAUTL_SPACE }} />
                 <View style={styles.description}>
@@ -118,7 +131,7 @@ const index = (props: { navigation: { push: Function, pop: Function }, products:
                     </Row>
                     <Row style={{ justifyContent: 'space-between', alignItems: 'center', marginBottom: DEFAUTL_SPACE }}>
                         <Text style={styles.text__description}>Brand</Text>
-                        <Text style={styles.text__description}>Miglar</Text>
+                        <Text style={styles.text__description}>{brand.name}</Text>
                     </Row>
                     <Row style={{ justifyContent: 'space-between', alignItems: 'center', marginBottom: DEFAUTL_SPACE }}>
                         <Text style={styles.text__description}>Stock</Text>
@@ -204,8 +217,11 @@ const index = (props: { navigation: { push: Function, pop: Function }, products:
         <View style={{ flex: 1 }}>
             <Header onClick={() => { }} onBackPress={back_btn} title="Product" style={{ backgroundColor: PRIMARY }} text={{ color: WHITE }} iconColor={WHITE}>
                 <Row>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={move_to_cart}>
                         <Faicon name="shopping-cart" size={ICON_SIZE} color={WHITE} style={{ marginHorizontal: DEFAUTL_SPACE }} />
+                        {cartItems.length > 0 && <View style={styles.cartCount}>
+                            <Text style={[globalstyles.description, { fontSize: FONT_SMALL, color: WHITE }]}>{cartItems.length}</Text>
+                        </View>}
                     </TouchableOpacity>
                     <TouchableOpacity>
                         <Aicon name="sharealt" size={ICON_SIZE} color={WHITE} style={{ marginHorizontal: DEFAUTL_SPACE }} />
@@ -219,7 +235,7 @@ const index = (props: { navigation: { push: Function, pop: Function }, products:
                     <Text style={[styles.text__description, { marginRight: DEFAUTL_SPACE, color: GREY }]}>MRP $5000</Text>
                     <Text style={[styles.text__description, { marginRight: DEFAUTL_SPACE, color: GREY }]}>20% off</Text>
                 </Row>
-                <PrimaryButton title="add to cart" onPress={() => { }} button_style={{ padding: DEFAUTL_SPACE }} />
+                <PrimaryButton title="add to cart" onPress={() => props.addToCart(props.route.params)} button_style={{ padding: DEFAUTL_SPACE }} />
             </View>
         </View>
     )

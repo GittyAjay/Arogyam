@@ -142,7 +142,7 @@ const index = (props: { navigation: { push: Function } }) => {
             <Header onBackPress={() => { }} onClick={() => { }} title="Docotor Profile" text={{ color: WHITE }} iconColor={WHITE} style={{ backgroundColor: PRIMARY }} >
                 <Eicon name="dots-three-vertical" size={ICON_SIZE} color={WHITE} />
             </Header>
-            <AvtarCard style={{ marginBottom: DEFAUTL_SPACE / 2, backgroundColor: PRIMARY }} onPress={() => { navigation.navigate('DoctorProfile') }} textcolor={WHITE} experience={5} name="Sanjay" rating={true}>
+            <AvtarCard style={{ marginBottom: DEFAUTL_SPACE / 2, backgroundColor: PRIMARY }} onPress={() => { }} textcolor={WHITE} experience={5} name="Sanjay" rating={true}>
                 <Ioicon name="chatbubbles-outline" size={ICON_SIZE} color={PRIMARY} />
             </AvtarCard>
             <FlatList renderItem={renderFunction} data={[{ "name": 'Ajay' }]} keyExtractor={(values, key) => key.toString()} />

@@ -77,6 +77,7 @@ export const globalstyles = StyleSheet.create({
     inputBox: {
         marginBottom: DEFAUTL_SPACE,
         fontFamily: 'Nunito-Regular',
+        color: BLACK
     },
     title: {
         fontSize: FONT_MID,
