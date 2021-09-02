@@ -6,24 +6,28 @@ import PrimaryButton from '../../components/PrimaryButton';
 import { styles } from './style'
 import { Formik } from 'formik';
 import { globalstyles } from '../../globalcss';
-const index = (props: { navigation: { push: Function } }) => {
+import { useSelector } from 'react-redux';
+import { connect } from 'react-redux';
+import { sign_in, save_user } from '../../store/actions/action';
+const index = (props: { navigation: { push: Function }, save_user: Function }) => {
     interface form {
-        email: String,
+        // email: String,
         firstName: String,
         lastName: String,
         age: String,
         mobileNo: String,
     }
     const [formData, setFormData] = useState<form>({
-        email: '',
+        // email: '',
         firstName: '',
         lastName: '',
         age: '',
         mobileNo: '',
     });
-    function handleSubmit(value: form) {
-        console.log(value);
-        props.navigation.push("Otp");
+    const user = useSelector(state => state.auth.user);
+    async function handleSubmit(value: form) {
+        await props.save_user({ ...value, ...user })
+        props.navigation.push("Home");
     }
     return (
         <Formik
@@ -33,7 +37,7 @@ const index = (props: { navigation: { push: Function } }) => {
                 <View style={styles.container}>
                     <Text style={[globalstyles.heading, globalstyles.align_center]}>complete your profile</Text>
                     <Image source={require('../../assets/images/user.png')} style={globalstyles.align_center} />
-                    <InputBox placeholder="Email id" type="email-address" style={globalstyles.inputBox} onChangeMethod={handleChange("email")} />
+                    {/* <InputBox placeholder="Email id"  type="email-address" style={globalstyles.inputBox} onChangeMethod={handleChange("email")} /> */}
                     <InputBox placeholder="First name" type="name-phone-pad" style={globalstyles.inputBox} onChangeMethod={handleChange("firstName")} />
                     <InputBox placeholder="Last name" type="name-phone-pad" style={globalstyles.inputBox} onChangeMethod={handleChange("lastName")} />
                     <InputBox placeholder="Age" type="decimal-pad" style={globalstyles.inputBox} onChangeMethod={handleChange("age")} />
@@ -45,7 +49,11 @@ const index = (props: { navigation: { push: Function } }) => {
 
     );
 }
+const mapDispatchToProps = {
+    sign_in,
+    save_user
+}
 
-export default index
+export default connect(null, mapDispatchToProps)(index)
 
 

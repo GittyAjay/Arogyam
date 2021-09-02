@@ -1,11 +1,22 @@
-import { SIGN_IN } from '../actions/action'
+import { SIGN_IN, SAVE_USER } from '../actions/action'
+
 interface props {
-    isSignin: boolean,
-    authConfirmation: Function
+    authConfirmation: Function,
+    user: {
+        name: string,
+        email: string,
+        age: number,
+        mobile: string
+    }
 }
 const initialState: props = {
-    isSignin: false,
-    authConfirmation: () => { }
+    authConfirmation: () => { },
+    user: {
+        name: '',
+        email: '',
+        age: 0,
+        mobile: ''
+    }
 }
 
 export function authReducer(state = initialState, action: any) {
@@ -13,13 +24,17 @@ export function authReducer(state = initialState, action: any) {
         case SIGN_IN:
             return {
                 ...state,
-                isSignin: true,
                 authConfirmation: action.confirm
             }
         case 'SIGN_OUT':
             return {
                 ...state,
                 isSignin: false
+            }
+        case SAVE_USER:
+            return {
+                ...state,
+                user: { ...action.payload }
             }
         default:
             return state

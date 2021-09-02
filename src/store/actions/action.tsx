@@ -1,5 +1,6 @@
 export const ADD_TO_CART = 'ADD_TO_CART'
 export const SIGN_IN = 'SIGN_IN'
+export const SAVE_USER = 'SAVE_USER'
 export const INCREMENT_CART_ITEMS = 'INCREMENT_CART_ITEMS'
 export const DECREMENT_CART_ITEMS = 'DECREMENT_CART_ITEMS'
 export const REMOVE_CART_ITEMS = 'REMOVE_CART_ITEMS'
@@ -7,6 +8,12 @@ export const UPDATE_PROGRESS_STATUS = 'UPDATE_PROGRESS_STATUS'
 export type DISPATCHER_TYPE = {
     name: String,
     payload: object
+}
+interface userType {
+    name: string,
+    email: string,
+    age: number,
+    mobile: string
 }
 const update_progress_status = (status: boolean) => {
     return {
@@ -37,5 +44,10 @@ export const remove_cart_item = (id: number) => {
 export const sign_in = (confirm: Function) => {
     return {
         type: SIGN_IN, confirm
+    }
+}
+export const save_user = (payload: userType) => {
+    return {
+        type: SAVE_USER, payload
     }
 }

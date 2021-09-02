@@ -5,7 +5,7 @@ import { DEFAUTL_SPACE, Dimension, FONT_MID, FONT_SMALL } from '../../assets/siz
 import { styles } from './style';
 import ProductDetailCard from '../../components/ProductDetails';
 import ProductCard from '../../components/Product';
-import { connect } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 import { addToCart } from '../../store/actions/action';
 import AwesomeLoading from 'react-native-awesome-loading';
 import { prodcut_BRAND, product_TYPES, shopByCatagories, shopByBrand, quickConsultants, doctors, product, prodElements } from '../../store/reducers/projectReducer';
@@ -16,6 +16,9 @@ import { globalstyles } from '../../globalcss';
 const index = (props: { navigation: { push: Function }, products: product, cart: product, addToCart: Function }) => {
     const [progress_status, setProgress_status] = React.useState(false)
     const { WIDTH } = Dimension();
+    const user = useSelector(state => state.auth.user);
+    console.log(user);
+
     const records = {
         shopByCatagories,
         shopByBrand,
@@ -56,7 +59,7 @@ const index = (props: { navigation: { push: Function }, products: product, cart:
                         if (key < 6)
                             return (
                                 <View key={key} style={styles.card_layout}>
-                                    <ProductCard {...values} key={key} style={{ margin: 3 }} background={PRIMARY} onClick={categories_click} >
+                                    <ProductCard {...values} key={key} style={{ margin: 3 }} background={PRIMARY} onClick={() => props.navigation.push("ProductPage", { type: "Products", name: values })} >
                                         <Image source={values.url} />
                                     </ProductCard>
                                 </View>
@@ -75,7 +78,7 @@ const index = (props: { navigation: { push: Function }, products: product, cart:
                         if (key < 6)
                             return (
                                 <View key={key} style={styles.card_layout}>
-                                    <ProductCard key={key} {...values} background={SECONDARY} style={{ margin: 3 }} onClick={brand_click}>
+                                    <ProductCard key={key} {...values} background={SECONDARY} style={{ margin: 3 }} onClick={() => props.navigation.push("ProductPage", { type: "Products", name: values })}>
                                         <Image source={values.url} />
                                     </ProductCard>
                                 </View>

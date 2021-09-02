@@ -2,7 +2,7 @@ import React from 'react'
 import { TouchableOpacity, View, Text, ImageSourcePropType, Image, FlatList } from 'react-native'
 import { styles } from './style';
 import Header from '../../components/Header';
-import { BORDER_RADIUS, BORDER_RADIUS_CIRCULAR, DEFAUTL_SPACE, FONT_GLARGE, FONT_LARGE, FONT_MID, FONT_SMALL, ICON_SIZE, INLINE_GAP } from '../../assets/sizes';
+import { BORDER_RADIUS, BORDER_RADIUS_CIRCULAR, DEFAUTL_SPACE, FONT_SMALL, ICON_SIZE, INLINE_GAP } from '../../assets/sizes';
 import Faicon from 'react-native-vector-icons/FontAwesome';
 import Aicon from 'react-native-vector-icons/AntDesign';
 import { PRIMARY, WHITE, RED, GREY, SHADE, RED_TRANSPARENT, RED_HEART } from '../../assets/colors';
@@ -203,7 +203,7 @@ const index = (props: { navigation: { push: Function, pop: Function }, products:
                         {props.products.map((values, key) => {
                             if (key < 6)
                                 return (
-                                    <ProductDetailCard {...values} key={key} onClick={() => { props.navigation.push("ViewProduct") }} style={{ width: WIDTH / 2 - 20, margin: 3 }} text={{ color: WHITE }}>
+                                    <ProductDetailCard {...values} key={key} onClick={() => props.navigation.push("ViewProduct", values)} style={{ width: WIDTH / 2 - 20, margin: 3 }} text={{ color: WHITE }}>
                                         <Image source={values.url} />
                                     </ProductDetailCard>
                                 )

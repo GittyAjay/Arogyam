@@ -36,6 +36,7 @@ export const quickConsultants: Array<quickConsultantElements> = [
     { name: "Pregnancy", url: require('../../assets/images/shopbycategory2.png'), color: 'green', key: 16 },
     { name: "Weight loss", url: require('../../assets/images/shopbycategory3.png'), color: 'orange', key: 17 },
 ]
+
 export const doctor_categories: Array<doctor_TYPES> = [
     { type: "Physician", url: require('../../assets/images/doctorCategories1.png') },
     { type: "Pediatric", url: require('../../assets/images/doctorCategories1.png') },

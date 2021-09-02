@@ -9,7 +9,7 @@ import { styles } from './style'
 import { prodElements, product } from '../../store/reducers/projectReducer';
 import { connect } from 'react-redux';
 import { shopByBrand, shopByCatagories, doctor_categories } from '../../store/reducers/projectReducer';
-const index = (props: { navigation: { push: Function, pop: Function }, route: { params: { type: String } }, products: product }) => {
+const index = (props: { navigation: { push: Function, pop: Function }, route: { params: { type: String, name: {} } }, products: product }) => {
     const [filtered_product, setFilteredProduct] = React.useState<Array<object>>();
     const { WIDTH } = Dimension();
     React.useEffect(() => {
@@ -24,6 +24,7 @@ const index = (props: { navigation: { push: Function, pop: Function }, route: { 
                 setFilteredProduct([...doctor_categories])
                 break;
             case "Products":
+                console.log("case", props.route.params.name);
                 setFilteredProduct([...props.products])
                 break;
             default:
@@ -47,7 +48,7 @@ const index = (props: { navigation: { push: Function, pop: Function }, route: { 
     }
     function renderFunction(items: { item: prodElements }) {
         return (
-            <Product {...items.item} onClick={() => { }} style={{ margin: 2, width: props.route.params.type === "Products" ? WIDTH / 2 - 20 : WIDTH / 3 - 20 }} text={{ color: WHITE }}>
+            <Product {...items.item} onClick={() => props.navigation.push("ViewProduct", items.item)} style={{ margin: 2, width: props.route.params.type === "Products" ? WIDTH / 2 - 20 : WIDTH / 3 - 20 }} text={{ color: WHITE }}>
                 <Image source={items.item.url} style={{ alignSelf: 'center', maxWidth: 60, maxHeight: 60 }} />
             </Product>
         );

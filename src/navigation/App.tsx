@@ -44,9 +44,12 @@ import HeaderContainer from '../components/HeadingContainer';
 import Hr from '../components/HorizentalLine';
 import PrimaryButton from '../components/PrimaryButton';
 import Header from '../components/Header';
+import auth, { firebase } from '@react-native-firebase/auth';
+import { sign_in } from '../store/actions/action';
+import { connect } from 'react-redux';
 import { BORDER_RADIUS, BORDER_RADIUS_CIRCULAR, BORDER_WIDTH, DEFAUTL_SPACE, FONT_MID, FONT_SMALL, ICON_SIZE, INLINE_GAP } from '../assets/sizes';
 import { useSelector } from 'react-redux'
-import Row from '../components/Row';
+import { useDispatch } from 'react-redux'
 function TopNav() {
     const { Navigator, Screen } = createMaterialTopTabNavigator();
     const Header = () => {
@@ -183,19 +186,13 @@ function SidenavDoctor() {
 }
 function App() {
     const { Navigator, Screen } = createNativeStackNavigator();
+    const user = firebase.auth().currentUser?.uid;
     return (
-        <Navigator screenOptions={{
+        user ? <Navigator screenOptions={{
             headerShown: false
         }}>
-            <Screen name="Splash" component={Splash} />
-            <Screen name="Onboard" component={OnboardScreen} />
-            <Screen name="Login" component={Login} />
-            <Screen name="Otp" component={Otp} />
-            <Screen name="Signup" component={Signup} />
-            <Screen name="Profile" component={Profile} />
-            <Screen name="FinalAuth" component={FinalAuth} />
-            <Screen name="NeedHelp" component={NeedHelp} />
             <Screen name="Home" component={TopNav} />
+            <Screen name="NeedHelp" component={NeedHelp} />
             <Screen name="SelectLocation" component={SelectLocation} />
             <Screen name="Prescription" component={Prescription} />
             <Screen name="Order" component={Order} />
@@ -211,10 +208,26 @@ function App() {
             <Screen name="AppointmentCheckout" component={AppointmentCheckout} />
             <Screen name="AppointmentHistory" component={AppointmentHistory} />
             <Screen name="AppointmentView" component={AppointmentView} />
-        </Navigator>
+            <Screen name="Profile" component={Profile} />
+        </Navigator> :
+            <Navigator screenOptions={{
+                headerShown: false
+            }}>
+                <Screen name="Splash" component={Splash} />
+                <Screen name="Onboard" component={OnboardScreen} />
+                <Screen name="Login" component={Login} />
+                <Screen name="Otp" component={Otp} />
+                <Screen name="Signup" component={Signup} />
+                <Screen name="FinalAuth" component={FinalAuth} />
+                <Screen name="NeedHelp" component={NeedHelp} />
+                <Screen name="Profile" component={Profile} />
+                <Screen name="Home" component={TopNav} />
+            </Navigator>
     );
 }
-
+const mapDispatchToProps = {
+    sign_in
+}
 export const AppNavigator = () => (
     <NavigationContainer>
         <App />
