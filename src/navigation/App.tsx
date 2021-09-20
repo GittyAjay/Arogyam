@@ -222,6 +222,21 @@ function App() {
                 <Screen name="NeedHelp" component={NeedHelp} />
                 <Screen name="Profile" component={Profile} />
                 <Screen name="Home" component={TopNav} />
+                <Screen name="SelectLocation" component={SelectLocation} />
+                <Screen name="Prescription" component={Prescription} />
+                <Screen name="Order" component={Order} />
+                <Screen name="LabTest" component={LabTest} />
+                <Screen name="ProductPage" component={AllProducts} />
+                <Screen name="ViewProduct" component={ViewProduct} />
+                <Screen name="Filter" component={Filter} />
+                <Screen name="Cart" component={Cart} />
+                <Screen name="AddLocation" component={AddLocation} />
+                <Screen name="DoctorConsultant" component={SidenavDoctor} />
+                <Screen name="SelectForm" component={SelectForm} />
+                <Screen name="DoctorProfile" component={DoctorProfile} />
+                <Screen name="AppointmentCheckout" component={AppointmentCheckout} />
+                <Screen name="AppointmentHistory" component={AppointmentHistory} />
+                <Screen name="AppointmentView" component={AppointmentView} />
             </Navigator>
     );
 }

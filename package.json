@@ -19,6 +19,7 @@
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.0.5",
     "@types/react-native-snap-carousel": "^3.8.3",
+    "axios": "^0.21.3",
     "firebase": "^9.0.0",
     "formik": "^2.2.9",
     "jetifier": "^2.0.0",

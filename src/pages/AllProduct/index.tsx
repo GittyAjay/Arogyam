@@ -8,14 +8,14 @@ import Product from '../../components/ProductDetails';
 import { styles } from './style'
 import { prodElements, product } from '../../store/reducers/projectReducer';
 import { connect } from 'react-redux';
-import { shopByBrand, shopByCatagories, doctor_categories } from '../../store/reducers/projectReducer';
-const index = (props: { navigation: { push: Function, pop: Function }, route: { params: { type: String, name: {} } }, products: product }) => {
+import { shopByBrand, shopByCatagories, doctor_categories, product_TYPES } from '../../store/reducers/projectReducer';
+const index = (props: { navigation: { push: Function, pop: Function }, route: { params: { type: String, name: {} } }, products: product, categories: Array<product_TYPES> }) => {
     const [filtered_product, setFilteredProduct] = React.useState<Array<object>>();
     const { WIDTH } = Dimension();
     React.useEffect(() => {
         switch (props.route.params.type) {
             case "shopByCatagories":
-                setFilteredProduct([...shopByCatagories])
+                setFilteredProduct([...props.categories])
                 break;
             case "shopByBrand":
                 setFilteredProduct([...shopByBrand])
@@ -46,10 +46,10 @@ const index = (props: { navigation: { push: Function, pop: Function }, route: { 
             </View>
         );
     }
-    function renderFunction(items: { item: prodElements }) {
+    function renderFunction(items: { item: any }) {
         return (
             <Product {...items.item} onClick={() => props.navigation.push("ViewProduct", items.item)} style={{ margin: 2, width: props.route.params.type === "Products" ? WIDTH / 2 - 20 : WIDTH / 3 - 20 }} text={{ color: WHITE }}>
-                <Image source={items.item.url} style={{ alignSelf: 'center', maxWidth: 60, maxHeight: 60 }} />
+                <Image source={{ uri: items.item.categories_Image }} style={{ alignSelf: 'center', minWidth: 30, maxWidth: 60, minHeight: 30, maxHeight: 60 }} />
             </Product>
         );
     }
@@ -65,6 +65,7 @@ const index = (props: { navigation: { push: Function, pop: Function }, route: { 
 function mapStateToProps(state: any) {
     return {
         products: state.project.products,
+        categories: state.project.categories
     };
 }
 export default connect(mapStateToProps)(index)

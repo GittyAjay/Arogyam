@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     },
     card_layout: {
         flexDirection: 'row',
-        flexWrap: 'wrap',
+        flexWrap: 'wrap'
     },
     colored__CardtextStyle: {
         color: WHITE
